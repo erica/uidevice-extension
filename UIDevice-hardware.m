@@ -25,13 +25,38 @@
 	return platform;
 }
 
-- (NSString *) platformString
+- (int) platformType
 {
 	NSString *platform = [self platform];
-	if ([platform isEqualToString:@"iPhone1,1"]) return IPHONE_1G_NAMESTRING;
-	if ([platform isEqualToString:@"iPhone1,2"]) return IPHONE_3G_NAMESTRING;
-	if ([platform isEqualToString:@"iPod1,1"])   return IPOD_1G_NAMESTRING;
-	if ([platform isEqualToString:@"iPod2,1"])   return IPOD_2G_NAMESTRING;
-	return NULL;
+	if ([platform isEqualToString:@"iPhone1,1"]) return UIDevice1GiPhone;
+	if ([platform isEqualToString:@"iPhone1,2"]) return UIDevice3GiPhone;
+	if ([platform isEqualToString:@"iPod1,1"])   return UIDevice1GiPod;
+	if ([platform isEqualToString:@"iPod2,1"])   return UIDevice2GiPod;
+	return 0;
 }
+
+- (NSString *) platformString
+{
+	switch ([self platformType])
+	{
+		case UIDevice1GiPhone: return IPHONE_1G_NAMESTRING;
+		case UIDevice3GiPhone: return IPHONE_3G_NAMESTRING;
+		case UIDevice1GiPod: return IPOD_1G_NAMESTRING;
+		case UIDevice2GiPod: return IPOD_2G_NAMESTRING;
+		default: return nil;
+	}
+}
+
+- (int) platformCapabilities
+{
+	switch ([self platformType])
+	{
+		case UIDevice1GiPhone: return UIDeviceBuiltInSpeaker | UIDeviceHasCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony;
+		case UIDevice3GiPhone: return UIDeviceSupportsGPS | UIDeviceBuiltInSpeaker | UIDeviceHasCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony;
+		case UIDevice1GiPod: return 0
+		case UIDevice2GiPod: return UIDeviceBuiltInSpeaker | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone;
+		default: return 0;
+	}
+}
+
 @end

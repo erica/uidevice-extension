@@ -5,7 +5,25 @@
 #define IPOD_1G_NAMESTRING @"iPod touch 1G"
 #define IPOD_2G_NAMESTRING @"iPod touch 2G"
 
+typedef enum {
+    UIDevice1GiPhone,
+	UIDevice1GiPod,
+	UIDevice3GiPhone,
+	UIDevice2GiPod
+} UIDevicePlatform;
+
+enum {
+	UIDeviceSupportsGPS	= 1 << 0,
+	UIDeviceBuiltInSpeaker = 1 << 1,
+	UIDeviceHasCamera = 1 << 2,
+	UIDeviceBuiltInMicrophone = 1 << 3,
+	UIDeviceSupportsExternalMicrophone = 1 << 4,
+	UIDeviceSupportsTelephony = 1 << 5
+};
+
 @interface UIDevice (Hardware)
 - (NSString *) platform;
+- (int) platformType;
 - (NSString *) platformString;
+- (int) platformCapabilities;
 @end
