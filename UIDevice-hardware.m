@@ -7,6 +7,12 @@
 @implementation UIDevice (Hardware)
 
 /*
+ 
+ Thanks to Eridius
+ 
+ */
+
+/*
  Platforms
  iPhone1,1 -> iPhone 1G
  iPhone1,2 -> iPhone 3G 
@@ -32,7 +38,7 @@
 	if ([platform isEqualToString:@"iPhone1,2"]) return UIDevice3GiPhone;
 	if ([platform isEqualToString:@"iPod1,1"])   return UIDevice1GiPod;
 	if ([platform isEqualToString:@"iPod2,1"])   return UIDevice2GiPod;
-	return 0;
+	return UIDeviceUnknown;
 }
 
 - (NSString *) platformString

@@ -6,10 +6,13 @@
 #define IPOD_2G_NAMESTRING @"iPod touch 2G"
 
 typedef enum {
-    UIDevice1GiPhone,
+	UIDeviceUnknown,
+	UIDevice1GiPhone,
 	UIDevice1GiPod,
 	UIDevice3GiPhone,
-	UIDevice2GiPod
+	UIDevice2GiPod,
+	UIDeviceUnknowniPhone,
+	UIDeviceUnknowniPod
 } UIDevicePlatform;
 
 enum {
