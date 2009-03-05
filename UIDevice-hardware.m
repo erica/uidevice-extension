@@ -32,6 +32,8 @@
 	if ([platform isEqualToString:@"iPhone1,2"]) return UIDevice3GiPhone;
 	if ([platform isEqualToString:@"iPod1,1"])   return UIDevice1GiPod;
 	if ([platform isEqualToString:@"iPod2,1"])   return UIDevice2GiPod;
+	if ([platform hasPrefix:@"iPhone"]) return UIDeviceUnknowniPhone;
+	if ([platform hasPrefix:@"iPod"]) return UIDeviceUnknowniPod;
 	return UIDeviceUnknown;
 }
 
@@ -41,8 +43,12 @@
 	{
 		case UIDevice1GiPhone: return IPHONE_1G_NAMESTRING;
 		case UIDevice3GiPhone: return IPHONE_3G_NAMESTRING;
+		case UIDeviceUnknowniPhone: return IPHONE_UNKNOWN_NAMESTRING;
+		
 		case UIDevice1GiPod: return IPOD_1G_NAMESTRING;
 		case UIDevice2GiPod: return IPOD_2G_NAMESTRING;
+		case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
+
 		default: return nil;
 	}
 }
@@ -53,8 +59,12 @@
 	{
 		case UIDevice1GiPhone: return UIDeviceBuiltInSpeaker | UIDeviceBuiltInCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony;
 		case UIDevice3GiPhone: return UIDeviceSupportsGPS | UIDeviceBuiltInSpeaker | UIDeviceBuiltInCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony;
+		case UIDeviceUnknowniPhone: return UIDeviceBuiltInSpeaker | UIDeviceBuiltInCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony;
+
 		case UIDevice1GiPod: return 0;
 		case UIDevice2GiPod: return UIDeviceBuiltInSpeaker | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone;
+		case UIDeviceUnknowniPod: return 0;
+		
 		default: return 0;
 	}
 }

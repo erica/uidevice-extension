@@ -2,8 +2,10 @@
 
 #define IPHONE_1G_NAMESTRING @"iPhone 1G"
 #define IPHONE_3G_NAMESTRING @"iPhone 3G"
+#define IPHONE_UNKNOWN_NAMESTRING @"Unknown iPhone"
 #define IPOD_1G_NAMESTRING @"iPod touch 1G"
 #define IPOD_2G_NAMESTRING @"iPod touch 2G"
+#define IPOD_UNKNOWN_NAMESTRING @"Unknown iPod"
 
 typedef enum {
 	UIDeviceUnknown,
