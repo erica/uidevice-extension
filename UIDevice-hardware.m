@@ -1,16 +1,10 @@
-/* Thanks to Emanuele Vulcano */
+/* Thanks to Emanuele Vulcano, Kevin Ballard/Eridius */
 
 #import "UIDevice-hardware.h"
 #include <sys/types.h>
 #include <sys/sysctl.h>
 
 @implementation UIDevice (Hardware)
-
-/*
- 
- Thanks to Eridius
- 
- */
 
 /*
  Platforms
