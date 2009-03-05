@@ -15,7 +15,7 @@ typedef enum {
 enum {
 	UIDeviceSupportsGPS	= 1 << 0,
 	UIDeviceBuiltInSpeaker = 1 << 1,
-	UIDeviceHasCamera = 1 << 2,
+	UIDeviceBuiltInCamera = 1 << 2,
 	UIDeviceBuiltInMicrophone = 1 << 3,
 	UIDeviceSupportsExternalMicrophone = 1 << 4,
 	UIDeviceSupportsTelephony = 1 << 5

@@ -197,6 +197,14 @@
 			8E669C630F60651D00A27AB7 /* PBXTextBookmark */ = 8E669C630F60651D00A27AB7 /* PBXTextBookmark */;
 			8E669C640F60651D00A27AB7 /* PBXTextBookmark */ = 8E669C640F60651D00A27AB7 /* PBXTextBookmark */;
 			8E669C650F60651D00A27AB7 /* PBXTextBookmark */ = 8E669C650F60651D00A27AB7 /* PBXTextBookmark */;
+			8E669C690F60664900A27AB7 /* PBXBookmark */ = 8E669C690F60664900A27AB7 /* PBXBookmark */;
+			8E669C6A0F60665300A27AB7 /* PBXBookmark */ = 8E669C6A0F60665300A27AB7 /* PBXBookmark */;
+			8E669C6C0F60666100A27AB7 /* PBXTextBookmark */ = 8E669C6C0F60666100A27AB7 /* PBXTextBookmark */;
+			8E669C6F0F60666100A27AB7 /* PBXTextBookmark */ = 8E669C6F0F60666100A27AB7 /* PBXTextBookmark */;
+			8E669C720F60666100A27AB7 /* PBXTextBookmark */ = 8E669C720F60666100A27AB7 /* PBXTextBookmark */;
+			8E669C890F6068C100A27AB7 /* PBXTextBookmark */ = 8E669C890F6068C100A27AB7 /* PBXTextBookmark */;
+			8E669C8A0F6068C100A27AB7 /* PBXTextBookmark */ = 8E669C8A0F6068C100A27AB7 /* PBXTextBookmark */;
+			8E669C8B0F6068C100A27AB7 /* PBXTextBookmark */ = 8E669C8B0F6068C100A27AB7 /* PBXTextBookmark */;
 			8E8D3CEF0F5C7DE300639279 = 8E8D3CEF0F5C7DE300639279 /* PBXTextBookmark */;
 			8E8D3D470F5C81EF00639279 = 8E8D3D470F5C81EF00639279 /* PBXTextBookmark */;
 			8E8D3D480F5C81EF00639279 = 8E8D3D480F5C81EF00639279 /* PBXTextBookmark */;
@@ -218,9 +226,9 @@
 	};
 	29B97316FDCFA39411CA2CEA /* main.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {774, 729}}";
-			sepNavSelRange = "{817, 0}";
-			sepNavVisRange = "{0, 1478}";
+			sepNavIntBoundsRect = "{{0, 0}, {774, 686}}";
+			sepNavSelRange = "{1478, 0}";
+			sepNavVisRange = "{1265, 105}";
 			sepNavWindowFrame = "{{632, 147}, {832, 880}}";
 		};
 	};
@@ -335,7 +343,7 @@
 		fRef = 8E8D3CDE0F5C7B8200639279 /* UIDevice-hardware.h */;
 		name = "UIDevice-hardware.h: 28";
 		rLen = 0;
-		rLoc = 676;
+		rLoc = 680;
 		rType = 0;
 		vrLen = 624;
 		vrLoc = 0;
@@ -355,7 +363,7 @@
 		fRef = 8E8D3CDF0F5C7B8200639279 /* UIDevice-hardware.m */;
 		name = "UIDevice-hardware.m: 36";
 		rLen = 0;
-		rLoc = 907;
+		rLoc = 938;
 		rType = 0;
 		vrLen = 1216;
 		vrLoc = 0;
@@ -375,7 +383,7 @@
 		fRef = 8E8D3CDE0F5C7B8200639279 /* UIDevice-hardware.h */;
 		name = "UIDevice-hardware.h: 26";
 		rLen = 0;
-		rLoc = 609;
+		rLoc = 613;
 		rType = 0;
 		vrLen = 646;
 		vrLoc = 0;
@@ -385,7 +393,7 @@
 		fRef = 8E8D3CDF0F5C7B8200639279 /* UIDevice-hardware.m */;
 		name = "UIDevice-hardware.m: 28";
 		rLen = 21;
-		rLoc = 553;
+		rLoc = 584;
 		rType = 0;
 		vrLen = 1216;
 		vrLoc = 0;
@@ -415,7 +423,7 @@
 		fRef = 8E8D3CDE0F5C7B8200639279 /* UIDevice-hardware.h */;
 		name = "UIDevice-hardware.h: 28";
 		rLen = 0;
-		rLoc = 670;
+		rLoc = 674;
 		rType = 0;
 		vrLen = 676;
 		vrLoc = 0;
@@ -425,7 +433,7 @@
 		fRef = 8E8D3CDF0F5C7B8200639279 /* UIDevice-hardware.m */;
 		name = "UIDevice-hardware.m: 57";
 		rLen = 0;
-		rLoc = 1786;
+		rLoc = 1825;
 		rType = 0;
 		vrLen = 1384;
 		vrLoc = 112;
@@ -455,7 +463,7 @@
 		fRef = 8E8D3CDE0F5C7B8200639279 /* UIDevice-hardware.h */;
 		name = "UIDevice-hardware.h: 21";
 		rLen = 25;
-		rLoc = 493;
+		rLoc = 497;
 		rType = 0;
 		vrLen = 676;
 		vrLoc = 0;
@@ -465,7 +473,7 @@
 		fRef = 8E8D3CDF0F5C7B8200639279 /* UIDevice-hardware.m */;
 		name = "UIDevice-hardware.m: 57";
 		rLen = 0;
-		rLoc = 1786;
+		rLoc = 1825;
 		rType = 0;
 		vrLen = 1706;
 		vrLoc = 112;
@@ -494,7 +502,7 @@
 		isa = PBXTextBookmark;
 		fRef = 8E8D3CDE0F5C7B8200639279 /* UIDevice-hardware.h */;
 		name = "UIDevice-hardware.h: 1";
-		rLen = 676;
+		rLen = 680;
 		rLoc = 0;
 		rType = 0;
 		vrLen = 676;
@@ -505,7 +513,7 @@
 		fRef = 8E8D3CDF0F5C7B8200639279 /* UIDevice-hardware.m */;
 		name = "UIDevice-hardware.m: 57";
 		rLen = 0;
-		rLoc = 1786;
+		rLoc = 1825;
 		rType = 0;
 		vrLen = 1706;
 		vrLoc = 112;
@@ -535,7 +543,7 @@
 		fRef = 8E8D3CDE0F5C7B8200639279 /* UIDevice-hardware.h */;
 		name = "UIDevice-hardware.h: 30";
 		rLen = 0;
-		rLoc = 676;
+		rLoc = 680;
 		rType = 0;
 		vrLen = 676;
 		vrLoc = 0;
@@ -545,7 +553,7 @@
 		fRef = 8E8D3CDF0F5C7B8200639279 /* UIDevice-hardware.m */;
 		name = "UIDevice-hardware.m: 57";
 		rLen = 0;
-		rLoc = 1786;
+		rLoc = 1825;
 		rType = 0;
 		vrLen = 1706;
 		vrLoc = 112;
@@ -575,7 +583,7 @@
 		fRef = 8E8D3CDF0F5C7B8200639279 /* UIDevice-hardware.m */;
 		name = "UIDevice-hardware.m: 56";
 		rLen = 0;
-		rLoc = 1667;
+		rLoc = 1706;
 		rType = 0;
 		vrLen = 1732;
 		vrLoc = 87;
@@ -585,7 +593,7 @@
 		fRef = 8E8D3CDE0F5C7B8200639279 /* UIDevice-hardware.h */;
 		name = "UIDevice-hardware.h: 30";
 		rLen = 0;
-		rLoc = 676;
+		rLoc = 680;
 		rType = 0;
 		vrLen = 676;
 		vrLoc = 0;
@@ -600,20 +608,88 @@
 		vrLen = 1478;
 		vrLoc = 0;
 	};
+	8E669C690F60664900A27AB7 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 8E8D3CDE0F5C7B8200639279 /* UIDevice-hardware.h */;
+	};
+	8E669C6A0F60665300A27AB7 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 8E8D3CDF0F5C7B8200639279 /* UIDevice-hardware.m */;
+	};
+	8E669C6C0F60666100A27AB7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 52";
+		rLen = 0;
+		rLoc = 1478;
+		rType = 0;
+		vrLen = 105;
+		vrLoc = 1265;
+	};
+	8E669C6F0F60666100A27AB7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8E8D3CDF0F5C7B8200639279 /* UIDevice-hardware.m */;
+		name = "UIDevice-hardware.m: 55";
+		rLen = 0;
+		rLoc = 1579;
+		rType = 0;
+		vrLen = 1763;
+		vrLoc = 64;
+	};
+	8E669C720F60666100A27AB7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8E8D3CDE0F5C7B8200639279 /* UIDevice-hardware.h */;
+		name = "UIDevice-hardware.h: 18";
+		rLen = 0;
+		rLoc = 396;
+		rType = 0;
+		vrLen = 680;
+		vrLoc = 0;
+	};
+	8E669C890F6068C100A27AB7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 52";
+		rLen = 0;
+		rLoc = 1478;
+		rType = 0;
+		vrLen = 105;
+		vrLoc = 1265;
+	};
+	8E669C8A0F6068C100A27AB7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8E8D3CDF0F5C7B8200639279 /* UIDevice-hardware.m */;
+		name = "UIDevice-hardware.m: 23";
+		rLen = 0;
+		rLoc = 544;
+		rType = 0;
+		vrLen = 1794;
+		vrLoc = 64;
+	};
+	8E669C8B0F6068C100A27AB7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8E8D3CDE0F5C7B8200639279 /* UIDevice-hardware.h */;
+		name = "UIDevice-hardware.h: 18";
+		rLen = 0;
+		rLoc = 396;
+		rType = 0;
+		vrLen = 680;
+		vrLoc = 0;
+	};
 	8E8D3CDE0F5C7B8200639279 /* UIDevice-hardware.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {945, 798}}";
-			sepNavSelRange = "{676, 0}";
-			sepNavVisRange = "{0, 676}";
+			sepNavIntBoundsRect = "{{0, 0}, {945, 821}}";
+			sepNavSelRange = "{396, 0}";
+			sepNavVisRange = "{0, 680}";
 			sepNavWindowFrame = "{{546, 71}, {1004, 949}}";
 		};
 	};
 	8E8D3CDF0F5C7B8200639279 /* UIDevice-hardware.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1188, 882}}";
-			sepNavSelRange = "{1667, 0}";
-			sepNavVisRange = "{87, 1732}";
-			sepNavWindowFrame = "{{266, 79}, {1004, 949}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1212, 882}}";
+			sepNavSelRange = "{544, 0}";
+			sepNavVisRange = "{64, 1794}";
+			sepNavWindowFrame = "{{102, 79}, {1004, 949}}";
 		};
 	};
 	8E8D3CEF0F5C7DE300639279 /* PBXTextBookmark */ = {
@@ -641,7 +717,7 @@
 		fRef = 8E8D3CDE0F5C7B8200639279 /* UIDevice-hardware.h */;
 		name = "UIDevice-hardware.h: 5";
 		rLen = 0;
-		rLoc = 670;
+		rLoc = 674;
 		rType = 0;
 		vrLen = 93;
 		vrLoc = 24;
@@ -711,7 +787,7 @@
 		fRef = 8E8D3CDE0F5C7B8200639279 /* UIDevice-hardware.h */;
 		name = "UIDevice-hardware.h: 5";
 		rLen = 0;
-		rLoc = 670;
+		rLoc = 674;
 		rType = 0;
 		vrLen = 93;
 		vrLoc = 24;

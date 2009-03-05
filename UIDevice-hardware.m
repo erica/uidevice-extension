@@ -20,7 +20,7 @@
     sysctlbyname("hw.machine", NULL, &size, NULL, 0);
     char *machine = malloc(size);
 	sysctlbyname("hw.machine", machine, &size, NULL, 0);
-	NSString *platform = [NSString stringWithCString:machine];
+	NSString *platform = [NSString stringWithCString:machine encoding: NSUTF8StringEncoding];
 	free(machine);
 	return platform;
 }
@@ -51,8 +51,8 @@
 {
 	switch ([self platformType])
 	{
-		case UIDevice1GiPhone: return UIDeviceBuiltInSpeaker | UIDeviceHasCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony;
-		case UIDevice3GiPhone: return UIDeviceSupportsGPS | UIDeviceBuiltInSpeaker | UIDeviceHasCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony;
+		case UIDevice1GiPhone: return UIDeviceBuiltInSpeaker | UIDeviceBuiltInCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony;
+		case UIDevice3GiPhone: return UIDeviceSupportsGPS | UIDeviceBuiltInSpeaker | UIDeviceBuiltInCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony;
 		case UIDevice1GiPod: return 0;
 		case UIDevice2GiPod: return UIDeviceBuiltInSpeaker | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone;
 		default: return 0;
