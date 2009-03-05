@@ -202,46 +202,6 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
-				<string>8E669C380F60637700A27AB7</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>UIDevice-hardware.h</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>8E669C390F60637800A27AB7</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>UIDevice-hardware.h</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>8E669C5D0F60647300A27AB7</string>
-						<key>history</key>
-						<array>
-							<string>8E669C2B0F6060ED00A27AB7</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {1004, 852}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>546 127 1004 893 0 0 1680 1028 </string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
 				<string>8E669C3E0F60637800A27AB7</string>
 				<key>PBXProjectModuleLabel</key>
 				<string>UIDevice-hardware.m</string>
@@ -256,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>8E669C5E0F60647300A27AB7</string>
+						<string>8E669C630F60651D00A27AB7</string>
 						<key>history</key>
 						<array>
 							<string>8E669C2D0F60626500A27AB7</string>
@@ -282,6 +242,46 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
+				<string>8E669C380F60637700A27AB7</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>UIDevice-hardware.h</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>8E669C390F60637800A27AB7</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>UIDevice-hardware.h</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>8E669C640F60651D00A27AB7</string>
+						<key>history</key>
+						<array>
+							<string>8E669C2B0F6060ED00A27AB7</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {1004, 852}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>546 127 1004 893 0 0 1680 1028 </string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
 				<string>8E669C3B0F60637800A27AB7</string>
 				<key>PBXProjectModuleLabel</key>
 				<string>main.m</string>
@@ -296,7 +296,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>8E669C5F0F60647300A27AB7</string>
+						<string>8E669C650F60651D00A27AB7</string>
 						<key>history</key>
 						<array>
 							<string>8E669C300F60631900A27AB7</string>
@@ -449,7 +449,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>8E669C5C0F60647300A27AB7</string>
+										<string>8E669C620F60651D00A27AB7</string>
 										<key>history</key>
 										<array>
 											<string>8E8D3D470F5C81EF00639279</string>
@@ -657,16 +657,16 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>8E669C660F60651D00A27AB7</string>
 		<string>8E669C4F0F6063A700A27AB7</string>
-		<string>8E669C490F60637800A27AB7</string>
 		<string>8E669C4A0F60637800A27AB7</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>8E0DD4FF0D8448D5009D1638</string>
 		<string>/Users/ericasadun/Desktop/Work/SDKStuff/Bonus Material/ZZ - UIDevice/HelloWorld.xcodeproj</string>
 		<string>8E669C3B0F60637800A27AB7</string>
-		<string>8E669C3E0F60637800A27AB7</string>
 		<string>8E669C380F60637700A27AB7</string>
+		<string>8E669C3E0F60637800A27AB7</string>
 	</array>
 	<key>WindowString</key>
 	<string>702 306 690 397 0 0 1680 1028 </string>

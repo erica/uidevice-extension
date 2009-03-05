@@ -53,7 +53,7 @@
 	{
 		case UIDevice1GiPhone: return UIDeviceBuiltInSpeaker | UIDeviceHasCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony;
 		case UIDevice3GiPhone: return UIDeviceSupportsGPS | UIDeviceBuiltInSpeaker | UIDeviceHasCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony;
-		case UIDevice1GiPod: return 0
+		case UIDevice1GiPod: return 0;
 		case UIDevice2GiPod: return UIDeviceBuiltInSpeaker | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone;
 		default: return 0;
 	}
