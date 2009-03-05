@@ -23,7 +23,8 @@ enum {
 	UIDeviceBuiltInCamera = 1 << 2,
 	UIDeviceBuiltInMicrophone = 1 << 3,
 	UIDeviceSupportsExternalMicrophone = 1 << 4,
-	UIDeviceSupportsTelephony = 1 << 5
+	UIDeviceSupportsTelephony = 1 << 5,
+	UIDeviceSupportsVibration = 1 << 6
 };
 
 @interface UIDevice (Hardware)
