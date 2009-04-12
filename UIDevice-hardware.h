@@ -6,6 +6,7 @@
 #define IPOD_1G_NAMESTRING @"iPod touch 1G"
 #define IPOD_2G_NAMESTRING @"iPod touch 2G"
 #define IPOD_UNKNOWN_NAMESTRING @"Unknown iPod"
+#define IPOD_FAMILY_UNKNOWN_DEVICE @"Unknown device in the iPhone/iPod family"
 
 typedef enum {
 	UIDeviceUnknown,
@@ -30,6 +31,18 @@ enum {
 @interface UIDevice (Hardware)
 - (NSString *) platform;
 - (int) platformType;
-- (NSString *) platformString;
 - (int) platformCapabilities;
+- (NSString *) platformString;
+
+- (NSUInteger) cpuFrequency;
+- (NSUInteger) busFrequency;
+- (NSUInteger) pageSize;
+- (NSUInteger) totalMemory;
+- (NSUInteger) userMemory;
+- (NSUInteger) maxSocketBufferSize;
+
+- (NSString *) macaddress;
+- (NSString *) hostname;
+- (NSString *) localWiFiIPAddress;
+- (NSString *) localIPAddress;
 @end

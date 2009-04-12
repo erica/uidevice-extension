@@ -8,10 +8,18 @@
 - (void) performAction
 {
 	CFShow([[UIDevice currentDevice] model]);
-	printf("--\n");
-	CFShow([[UIDevice currentDevice] platform]);
-	printf("--\n");
+	// CFShow([[UIDevice currentDevice] platform]);
 	CFShow([[UIDevice currentDevice] platformString]);
+	// NSLog(@"%d", [[UIDevice currentDevice] cpuFrequency]);
+	// NSLog(@"%d", [[UIDevice currentDevice] busFrequency]);
+	// NSLog(@"%d", [[UIDevice currentDevice] pageSize]);
+	// NSLog(@"%d", [[UIDevice currentDevice] totalMemory]);
+	// NSLog(@"%d", [[UIDevice currentDevice] userMemory]);
+	// NSLog(@"%d", [[UIDevice currentDevice] maxSocketBufferSize]);
+	CFShow([[UIDevice currentDevice] hostname]);
+	CFShow([[UIDevice currentDevice] localIPAddress]);	
+	CFShow([[UIDevice currentDevice] localWiFiIPAddress]);
+	CFShow([[UIDevice currentDevice] macaddress]);
 }
 
 - (void)loadView
