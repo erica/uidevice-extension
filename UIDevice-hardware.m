@@ -1,7 +1,7 @@
-/* Thanks to Emanuele Vulcano, Kevin Ballard/Eridius, Ryandjohnson */
+/* Thanks to Emanuele Vulcano, Kevin Ballard/Eridius, Ryandjohnson, Matt Brown */
 
 /*
- - Bluetooth? Screen pixels? Dot pitch? Accelerometer? GPS disabled in Egypt (and others?). - @halm
+ - Bluetooth?  Screen pixels? Dot pitch? Accelerometer? GPS disabled in Egypt (and others?). - @halm
 */
 
 #import "UIDevice-hardware.h"

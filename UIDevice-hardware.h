@@ -29,6 +29,7 @@ enum {
 };
 
 @interface UIDevice (Hardware)
+
 - (NSString *) platform;
 - (int) platformType;
 - (int) platformCapabilities;
