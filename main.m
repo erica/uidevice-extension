@@ -13,10 +13,8 @@
 	
 	// NSLog(@"%d", [[UIDevice currentDevice] cpuFrequency]);
 	// NSLog(@"%d", [[UIDevice currentDevice] busFrequency]);
-	// NSLog(@"%d", [[UIDevice currentDevice] pageSize]);
 	// NSLog(@"%d", [[UIDevice currentDevice] totalMemory]);
 	// NSLog(@"%d", [[UIDevice currentDevice] userMemory]);
-	// NSLog(@"%d", [[UIDevice currentDevice] maxSocketBufferSize]);
 	
 	CFShow([[UIDevice currentDevice] hostname]);
 	CFShow([[UIDevice currentDevice] localIPAddress]);	

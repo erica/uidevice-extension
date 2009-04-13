@@ -31,13 +31,12 @@ enum {
 @interface UIDevice (Hardware)
 
 - (NSString *) platform;
-- (int) platformType;
-- (int) platformCapabilities;
+- (NSUInteger) platformType;
+- (NSUInteger) platformCapabilities;
 - (NSString *) platformString;
 
 - (NSUInteger) cpuFrequency;
 - (NSUInteger) busFrequency;
-- (NSUInteger) pageSize;
 - (NSUInteger) totalMemory;
 - (NSUInteger) userMemory;
 - (NSUInteger) maxSocketBufferSize;

@@ -4,7 +4,6 @@
  - Bluetooth?  Screen pixels? Dot pitch? Accelerometer? GPS disabled in Egypt (and others?). - @halm
 */
 
-#import "UIDevice-hardware.h"
 #include <sys/types.h>
 #include <sys/sysctl.h>
 #import <mach/mach_host.h>
@@ -16,6 +15,7 @@
 #include <net/if.h>
 #include <net/if_dl.h>
 #include <ifaddrs.h>
+#import "UIDevice-hardware.h"
 
 @implementation UIDevice (Hardware)
 
@@ -52,7 +52,7 @@
 	int results;
 	int mib[2] = {CTL_HW, typeSpecifier};
 	sysctl(mib, 2, &results, &size, NULL, 0);
-	return results;
+	return (NSUInteger) results;
 }
 
 - (NSUInteger) cpuFrequency
@@ -63,11 +63,6 @@
 - (NSUInteger) busFrequency
 {
 	return [self getSysInfo:HW_BUS_FREQ];
-}
-
-- (NSUInteger) pageSize
-{
-	return [self getSysInfo:HW_PAGESIZE];
 }
 
 - (NSUInteger) totalMemory
@@ -86,7 +81,7 @@
 }
 
 #pragma mark platform type and name utils
-- (int) platformType
+- (NSUInteger) platformType
 {
 	NSString *platform = [self platform];
 	if ([platform isEqualToString:@"iPhone1,1"]) return UIDevice1GiPhone;
@@ -115,7 +110,7 @@
 }
 
 #pragma mark  platform capabilities
-- (int) platformCapabilities
+- (NSUInteger) platformCapabilities
 {
 	switch ([self platformType])
 	{
@@ -237,5 +232,4 @@
 	free(buf);
 	return [outstring uppercaseString];
 }
-
 @end
