@@ -47,7 +47,7 @@ enum {
 - (NSString *) hostname;
 - (NSString *) localWiFiIPAddress;
 - (NSString *) localIPAddress;
-- (NSString *) getIPAddress;
+- (NSString *) getIPAddress; // via http://zachwaugh.com/2009/03/programmatically-retrieving-ip-address-of-iphone/
 - (NSString *) whatismyipdotcom;
 @end
 
