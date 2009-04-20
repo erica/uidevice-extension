@@ -146,7 +146,7 @@
 				INFOPLIST_FILE = Info.plist;
 				PREBINDING = NO;
 				PRODUCT_NAME = HelloWorld;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A2FA5C45-7EC1-4FE4-A834-590BCF399409";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 			};
 			name = Debug;
 		};

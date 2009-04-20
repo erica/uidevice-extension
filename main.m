@@ -19,6 +19,12 @@
 	CFShow([[UIDevice currentDevice] hostname]);
 	CFShow([[UIDevice currentDevice] localIPAddress]);	
 	CFShow([[UIDevice currentDevice] localWiFiIPAddress]);
+	CFShow([[UIDevice currentDevice] getIPAddress]);
+	CFShow([[UIDevice currentDevice] whatismyipdotcom]);
+	
+	CFShow([[NSHost currentHost] addresses]);
+	CFShow([[NSHost currentHost] address]);
+	
 	CFShow([[UIDevice currentDevice] macaddress]);
 }
 
