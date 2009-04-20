@@ -1,6 +1,10 @@
-#import <UIKit/UIKit.h>
+/*
+ Erica Sadun, http://ericasadun.com
+ iPhone Developer's Cookbook, 3.0 Edition
+ BSD License, Use at your own risk
+ */
 
-#define SUPPORTS_UNDOCUMENTED_API	1
+#import <UIKit/UIKit.h>
 
 #define IPHONE_1G_NAMESTRING @"iPhone 1G"
 #define IPHONE_3G_NAMESTRING @"iPhone 3G"
@@ -44,41 +48,6 @@ enum {
 - (NSUInteger) maxSocketBufferSize;
 
 - (NSString *) macaddress;
-- (NSString *) hostname;
-- (NSString *) localWiFiIPAddress;
-- (NSString *) localIPAddress;
-- (NSString *) getIPAddress; // via http://zachwaugh.com/2009/03/programmatically-retrieving-ip-address-of-iphone/
-- (NSString *) whatismyipdotcom;
 @end
 
-#if SUPPORTS_UNDOCUMENTED_API
-@interface NSHost : NSObject
-{
-    NSArray *names;
-    NSArray *addresses;
-    void *reserved;
-}
-
-+ (id)currentHost;
-+ (void)_fixNSHostLeak;
-+ (id)hostWithName:(id)fp8;
-+ (id)hostWithAddress:(id)fp8;
-+ (BOOL)isHostCacheEnabled;
-+ (void)setHostCacheEnabled:(BOOL)fp8;
-+ (void)flushHostCache;
-- (BOOL)isEqualToHost:(id)fp8;
-- (id)name;
-- (id)names;
-- (id)address;
-- (id)addresses;
-- (id)description;
-- (void)dealloc;
-
-@end
-
-// UIDevice_Undocumented_Expanded
-// Methods which rely on undocumented methods 
-@interface UIDevice (UIDevice_Undocumented_Expanded)
-@end
-#endif // SUPPORTS_UNDOCUMENTED_API
 

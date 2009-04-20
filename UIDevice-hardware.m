@@ -1,17 +1,16 @@
-/* Thanks to Emanuele Vulcano, Kevin Ballard/Eridius, Ryandjohnson, Matt Brown */
-
 /*
- - Bluetooth?  Screen pixels? Dot pitch? Accelerometer? GPS disabled in Egypt (and others?). - @halm
-*/
+ Erica Sadun, http://ericasadun.com
+ iPhone Developer's Cookbook, 3.0 Edition
+ BSD License, Use at your own risk
+ */
 
-#include <unistd.h>
+//  Thanks to Emanuele Vulcano, Kevin Ballard/Eridius, Ryandjohnson, Matt Brown, etc.
+// TTD:  - Bluetooth?  Screen pixels? Dot pitch? Accelerometer? GPS enabled/disabled
+
 #include <sys/sysctl.h>
-#include <arpa/inet.h>
-#include <netdb.h>
 #include <net/if.h>
 #include <net/if_dl.h>
-#include <ifaddrs.h>
-#import "UIDevice-hardware.h"
+#import "UIDevice-Hardware.h"
 
 @implementation UIDevice (Hardware)
 
@@ -122,115 +121,8 @@
 	}
 }
 
-#pragma mark host and ip utils
-- (NSString *) hostname
-{
-	char baseHostName[255];
-	int success = gethostname(baseHostName, 255);
-	if (success != 0) return nil;
-	baseHostName[255] = '\0';
-	
-#if !TARGET_IPHONE_SIMULATOR
-	return [NSString stringWithFormat:@"%s.local", baseHostName];
-#else
-	return [NSString stringWithFormat:@"%s", baseHostName];
-#endif
-}
-
-#if ! defined(IFT_ETHER)
-	#define IFT_ETHER 0x6	// Ethernet CSMACD
-#endif
-
-// Matt Brown's get WiFi IP addy solution
-// http://mattbsoftware.blogspot.com/2009/04/how-to-get-ip-address-of-iphone-os-v221.html
-- (NSString *) localWiFiIPAddress
-{
-	BOOL success;
-	struct ifaddrs * addrs;
-	const struct ifaddrs * cursor;
-	
-	success = getifaddrs(&addrs) == 0;
-	if (success) {
-		cursor = addrs;
-		while (cursor != NULL) {
-			// the second test keeps from picking up the loopback address
-			if (cursor->ifa_addr->sa_family == AF_INET && (cursor->ifa_flags & IFF_LOOPBACK) == 0) 
-			{
-				NSString *name = [NSString stringWithUTF8String:cursor->ifa_name];
-				if ([name isEqualToString:@"en0"]) { // found the WiFi adapter
-					return [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)cursor->ifa_addr)->sin_addr)];
-				}
-			}
-			cursor = cursor->ifa_next;
-		}
-		freeifaddrs(addrs);
-	}
-	return nil;
-}
-
-// Return the local IP address
-- (NSString *) localIPAddress
-{
-	struct hostent *host = gethostbyname([[self hostname] UTF8String]);
-    if (host == NULL)
-	{
-        herror("resolv");
-		return nil;
-	}
-    else {
-        struct in_addr **list = (struct in_addr **)host->h_addr_list;
-		return [NSString stringWithCString:inet_ntoa(*list[0])];
-    }
-	return nil;
-}
-
-// Yet another IP addy getter
-// via http://zachwaugh.com/2009/03/programmatically-retrieving-ip-address-of-iphone/
-- (NSString *)getIPAddress
-{
-	NSString *address = @"error";
-	struct ifaddrs *interfaces = NULL;
-	struct ifaddrs *temp_addr = NULL;
-	int success = 0;
-	
-	// retrieve the current interfaces - returns 0 on success
-	success = getifaddrs(&interfaces);
-	if (success == 0)
-	{
-		// Loop through linked list of interfaces
-		temp_addr = interfaces;
-		while(temp_addr != NULL)
-		{
-			if(temp_addr->ifa_addr->sa_family == AF_INET)
-			{
-				// Check if interface is en0 which is the wifi connection on the iPhone
-				if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"])
-				{
-					// Get NSString from C String
-					address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
-				}
-			}
-			
-			temp_addr = temp_addr->ifa_next;
-		}
-	}
-	
-	// Free memory
-	freeifaddrs(interfaces);
-	
-	return address;
-}
-
-- (NSString *) whatismyipdotcom
-{
-	NSError *error;
-    NSURL *ipURL = [NSURL URLWithString:@"http://www.whatismyip.com/automation/n09230945.asp"];
-    NSString *ip = [NSString stringWithContentsOfURL:ipURL encoding:1 error:&error];
-	if (!ip) return [error localizedDescription];
-	return ip;
-}
-
-// Return the local Mac addy
+#pragma mark MAC addy
+// Return the local MAC addy
 // Courtesy of FreeBSD hackers email list
 - (NSString *) macaddress
 {
@@ -275,10 +167,5 @@
 	return [outstring uppercaseString];
 }
 
-@end
-
-#if SUPPORTS_UNDOCUMENTED_API
-@implementation UIDevice (UIDevice_Undocumented_Expanded)
 
 @end
-#endif  // SUPPORTS_UNDOCUMENTED_API

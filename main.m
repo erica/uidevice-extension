@@ -1,5 +1,7 @@
 #import <UIKit/UIKit.h>
-#import "UIDevice-hardware.h"
+#import "UIDevice-Hardware.h"
+#import "UIDevice-Reachability.h"
+#import "UIDevice-IOKitExtensions.h"
 
 @interface TestBedController : UIViewController
 @end
@@ -7,39 +9,81 @@
 @implementation TestBedController
 - (void) performAction
 {
+	// Some core device info
 	CFShow([[UIDevice currentDevice] model]);
 	CFShow([[UIDevice currentDevice] platformString]);
 	// CFShow([[UIDevice currentDevice] platform]);
 	
-	// NSLog(@"%d", [[UIDevice currentDevice] cpuFrequency]);
-	// NSLog(@"%d", [[UIDevice currentDevice] busFrequency]);
-	// NSLog(@"%d", [[UIDevice currentDevice] totalMemory]);
-	// NSLog(@"%d", [[UIDevice currentDevice] userMemory]);
+	NSLog(@"CPU Freq %d", [[UIDevice currentDevice] cpuFrequency]);
+	NSLog(@"Bus Freq %d", [[UIDevice currentDevice] busFrequency]);
+	NSLog(@"Tot. Mem %d", [[UIDevice currentDevice] totalMemory]);
+	NSLog(@"User Mem %d", [[UIDevice currentDevice] userMemory]);
+
+#if SUPPORTS_IOKIT_EXTENSIONS
+	// Show IOKit 
+	CFShow([[UIDevice currentDevice] imei]);
+	CFShow([[UIDevice currentDevice] serialnumber]);
+	CFShow([[UIDevice currentDevice] backlightlevel]);
+#endif
 	
+	// Perform some connectivity checks
+	printf("hostname: ");
 	CFShow([[UIDevice currentDevice] hostname]);
+	
+#if SUPPORTS_UNDOCUMENTED_API
+	printf("Names: ");
+	CFShow([[NSHost currentHost] names]);
+	CFShow([[NSHost currentHost] name]);
+#endif
+	
+	printf("localipaddy: ");
 	CFShow([[UIDevice currentDevice] localIPAddress]);	
+	printf("localWifiIPAddy: ");
 	CFShow([[UIDevice currentDevice] localWiFiIPAddress]);
-	CFShow([[UIDevice currentDevice] getIPAddress]);
+	printf("getWiFiIPAddy: ");
+	CFShow([[UIDevice currentDevice] getWiFiIPAddress]);
+	
+#if SUPPORTS_UNDOCUMENTED_API
+	printf("current host addys: ");
+	CFShow([[NSHost currentHost] addresses]);
+	
+	printf("current host addy: ");
+	CFShow([[NSHost currentHost] address]);
+#endif
+	
+	printf("whatismyipdotcom: ");
 	CFShow([[UIDevice currentDevice] whatismyipdotcom]);
 	
-	CFShow([[NSHost currentHost] addresses]);
-	CFShow([[NSHost currentHost] address]);
-	
+	printf("macaddy: ");
 	CFShow([[UIDevice currentDevice] macaddress]);
+	
+	[(UITextView *)self.view setText:[NSString stringWithFormat:@"Hostname: %@\nIP: %@\nMy IP: %@",
+									  [[UIDevice currentDevice] hostname],
+									  [[UIDevice currentDevice] localIPAddress],
+									  [[UIDevice currentDevice] whatismyipdotcom]
+									  ]];
+	
+	printf("Has WLAN: %s\n", [[UIDevice currentDevice] activeWLAN] ? "Yes" : "No");
+	
+#if SUPPORTS_UNDOCUMENTED_API
+	printf("Has WWAN: %s\n", [[UIDevice currentDevice] activeWWAN] ? "Yes" : "No");
+#endif
 }
 
 - (void)loadView
 {
-	UIView *contentView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+	UITextView *contentView = [[UITextView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+	contentView.editable = NO;
+	contentView.font = [UIFont systemFontOfSize:20.0f];
 	self.view = contentView;
 	contentView.backgroundColor = [UIColor whiteColor];
     [contentView release];
-
 	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]
 											   initWithTitle:@"Action" 
 											   style:UIBarButtonItemStylePlain 
 											   target:self 
 											   action:@selector(performAction)] autorelease];
+	[self performSelector:@selector(performAction) withObject:nil afterDelay:0.5f];
 }
 @end
 
