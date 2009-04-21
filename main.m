@@ -2,6 +2,12 @@
 #import "UIDevice-Hardware.h"
 #import "UIDevice-Reachability.h"
 #import "UIDevice-IOKitExtensions.h"
+#import "UIApplication-Proximity.h"
+
+/*
+ Things to add: WiFi scanning, Cell Tower scanning, Bluetooth?
+ Add hasBluetooth for device capabilities in some way? Different bluetooth types?
+*/
 
 @interface TestBedController : UIViewController
 @end
@@ -51,12 +57,13 @@
 	CFShow([[NSHost currentHost] address]);
 #endif
 	
-	printf("whatismyipdotcom: ");
-	CFShow([[UIDevice currentDevice] whatismyipdotcom]);
+	// Need to put this into an asynch solution
+	// printf("whatismyipdotcom: ");
+	// CFShow([[UIDevice currentDevice] whatismyipdotcom]);
 	
 	printf("macaddy: ");
 	CFShow([[UIDevice currentDevice] macaddress]);
-	
+	/*
 	[(UITextView *)self.view setText:[NSString stringWithFormat:@"Hostname: %@\nIP: %@\nMy IP: %@",
 									  [[UIDevice currentDevice] hostname],
 									  [[UIDevice currentDevice] localIPAddress],
@@ -68,6 +75,7 @@
 #if SUPPORTS_UNDOCUMENTED_API
 	printf("Has WWAN: %s\n", [[UIDevice currentDevice] activeWWAN] ? "Yes" : "No");
 #endif
+	 */
 }
 
 - (void)loadView
@@ -87,10 +95,39 @@
 }
 @end
 
+#if SUPPORTS_UNDOCUMENTED_APPLICATION_PROXIMITY
+@interface TestBedAppDelegate : NSObject <UIApplicationDelegate, ProximityDelegate>
+@end
+@implementation TestBedAppDelegate
+
+- (void) proximityStateDidChange: (NSNumber *) newSetting
+{
+	BOOL isOn = [newSetting boolValue];
+	printf("Proximity sensor triggered: %s\n", isOn ? "on" : "off");
+}
+
+- (void)applicationDidFinishLaunching:(ProximityApplication *)application {	
+	UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[TestBedController alloc] init]];
+	[window addSubview:nav.view];
+	[window makeKeyAndVisible];
+	[UIDevice currentDevice].proximityMonitoringEnabled = YES; 
+	application.proximityClient = self;
+}
+@end
+
+int main(int argc, char *argv[])
+{
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	int retVal = UIApplicationMain(argc, argv, @"ProximityApplication", @"TestBedAppDelegate");
+	[pool release];
+	return retVal;
+}
+
+#else
 
 @interface TestBedAppDelegate : NSObject <UIApplicationDelegate>
 @end
-
 @implementation TestBedAppDelegate
 - (void)applicationDidFinishLaunching:(UIApplication *)application {	
 	UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -107,3 +144,4 @@ int main(int argc, char *argv[])
 	[pool release];
 	return retVal;
 }
+#endif

@@ -6,6 +6,7 @@
  Use at your own risk
  */
 
+// TTD: Add async version of whatsmyip -- thanks rpetrich
 
 #include <unistd.h>
 #include <sys/sysctl.h>
@@ -197,6 +198,109 @@ static void myClientCallback(void *refCon)
 {
 	if (myInfoPtr) StopWWAN((MyInfoRef) myInfoPtr);
 }
+
+/*
+ - (BOOL) hostAvailable: (NSString *) theHost
+ {
+ 
+ NSString *addressString = [self getIPAddressForHost:theHost];
+ if (!addressString) 
+ {
+ printf("Error recovering IP address from host name\n");
+ return NO;
+ }
+ 
+ struct sockaddr_in address;
+ BOOL gotAddress = [self addressFromString:addressString address:&address];
+ 
+ if (!gotAddress)
+ {
+ printf("Error recovering sockaddr address from %s\n", [addressString UTF8String]);
+ return NO;
+ }
+ 
+ SCNetworkReachabilityRef defaultRouteReachability = SCNetworkReachabilityCreateWithAddress(NULL, (struct sockaddr *)&address);
+ SCNetworkReachabilityFlags flags;
+ 
+ BOOL didRetrieveFlags = SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags);
+ CFRelease(defaultRouteReachability);
+ 
+ if (!didRetrieveFlags) 
+ {
+ printf("Error. Could not recover network reachability flags\n");
+ return NO;
+ }
+ 
+ BOOL isReachable = flags & kSCNetworkFlagsReachable;
+ return isReachable ? YES : NO;;
+ }
+ 
+ // Courtesy of Apple
+ - (BOOL) connectedToNetwork
+ {
+ // Create zero addy
+ struct sockaddr_in zeroAddress;
+ bzero(&zeroAddress, sizeof(zeroAddress));
+ zeroAddress.sin_len = sizeof(zeroAddress);
+ zeroAddress.sin_family = AF_INET;
+ 
+ // Recover reachability flags
+ SCNetworkReachabilityRef defaultRouteReachability = SCNetworkReachabilityCreateWithAddress(NULL, (struct sockaddr *)&zeroAddress);	
+ CFRelease(defaultRouteReachability);
+ 
+ SCNetworkReachabilityFlags flags;
+ 
+ BOOL didRetrieveFlags = SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags);
+ if (!didRetrieveFlags) 
+ {
+ printf("Error. Could not recover network reachability flags\n");
+ return 0;
+ }
+ 
+ BOOL isReachable = flags & kSCNetworkFlagsReachable;
+ BOOL needsConnection = flags & kSCNetworkFlagsConnectionRequired;
+ // BOOL isEDGE = flags & kSCNetworkReachabilityFlagsIsWWAN;
+ return (isReachable && !needsConnection) ? YES : NO;
+ }
+ */
+
+
+// Via Joachim Bean
+/*
+ - (BOOL)isDataSourceAvailable
+ {
+ static BOOL checkNetwork = YES;
+ if (checkNetwork) {
+ checkNetwork = NO;
+ 
+ Boolean success;
+ const char *host_name = "www.whatismyip.com";
+ 
+ SCNetworkReachabilityRef reachability =
+ SCNetworkReachabilityCreateWithName(NULL, host_name);
+ SCNetworkReachabilityFlags flags;
+ success = SCNetworkReachabilityGetFlags(reachability, &flags);
+ _isDataSourceAvailable = success && (flags &
+ kSCNetworkFlagsReachable) && !(flags & kSCNetworkFlagsConnectionRequired);
+ 
+ //If there is no network connection
+ if (!_isDataSourceAvailable) {
+ UIAlertView *nonetwork = [[UIAlertView alloc] initWithTitle:@"No Network"
+ 
+ message:@"You are not connected to the Internet."
+ delegate:nil
+ cancelButtonTitle:@"OK"
+ otherButtonTitles:nil];
+ 
+ [nonetwork show];
+ } else {
+ //Connection successful
+ }
+ }
+ return _isDataSourceAvailable;
+ }
+ */
+
 @end
 
 #if SUPPORTS_UNDOCUMENTED_API
