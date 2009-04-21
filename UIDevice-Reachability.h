@@ -15,14 +15,12 @@
 
 - (NSString *) localWiFiIPAddress;
 - (NSString *) localIPAddress;
-- (NSString *) getWiFiIPAddress; // via http://zachwaugh.com
 - (NSString *) whatismyipdotcom;
 
 - (BOOL) activeWLAN;
 - (BOOL) addressFromString:(NSString *)IPAddress address:(struct sockaddr_in *)address; // via Apple
-
-- (void) forceWWAN;
-- (void) shutdownWWAN;
+- (void) forceWWAN; // via Apple
+- (void) shutdownWWAN; // via Apple
 @end
 
 // Methods which rely on undocumented API methods 
@@ -33,6 +31,7 @@
 - (BOOL) activeWWAN;
 @end
 
+// Undocumented class
 @interface NSHost : NSObject
 {
     NSArray *names;

@@ -2,7 +2,7 @@
  Erica Sadun, http://ericasadun.com
  iPhone Developer's Cookbook, 3.0 Edition
  BSD License for anything not specifically marked as developed by a third party.
- Zach Waugh and Apple's code excluded.
+ Apple's code excluded.
  Use at your own risk
  */
 
@@ -119,43 +119,6 @@
 	return nil;
 }
 
-// Yet another IP addy getter
-// via http://zachwaugh.com/2009/03/programmatically-retrieving-ip-address-of-iphone/
-- (NSString *)getWiFiIPAddress
-{
-	NSString *address = @"error";
-	struct ifaddrs *interfaces = NULL;
-	struct ifaddrs *temp_addr = NULL;
-	int success = 0;
-	
-	// retrieve the current interfaces - returns 0 on success
-	success = getifaddrs(&interfaces);
-	if (success == 0)
-	{
-		// Loop through linked list of interfaces
-		temp_addr = interfaces;
-		while(temp_addr != NULL)
-		{
-			if(temp_addr->ifa_addr->sa_family == AF_INET)
-			{
-				// Check if interface is en0 which is the wifi connection on the iPhone
-				if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"])
-				{
-					// Get NSString from C String
-					address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
-				}
-			}
-			
-			temp_addr = temp_addr->ifa_next;
-		}
-	}
-	
-	// Free memory
-	freeifaddrs(interfaces);
-	
-	return address;
-}
-
 - (NSString *) whatismyipdotcom
 {
 	NSError *error;
@@ -198,109 +161,6 @@ static void myClientCallback(void *refCon)
 {
 	if (myInfoPtr) StopWWAN((MyInfoRef) myInfoPtr);
 }
-
-/*
- - (BOOL) hostAvailable: (NSString *) theHost
- {
- 
- NSString *addressString = [self getIPAddressForHost:theHost];
- if (!addressString) 
- {
- printf("Error recovering IP address from host name\n");
- return NO;
- }
- 
- struct sockaddr_in address;
- BOOL gotAddress = [self addressFromString:addressString address:&address];
- 
- if (!gotAddress)
- {
- printf("Error recovering sockaddr address from %s\n", [addressString UTF8String]);
- return NO;
- }
- 
- SCNetworkReachabilityRef defaultRouteReachability = SCNetworkReachabilityCreateWithAddress(NULL, (struct sockaddr *)&address);
- SCNetworkReachabilityFlags flags;
- 
- BOOL didRetrieveFlags = SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags);
- CFRelease(defaultRouteReachability);
- 
- if (!didRetrieveFlags) 
- {
- printf("Error. Could not recover network reachability flags\n");
- return NO;
- }
- 
- BOOL isReachable = flags & kSCNetworkFlagsReachable;
- return isReachable ? YES : NO;;
- }
- 
- // Courtesy of Apple
- - (BOOL) connectedToNetwork
- {
- // Create zero addy
- struct sockaddr_in zeroAddress;
- bzero(&zeroAddress, sizeof(zeroAddress));
- zeroAddress.sin_len = sizeof(zeroAddress);
- zeroAddress.sin_family = AF_INET;
- 
- // Recover reachability flags
- SCNetworkReachabilityRef defaultRouteReachability = SCNetworkReachabilityCreateWithAddress(NULL, (struct sockaddr *)&zeroAddress);	
- CFRelease(defaultRouteReachability);
- 
- SCNetworkReachabilityFlags flags;
- 
- BOOL didRetrieveFlags = SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags);
- if (!didRetrieveFlags) 
- {
- printf("Error. Could not recover network reachability flags\n");
- return 0;
- }
- 
- BOOL isReachable = flags & kSCNetworkFlagsReachable;
- BOOL needsConnection = flags & kSCNetworkFlagsConnectionRequired;
- // BOOL isEDGE = flags & kSCNetworkReachabilityFlagsIsWWAN;
- return (isReachable && !needsConnection) ? YES : NO;
- }
- */
-
-
-// Via Joachim Bean
-/*
- - (BOOL)isDataSourceAvailable
- {
- static BOOL checkNetwork = YES;
- if (checkNetwork) {
- checkNetwork = NO;
- 
- Boolean success;
- const char *host_name = "www.whatismyip.com";
- 
- SCNetworkReachabilityRef reachability =
- SCNetworkReachabilityCreateWithName(NULL, host_name);
- SCNetworkReachabilityFlags flags;
- success = SCNetworkReachabilityGetFlags(reachability, &flags);
- _isDataSourceAvailable = success && (flags &
- kSCNetworkFlagsReachable) && !(flags & kSCNetworkFlagsConnectionRequired);
- 
- //If there is no network connection
- if (!_isDataSourceAvailable) {
- UIAlertView *nonetwork = [[UIAlertView alloc] initWithTitle:@"No Network"
- 
- message:@"You are not connected to the Internet."
- delegate:nil
- cancelButtonTitle:@"OK"
- otherButtonTitles:nil];
- 
- [nonetwork show];
- } else {
- //Connection successful
- }
- }
- return _isDataSourceAvailable;
- }
- */
-
 @end
 
 #if SUPPORTS_UNDOCUMENTED_API
