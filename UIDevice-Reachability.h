@@ -2,7 +2,7 @@
  Erica Sadun, http://ericasadun.com
  iPhone Developer's Cookbook, 3.0 Edition
  BSD License for anything not specifically marked as developed by a third party.
- Zach Waugh and Apple's code excluded.
+ Apple's code excluded.
  Use at your own risk
  */
 
@@ -19,6 +19,7 @@
 
 - (BOOL) activeWLAN;
 - (BOOL) addressFromString:(NSString *)IPAddress address:(struct sockaddr_in *)address; // via Apple
+
 - (void) forceWWAN; // via Apple
 - (void) shutdownWWAN; // via Apple
 @end
@@ -31,7 +32,6 @@
 - (BOOL) activeWWAN;
 @end
 
-// Undocumented class
 @interface NSHost : NSObject
 {
     NSArray *names;

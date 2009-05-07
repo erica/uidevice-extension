@@ -161,6 +161,7 @@ static void myClientCallback(void *refCon)
 {
 	if (myInfoPtr) StopWWAN((MyInfoRef) myInfoPtr);
 }
+
 @end
 
 #if SUPPORTS_UNDOCUMENTED_API

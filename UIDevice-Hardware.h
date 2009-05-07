@@ -51,4 +51,12 @@ enum {
 - (NSString *) macaddress;
 @end
 
+@interface UIDevice (Orientation)
+- (BOOL) isLandscape;
+- (BOOL) isPortrait;
+- (NSString *) orientationString;
+@property (nonatomic, readonly) BOOL isLandscape;
+@property (nonatomic, readonly) BOOL isPortrait;
+@property (nonatomic, readonly) NSString *orientationString;
+@end
 
