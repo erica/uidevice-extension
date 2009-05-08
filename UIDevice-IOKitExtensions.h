@@ -24,7 +24,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define SUPPORTS_IOKIT_EXTENSIONS	1
+#define SUPPORTS_IOKIT_EXTENSIONS	0
 
 /*
  * To use, you must add the (semi)public IOKit framework before compiling

@@ -46,8 +46,6 @@
 	CFShow([[UIDevice currentDevice] localIPAddress]);	
 	printf("localWifiIPAddy: ");
 	CFShow([[UIDevice currentDevice] localWiFiIPAddress]);
-	printf("getWiFiIPAddy: ");
-	CFShow([[UIDevice currentDevice] getWiFiIPAddress]);
 	
 #if SUPPORTS_UNDOCUMENTED_API
 	printf("current host addys: ");
@@ -111,7 +109,7 @@
 	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[TestBedController alloc] init]];
 	[window addSubview:nav.view];
 	[window makeKeyAndVisible];
-	[UIDevice currentDevice].proximityMonitoringEnabled = YES; 
+	
 	application.proximityClient = self;
 }
 @end
