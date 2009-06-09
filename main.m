@@ -18,7 +18,7 @@
 	// Some core device info
 	CFShow([[UIDevice currentDevice] model]);
 	CFShow([[UIDevice currentDevice] platformString]);
-	// CFShow([[UIDevice currentDevice] platform]);
+	CFShow([[UIDevice currentDevice] platform]);
 	
 	NSLog(@"CPU Freq %d", [[UIDevice currentDevice] cpuFrequency]);
 	NSLog(@"Bus Freq %d", [[UIDevice currentDevice] busFrequency]);

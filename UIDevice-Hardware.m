@@ -21,6 +21,7 @@
  iPhone2,1?? -> iPhone 3GS <-- needs details
  iPod1,1   -> iPod touch 1G 
  iPod2,1   -> iPod touch 2G 
+ i386 -> iPhone Simulator
 */
 
 
@@ -87,6 +88,7 @@
 	if ([platform isEqualToString:@"iPod2,1"])   return UIDevice2GiPod;
 	if ([platform hasPrefix:@"iPhone"]) return UIDeviceUnknowniPhone;
 	if ([platform hasPrefix:@"iPod"]) return UIDeviceUnknowniPod;
+	if ([platform hasSuffix:@"86"]) return UIDeviceiPhoneSimulator;
 	return UIDeviceUnknown;
 }
 
@@ -102,6 +104,8 @@
 		case UIDevice1GiPod: return IPOD_1G_NAMESTRING;
 		case UIDevice2GiPod: return IPOD_2G_NAMESTRING;
 		case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
+			
+		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
 
 		default: return nil;
 	}
@@ -120,6 +124,8 @@
 		case UIDevice1GiPod: return 0;
 		case UIDevice2GiPod: return UIDeviceBuiltInSpeaker | UIDeviceSupportsExternalMicrophone;
 		case UIDeviceUnknowniPod: return 0;
+			
+		case UIDeviceiPhoneSimulator: return 0;
 		
 		default: return 0;
 	}
