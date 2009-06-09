@@ -118,7 +118,7 @@
 		case UIDeviceUnknowniPhone: return UIDeviceBuiltInSpeaker | UIDeviceBuiltInCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony | UIDeviceSupportsVibration | UIDeviceBuiltInProximitySensor;
 
 		case UIDevice1GiPod: return 0;
-		case UIDevice2GiPod: return UIDeviceBuiltInSpeaker | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone;
+		case UIDevice2GiPod: return UIDeviceBuiltInSpeaker | UIDeviceSupportsExternalMicrophone;
 		case UIDeviceUnknowniPod: return 0;
 		
 		default: return 0;
