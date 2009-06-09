@@ -143,18 +143,17 @@ static void myClientCallback(void *refCon)
 	printf("myClientCallback entered - value from refCon is %d\n", *val);
 }
 
-- (void) forceWWAN
+- (BOOL) forceWWAN
 {
 	int value = 0;
 	myInfoPtr = (MyStreamInfoPtr) StartWWAN(myClientCallback, &value);
 	if (myInfoPtr)	
 	{
 		printf("Started WWAN\n");
+		return YES;
 	}
-	else
-	{
-		printf("Failed to start WWAN\n");
-	}
+	printf("Failed to start WWAN\n");
+	return NO;
 }
 
 - (void) shutdownWWAN

@@ -110,6 +110,7 @@
 	[window addSubview:nav.view];
 	[window makeKeyAndVisible];
 	
+	[UIDevice currentDevice].proximityMonitoringEnabled = YES; 
 	application.proximityClient = self;
 }
 @end

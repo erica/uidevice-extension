@@ -20,7 +20,7 @@
 - (BOOL) activeWLAN;
 - (BOOL) addressFromString:(NSString *)IPAddress address:(struct sockaddr_in *)address; // via Apple
 
-- (void) forceWWAN; // via Apple
+- (BOOL) forceWWAN; // via Apple
 - (void) shutdownWWAN; // via Apple
 @end
 

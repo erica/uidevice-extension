@@ -4,7 +4,7 @@
  BSD License, Use at your own risk
  */
 
-//  Thanks to Emanuele Vulcano, Kevin Ballard/Eridius, Ryandjohnson, Matt Brown, etc.
+// Thanks to Emanuele Vulcano, Kevin Ballard/Eridius, Ryandjohnson, Matt Brown, etc.
 // TTD:  - Bluetooth?  Screen pixels? Dot pitch? Accelerometer? GPS enabled/disabled
 
 #include <sys/sysctl.h>
@@ -17,7 +17,8 @@
 /*
  Platforms
  iPhone1,1 -> iPhone 1G
- iPhone1,2 -> iPhone 3G 
+ iPhone1,2 -> iPhone 3G
+ iPhone2,1?? -> iPhone 3GS <-- needs details
  iPod1,1   -> iPod touch 1G 
  iPod2,1   -> iPod touch 2G 
 */
@@ -81,6 +82,7 @@
 	NSString *platform = [self platform];
 	if ([platform isEqualToString:@"iPhone1,1"]) return UIDevice1GiPhone;
 	if ([platform isEqualToString:@"iPhone1,2"]) return UIDevice3GiPhone;
+	// if ([platform isEqualToString:@"iPhone2,1"])   return UIDevice3GSiPhone;
 	if ([platform isEqualToString:@"iPod1,1"])   return UIDevice1GiPod;
 	if ([platform isEqualToString:@"iPod2,1"])   return UIDevice2GiPod;
 	if ([platform hasPrefix:@"iPhone"]) return UIDeviceUnknowniPhone;
@@ -94,6 +96,7 @@
 	{
 		case UIDevice1GiPhone: return IPHONE_1G_NAMESTRING;
 		case UIDevice3GiPhone: return IPHONE_3G_NAMESTRING;
+		case UIDevice3GSiPhone:	return IPHONE_3GS_NAMESTRING;
 		case UIDeviceUnknowniPhone: return IPHONE_UNKNOWN_NAMESTRING;
 		
 		case UIDevice1GiPod: return IPOD_1G_NAMESTRING;
@@ -111,6 +114,7 @@
 	{
 		case UIDevice1GiPhone: return UIDeviceBuiltInSpeaker | UIDeviceBuiltInCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony | UIDeviceSupportsVibration | UIDeviceBuiltInProximitySensor;
 		case UIDevice3GiPhone: return UIDeviceSupportsGPS | UIDeviceBuiltInSpeaker | UIDeviceBuiltInCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony | UIDeviceSupportsVibration | UIDeviceBuiltInProximitySensor;
+		case UIDevice3GSiPhone: return UIDeviceSupportsGPS | UIDeviceBuiltInSpeaker | UIDeviceBuiltInCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony | UIDeviceSupportsVibration | UIDeviceBuiltInProximitySensor | UIDeviceSupportsVideoRecording | UIDeviceSupportsCompass | UIDeviceSupportsAccessibility | UIDeviceSupportsVoiceControl;
 		case UIDeviceUnknowniPhone: return UIDeviceBuiltInSpeaker | UIDeviceBuiltInCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony | UIDeviceSupportsVibration | UIDeviceBuiltInProximitySensor;
 
 		case UIDevice1GiPod: return 0;

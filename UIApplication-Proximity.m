@@ -4,12 +4,6 @@
 @implementation ProximityApplication
 @synthesize proximityClient;
 
-/*
- 
- NOTE -- Proximity is not stable. Please do not use this right now.
- 
- */
-
 - (void) proximityStateChanged:(BOOL)isOn
 {
 	if (self.proximityClient) 

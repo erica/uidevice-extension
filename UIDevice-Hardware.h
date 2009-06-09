@@ -8,6 +8,7 @@
 
 #define IPHONE_1G_NAMESTRING @"iPhone 1G"
 #define IPHONE_3G_NAMESTRING @"iPhone 3G"
+#define IPHONE_3GS_NAMESTRING @"iPhone 3G S"
 #define IPHONE_UNKNOWN_NAMESTRING @"Unknown iPhone"
 #define IPOD_1G_NAMESTRING @"iPod touch 1G"
 #define IPOD_2G_NAMESTRING @"iPod touch 2G"
@@ -19,10 +20,16 @@ typedef enum {
 	UIDevice1GiPhone,
 	UIDevice1GiPod,
 	UIDevice3GiPhone,
+	UIDevice3GSiPhone,
 	UIDevice2GiPod,
 	UIDeviceUnknowniPhone,
-	UIDeviceUnknowniPod
+	UIDeviceUnknowniPod,
 } UIDevicePlatform;
+
+typedef enum {
+	UIDeviceFirmware2,
+	UIDeviceFirmware3,
+} UIDeviceFirmware;
 
 enum {
 	UIDeviceSupportsGPS	= 1 << 0,
@@ -32,7 +39,11 @@ enum {
 	UIDeviceSupportsExternalMicrophone = 1 << 4,
 	UIDeviceSupportsTelephony = 1 << 5,
 	UIDeviceSupportsVibration = 1 << 6,
-	UIDeviceBuiltInProximitySensor = 1 << 7
+	UIDeviceBuiltInProximitySensor = 1 << 7,
+	UIDeviceSupportsVideoRecording = 1 << 8,
+	UIDeviceSupportsCompass = 1 << 9,
+	UIDeviceSupportsAccessibility = 1 << 10,
+	UIDeviceSupportsVoiceControl = 1 << 11,
 };
 
 @interface UIDevice (Hardware)
