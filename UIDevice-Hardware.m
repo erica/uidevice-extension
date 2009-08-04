@@ -124,138 +124,138 @@
 	{
 		case UIDevice1GiPhone: 
 			return 
-			UIDeviceSupportsTelephony  ||
-			UIDeviceSupportsSMS  ||
-			UIDeviceSupportsStillCamera  ||
-			// UIDeviceSupportsVideoCamera  ||
-			UIDeviceSupportsWifi  ||
-			UIDeviceSupportsAccelerometer  ||
-			UIDeviceSupportsLocationServices  ||
-			// UIDeviceSupportsGPS  ||
-			// UIDeviceSupportsMagnetometer  ||
-			UIDeviceSupportsBuiltInMicrophone  ||
-			UIDeviceSupportsExternalMicrophone  ||
-			UIDeviceSupportsOPENGLES1  ||
-			// UIDeviceSupportsOPENGLES2  ||
-			UIDeviceBuiltInSpeaker  ||
-			UIDeviceSupportsVibration  ||
-			UIDeviceBuiltInProximitySensor  ||
-			// UIDeviceSupportsAccessibility  ||
-			// UIDeviceSupportsVoiceControl ||
-			UIDeviceSupportsBrightnessSensor;
+			(UIDeviceSupportsTelephony  |
+			 UIDeviceSupportsSMS  |
+			 UIDeviceSupportsStillCamera  |
+			 // UIDeviceSupportsVideoCamera  |
+			 UIDeviceSupportsWifi  |
+			 UIDeviceSupportsAccelerometer  |
+			 UIDeviceSupportsLocationServices  |
+			 // UIDeviceSupportsGPS  |
+			 // UIDeviceSupportsMagnetometer  |
+			 UIDeviceSupportsBuiltInMicrophone  |
+			 UIDeviceSupportsExternalMicrophone  |
+			 UIDeviceSupportsOPENGLES1  |
+			 // UIDeviceSupportsOPENGLES2  |
+			 UIDeviceBuiltInSpeaker  |
+			 UIDeviceSupportsVibration  |
+			 UIDeviceBuiltInProximitySensor  |
+			 // UIDeviceSupportsAccessibility  |
+			 // UIDeviceSupportsVoiceControl |
+			 UIDeviceSupportsBrightnessSensor);
 			
 		case UIDevice3GiPhone: 
 			return
-			UIDeviceSupportsTelephony  ||
-			UIDeviceSupportsSMS  ||
-			UIDeviceSupportsStillCamera  ||
-			// UIDeviceSupportsVideoCamera  ||
-			UIDeviceSupportsWifi  ||
-			UIDeviceSupportsAccelerometer  ||
-			UIDeviceSupportsLocationServices  ||
-			UIDeviceSupportsGPS  ||
-			// UIDeviceSupportsMagnetometer  ||
-			UIDeviceSupportsBuiltInMicrophone  ||
-			UIDeviceSupportsExternalMicrophone  ||
-			UIDeviceSupportsOPENGLES1  ||
-			// UIDeviceSupportsOPENGLES2  ||
-			UIDeviceBuiltInSpeaker  ||
-			UIDeviceSupportsVibration  ||
-			UIDeviceBuiltInProximitySensor  ||
-			// UIDeviceSupportsAccessibility  ||
-			// UIDeviceSupportsVoiceControl ||
-			UIDeviceSupportsBrightnessSensor;
+			(UIDeviceSupportsTelephony  |
+			 UIDeviceSupportsSMS  |
+			 UIDeviceSupportsStillCamera  |
+			 // UIDeviceSupportsVideoCamera  |
+			 UIDeviceSupportsWifi  |
+			 UIDeviceSupportsAccelerometer  |
+			 UIDeviceSupportsLocationServices  |
+			 UIDeviceSupportsGPS  |
+			 // UIDeviceSupportsMagnetometer  |
+			 UIDeviceSupportsBuiltInMicrophone  |
+			 UIDeviceSupportsExternalMicrophone  |
+			 UIDeviceSupportsOPENGLES1  |
+			 // UIDeviceSupportsOPENGLES2  |
+			 UIDeviceBuiltInSpeaker  |
+			 UIDeviceSupportsVibration  |
+			 UIDeviceBuiltInProximitySensor  |
+			 // UIDeviceSupportsAccessibility  |
+			 // UIDeviceSupportsVoiceControl |
+			 UIDeviceSupportsBrightnessSensor);
 			
 		case UIDevice3GSiPhone: 
 			return
-			UIDeviceSupportsTelephony  ||
-			UIDeviceSupportsSMS  ||
-			UIDeviceSupportsStillCamera  ||
-			UIDeviceSupportsVideoCamera  ||
-			UIDeviceSupportsWifi  ||
-			UIDeviceSupportsAccelerometer  ||
-			UIDeviceSupportsLocationServices  ||
-			UIDeviceSupportsGPS  ||
-			UIDeviceSupportsMagnetometer  ||
-			UIDeviceSupportsBuiltInMicrophone  ||
-			UIDeviceSupportsExternalMicrophone  ||
-			UIDeviceSupportsOPENGLES1  ||
-			UIDeviceSupportsOPENGLES2  ||
-			UIDeviceBuiltInSpeaker  ||
-			UIDeviceSupportsVibration  ||
-			UIDeviceBuiltInProximitySensor  ||
-			UIDeviceSupportsAccessibility  ||
-			UIDeviceSupportsVoiceControl ||
-			UIDeviceSupportsBrightnessSensor;
+			(UIDeviceSupportsTelephony  |
+			 UIDeviceSupportsSMS  |
+			 UIDeviceSupportsStillCamera  |
+			 UIDeviceSupportsVideoCamera  |
+			 UIDeviceSupportsWifi  |
+			 UIDeviceSupportsAccelerometer  |
+			 UIDeviceSupportsLocationServices  |
+			 UIDeviceSupportsGPS  |
+			 UIDeviceSupportsMagnetometer  |
+			 UIDeviceSupportsBuiltInMicrophone  |
+			 UIDeviceSupportsExternalMicrophone  |
+			 UIDeviceSupportsOPENGLES1  |
+			 UIDeviceSupportsOPENGLES2  |
+			 UIDeviceBuiltInSpeaker  |
+			 UIDeviceSupportsVibration  |
+			 UIDeviceBuiltInProximitySensor  |
+			 UIDeviceSupportsAccessibility  |
+			 UIDeviceSupportsVoiceControl |
+			 UIDeviceSupportsBrightnessSensor);
 			
 		case UIDeviceUnknowniPhone: return 0;
 			
 		case UIDevice1GiPod: 
 			return
-			// UIDeviceSupportsTelephony  ||
-			// UIDeviceSupportsSMS  ||
-			// UIDeviceSupportsStillCamera  ||
-			// UIDeviceSupportsVideoCamera  ||
-			UIDeviceSupportsWifi  ||
-			UIDeviceSupportsAccelerometer  ||
-			UIDeviceSupportsLocationServices  ||
-			// UIDeviceSupportsGPS  ||
-			// UIDeviceSupportsMagnetometer  ||
-			// UIDeviceSupportsBuiltInMicrophone  ||
-			UIDeviceSupportsExternalMicrophone  ||
-			UIDeviceSupportsOPENGLES1  ||
-			// UIDeviceSupportsOPENGLES2  ||
-			// UIDeviceBuiltInSpeaker  ||
-			// UIDeviceSupportsVibration  ||
-			// UIDeviceBuiltInProximitySensor  ||
-			// UIDeviceSupportsAccessibility  ||
-			// UIDeviceSupportsVoiceControl ||
-			UIDeviceSupportsBrightnessSensor;
+			(// UIDeviceSupportsTelephony  |
+			 // UIDeviceSupportsSMS  |
+			 // UIDeviceSupportsStillCamera  |
+			 // UIDeviceSupportsVideoCamera  |
+			 UIDeviceSupportsWifi  |
+			 UIDeviceSupportsAccelerometer  |
+			 UIDeviceSupportsLocationServices  |
+			 // UIDeviceSupportsGPS  |
+			 // UIDeviceSupportsMagnetometer  |
+			 // UIDeviceSupportsBuiltInMicrophone  |
+			 UIDeviceSupportsExternalMicrophone  |
+			 UIDeviceSupportsOPENGLES1  |
+			 // UIDeviceSupportsOPENGLES2  |
+			 // UIDeviceBuiltInSpeaker  |
+			 // UIDeviceSupportsVibration  |
+			 // UIDeviceBuiltInProximitySensor  |
+			 // UIDeviceSupportsAccessibility  |
+			 // UIDeviceSupportsVoiceControl |
+			 UIDeviceSupportsBrightnessSensor);
 			
 		case UIDevice2GiPod: 
 			return
-			// UIDeviceSupportsTelephony  ||
-			// UIDeviceSupportsSMS  ||
-			// UIDeviceSupportsStillCamera  ||
-			// UIDeviceSupportsVideoCamera  ||
-			UIDeviceSupportsWifi  ||
-			UIDeviceSupportsAccelerometer  ||
-			UIDeviceSupportsLocationServices  ||
-			// UIDeviceSupportsGPS  ||
-			// UIDeviceSupportsMagnetometer  ||
-			// UIDeviceSupportsBuiltInMicrophone  ||
-			UIDeviceSupportsExternalMicrophone  ||
-			UIDeviceSupportsOPENGLES1  ||
-			// UIDeviceSupportsOPENGLES2  ||
-			UIDeviceBuiltInSpeaker  ||
-			// UIDeviceSupportsVibration  ||
-			// UIDeviceBuiltInProximitySensor  ||
-			// UIDeviceSupportsAccessibility  ||
-			// UIDeviceSupportsVoiceControl ||
-			UIDeviceSupportsBrightnessSensor;
+			(// UIDeviceSupportsTelephony  |
+			 // UIDeviceSupportsSMS  |
+			 // UIDeviceSupportsStillCamera  |
+			 // UIDeviceSupportsVideoCamera  |
+			 UIDeviceSupportsWifi  |
+			 UIDeviceSupportsAccelerometer  |
+			 UIDeviceSupportsLocationServices  |
+			 // UIDeviceSupportsGPS  |
+			 // UIDeviceSupportsMagnetometer  |
+			 // UIDeviceSupportsBuiltInMicrophone  |
+			 UIDeviceSupportsExternalMicrophone  |
+			 UIDeviceSupportsOPENGLES1  |
+			 // UIDeviceSupportsOPENGLES2  |
+			 UIDeviceBuiltInSpeaker  |
+			 // UIDeviceSupportsVibration  |
+			 // UIDeviceBuiltInProximitySensor  |
+			 // UIDeviceSupportsAccessibility  |
+			 // UIDeviceSupportsVoiceControl |
+			 UIDeviceSupportsBrightnessSensor);
 			
 		case UIDeviceUnknowniPod:  return 0;
 			
 		case UIDeviceiPhoneSimulator: 
 			return
-			// UIDeviceSupportsTelephony  ||
-			// UIDeviceSupportsSMS  ||
-			// UIDeviceSupportsStillCamera  ||
-			// UIDeviceSupportsVideoCamera  ||
-			UIDeviceSupportsWifi  ||
-			// UIDeviceSupportsAccelerometer  ||
-			UIDeviceSupportsLocationServices  ||
-			// UIDeviceSupportsGPS  ||
-			// UIDeviceSupportsMagnetometer  ||
-			// UIDeviceSupportsBuiltInMicrophone  ||
-			// UIDeviceSupportsExternalMicrophone  ||
-			UIDeviceSupportsOPENGLES1  ||
-			// UIDeviceSupportsOPENGLES2  ||
-			UIDeviceBuiltInSpeaker;
-			// UIDeviceSupportsVibration  ||
-			// UIDeviceBuiltInProximitySensor  ||
-			// UIDeviceSupportsAccessibility  ||
-			// UIDeviceSupportsVoiceControl ||
+			(// UIDeviceSupportsTelephony  |
+			 // UIDeviceSupportsSMS  |
+			 // UIDeviceSupportsStillCamera  |
+			 // UIDeviceSupportsVideoCamera  |
+			 UIDeviceSupportsWifi  |
+			 // UIDeviceSupportsAccelerometer  |
+			 UIDeviceSupportsLocationServices  |
+			 // UIDeviceSupportsGPS  |
+			 // UIDeviceSupportsMagnetometer  |
+			 // UIDeviceSupportsBuiltInMicrophone  |
+			 // UIDeviceSupportsExternalMicrophone  |
+			 UIDeviceSupportsOPENGLES1  |
+			 // UIDeviceSupportsOPENGLES2  |
+			 UIDeviceBuiltInSpeaker);
+			// UIDeviceSupportsVibration  |
+			// UIDeviceBuiltInProximitySensor  |
+			// UIDeviceSupportsAccessibility  |
+			// UIDeviceSupportsVoiceControl |
 			// UIDeviceSupportsBrightnessSensor;
 			
 		default: return 0;
