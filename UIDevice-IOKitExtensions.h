@@ -32,9 +32,9 @@
 
 #if SUPPORTS_IOKIT_EXTENSIONS
 @interface UIDevice (IOKit_Extensions)
-- (NSString *) imei;
-- (NSString *) serialnumber;
-- (NSString *) backlightlevel;
++ (NSString *) imei;
++ (NSString *) serialnumber;
++ (NSString *) backlightlevel;
 @end
 #endif
 

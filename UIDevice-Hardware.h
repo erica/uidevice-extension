@@ -8,12 +8,15 @@
 
 #define IPHONE_1G_NAMESTRING @"iPhone 1G"
 #define IPHONE_3G_NAMESTRING @"iPhone 3G"
-#define IPHONE_3GS_NAMESTRING @"iPhone 3G S"
+#define IPHONE_3GS_NAMESTRING @"iPhone 3GS" 
 #define IPHONE_UNKNOWN_NAMESTRING @"Unknown iPhone"
+
 #define IPOD_1G_NAMESTRING @"iPod touch 1G"
 #define IPOD_2G_NAMESTRING @"iPod touch 2G"
 #define IPOD_UNKNOWN_NAMESTRING @"Unknown iPod"
+
 #define IPOD_FAMILY_UNKNOWN_DEVICE @"Unknown device in the iPhone/iPod family"
+
 #define IPHONE_SIMULATOR_NAMESTRING	@"iPhone Simulator"
 
 typedef enum {
@@ -34,34 +37,41 @@ typedef enum {
 } UIDeviceFirmware;
 
 enum {
-	UIDeviceSupportsGPS	= 1 << 0,
-	UIDeviceBuiltInSpeaker = 1 << 1,
-	UIDeviceBuiltInCamera = 1 << 2,
-	UIDeviceBuiltInMicrophone = 1 << 3,
-	UIDeviceSupportsExternalMicrophone = 1 << 4,
-	UIDeviceSupportsTelephony = 1 << 5,
-	UIDeviceSupportsVibration = 1 << 6,
-	UIDeviceBuiltInProximitySensor = 1 << 7,
-	UIDeviceSupportsVideoRecording = 1 << 8,
-	UIDeviceSupportsCompass = 1 << 9,
-	UIDeviceSupportsAccessibility = 1 << 10,
-	UIDeviceSupportsVoiceControl = 1 << 11,
+	UIDeviceSupportsTelephony = 1 << 0,
+	UIDeviceSupportsSMS = 1 << 1,
+	UIDeviceSupportsStillCamera = 1 << 2,
+	UIDeviceSupportsVideoCamera = 1 << 3,
+	UIDeviceSupportsWifi = 1 << 4,
+	UIDeviceSupportsAccelerometer = 1 << 5,
+	UIDeviceSupportsLocationServices = 1 << 6,
+	UIDeviceSupportsGPS = 1 << 7,
+	UIDeviceSupportsMagnetometer = 1 << 8,
+	UIDeviceSupportsBuiltInMicrophone = 1 << 9,
+	UIDeviceSupportsExternalMicrophone = 1 << 10,
+	UIDeviceSupportsOPENGLES1 = 1 << 11,
+	UIDeviceSupportsOPENGLES2 = 1 << 12,
+	UIDeviceBuiltInSpeaker = 1 << 13,
+	UIDeviceSupportsVibration = 1 << 14,
+	UIDeviceBuiltInProximitySensor = 1 << 15,
+	UIDeviceSupportsAccessibility = 1 << 16,
+	UIDeviceSupportsVoiceControl = 1 << 17,
+	UIDeviceSupportsBrightnessSensor = 1 << 18,
 };
 
 @interface UIDevice (Hardware)
 
-- (NSString *) platform;
-- (NSUInteger) platformType;
-- (NSUInteger) platformCapabilities;
-- (NSString *) platformString;
++ (NSString *) platform;
++ (NSUInteger) platformType;
++ (NSUInteger) platformCapabilities;
++ (NSString *) platformString;
++ (NSString *) platformCode;
 
-- (NSUInteger) cpuFrequency;
-- (NSUInteger) busFrequency;
-- (NSUInteger) totalMemory;
-- (NSUInteger) userMemory;
-- (NSUInteger) maxSocketBufferSize;
++ (NSUInteger) cpuFrequency;
++ (NSUInteger) busFrequency;
++ (NSUInteger) totalMemory;
++ (NSUInteger) userMemory;
 
-- (NSString *) macaddress;
++ (NSString *) macaddress;
 @end
 
 @interface UIDevice (Orientation)

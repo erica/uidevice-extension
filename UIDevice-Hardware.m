@@ -16,17 +16,26 @@
 
 /*
  Platforms
+
  iPhone1,1 -> iPhone 1G
  iPhone1,2 -> iPhone 3G
- iPhone2,1?? -> iPhone 3GS <-- needs details
+ iPhone2,1 -> iPhone 3GS
+ 
  iPod1,1   -> iPod touch 1G 
  iPod2,1   -> iPod touch 2G 
+ 
  i386 -> iPhone Simulator
+ 
+ NOT ANNOUNCED
+ iPod3,1   -> iPod touch 3G
+ iFGPA 
+ iProd0,1
+ unknownHardware
 */
 
 
 #pragma mark sysctlbyname utils
-- (NSString *) getSysInfoByName:(char *)typeSpecifier
++ (NSString *) getSysInfoByName:(char *)typeSpecifier
 {
 	size_t size;
     sysctlbyname(typeSpecifier, NULL, &size, NULL, 0);
@@ -37,13 +46,13 @@
 	return results;
 }
 
-- (NSString *) platform
++ (NSString *) platform
 {
 	return [self getSysInfoByName:"hw.machine"];
 }
 
 #pragma mark sysctl utils
-- (NSUInteger) getSysInfo: (uint) typeSpecifier
++ (NSUInteger) getSysInfo: (uint) typeSpecifier
 {
 	size_t size = sizeof(int);
 	int results;
@@ -52,47 +61,50 @@
 	return (NSUInteger) results;
 }
 
-- (NSUInteger) cpuFrequency
++ (NSUInteger) cpuFrequency
 {
 	return [self getSysInfo:HW_CPU_FREQ];
 }
 
-- (NSUInteger) busFrequency
++ (NSUInteger) busFrequency
 {
 	return [self getSysInfo:HW_BUS_FREQ];
 }
 
-- (NSUInteger) totalMemory
++ (NSUInteger) totalMemory
 {
 	return [self getSysInfo:HW_PHYSMEM];
 }
 
-- (NSUInteger) userMemory
++ (NSUInteger) userMemory
 {
 	return [self getSysInfo:HW_USERMEM];
 }
 
-- (NSUInteger) maxSocketBufferSize
++ (NSUInteger) maxSocketBufferSize
 {
 	return [self getSysInfo:KIPC_MAXSOCKBUF];
 }
 
 #pragma mark platform type and name utils
-- (NSUInteger) platformType
++ (NSUInteger) platformType
 {
 	NSString *platform = [self platform];
 	if ([platform isEqualToString:@"iPhone1,1"]) return UIDevice1GiPhone;
 	if ([platform isEqualToString:@"iPhone1,2"]) return UIDevice3GiPhone;
-	// if ([platform isEqualToString:@"iPhone2,1"])   return UIDevice3GSiPhone;
+	if ([platform isEqualToString:@"iPhone2,1"])   return UIDevice3GSiPhone;
+	
 	if ([platform isEqualToString:@"iPod1,1"])   return UIDevice1GiPod;
 	if ([platform isEqualToString:@"iPod2,1"])   return UIDevice2GiPod;
+	
 	if ([platform hasPrefix:@"iPhone"]) return UIDeviceUnknowniPhone;
 	if ([platform hasPrefix:@"iPod"]) return UIDeviceUnknowniPod;
+	
 	if ([platform hasSuffix:@"86"]) return UIDeviceiPhoneSimulator;
 	return UIDeviceUnknown;
 }
 
-- (NSString *) platformString
++ (NSString *) platformString
 {
 	switch ([self platformType])
 	{
@@ -107,25 +119,143 @@
 			
 		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
 
-		default: return nil;
+		default: return IPOD_FAMILY_UNKNOWN_DEVICE;
 	}
 }
 
 #pragma mark  platform capabilities
-- (NSUInteger) platformCapabilities
++ (NSUInteger) platformCapabilities
 {
 	switch ([self platformType])
 	{
-		case UIDevice1GiPhone: return UIDeviceBuiltInSpeaker | UIDeviceBuiltInCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony | UIDeviceSupportsVibration | UIDeviceBuiltInProximitySensor;
-		case UIDevice3GiPhone: return UIDeviceSupportsGPS | UIDeviceBuiltInSpeaker | UIDeviceBuiltInCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony | UIDeviceSupportsVibration | UIDeviceBuiltInProximitySensor;
-		case UIDevice3GSiPhone: return UIDeviceSupportsGPS | UIDeviceBuiltInSpeaker | UIDeviceBuiltInCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony | UIDeviceSupportsVibration | UIDeviceBuiltInProximitySensor | UIDeviceSupportsVideoRecording | UIDeviceSupportsCompass | UIDeviceSupportsAccessibility | UIDeviceSupportsVoiceControl;
-		case UIDeviceUnknowniPhone: return UIDeviceBuiltInSpeaker | UIDeviceBuiltInCamera | UIDeviceBuiltInMicrophone | UIDeviceSupportsExternalMicrophone | UIDeviceSupportsTelephony | UIDeviceSupportsVibration | UIDeviceBuiltInProximitySensor;
-
-		case UIDevice1GiPod: return 0;
-		case UIDevice2GiPod: return UIDeviceBuiltInSpeaker | UIDeviceSupportsExternalMicrophone;
-		case UIDeviceUnknowniPod: return 0;
+		case UIDevice1GiPhone: 
+			return 
+			UIDeviceSupportsTelephony  ||
+			UIDeviceSupportsSMS  ||
+			UIDeviceSupportsStillCamera  ||
+			// UIDeviceSupportsVideoCamera  ||
+			UIDeviceSupportsWifi  ||
+			UIDeviceSupportsAccelerometer  ||
+			UIDeviceSupportsLocationServices  ||
+			// UIDeviceSupportsGPS  ||
+			// UIDeviceSupportsMagnetometer  ||
+			UIDeviceSupportsBuiltInMicrophone  ||
+			UIDeviceSupportsExternalMicrophone  ||
+			UIDeviceSupportsOPENGLES1  ||
+			// UIDeviceSupportsOPENGLES2  ||
+			UIDeviceBuiltInSpeaker  ||
+			UIDeviceSupportsVibration  ||
+			UIDeviceBuiltInProximitySensor  ||
+			// UIDeviceSupportsAccessibility  ||
+			// UIDeviceSupportsVoiceControl ||
+			UIDeviceSupportsBrightnessSensor;
 			
-		case UIDeviceiPhoneSimulator: return 0;
+		case UIDevice3GiPhone: 
+			UIDeviceSupportsTelephony  ||
+			UIDeviceSupportsSMS  ||
+			UIDeviceSupportsStillCamera  ||
+			// UIDeviceSupportsVideoCamera  ||
+			UIDeviceSupportsWifi  ||
+			UIDeviceSupportsAccelerometer  ||
+			UIDeviceSupportsLocationServices  ||
+			UIDeviceSupportsGPS  ||
+			// UIDeviceSupportsMagnetometer  ||
+			UIDeviceSupportsBuiltInMicrophone  ||
+			UIDeviceSupportsExternalMicrophone  ||
+			UIDeviceSupportsOPENGLES1  ||
+			// UIDeviceSupportsOPENGLES2  ||
+			UIDeviceBuiltInSpeaker  ||
+			UIDeviceSupportsVibration  ||
+			UIDeviceBuiltInProximitySensor  ||
+			// UIDeviceSupportsAccessibility  ||
+			// UIDeviceSupportsVoiceControl ||
+			UIDeviceSupportsBrightnessSensor;
+			
+		case UIDevice3GSiPhone: 
+			UIDeviceSupportsTelephony  ||
+			UIDeviceSupportsSMS  ||
+			UIDeviceSupportsStillCamera  ||
+			UIDeviceSupportsVideoCamera  ||
+			UIDeviceSupportsWifi  ||
+			UIDeviceSupportsAccelerometer  ||
+			UIDeviceSupportsLocationServices  ||
+			UIDeviceSupportsGPS  ||
+			UIDeviceSupportsMagnetometer  ||
+			UIDeviceSupportsBuiltInMicrophone  ||
+			UIDeviceSupportsExternalMicrophone  ||
+			UIDeviceSupportsOPENGLES1  ||
+			UIDeviceSupportsOPENGLES2  ||
+			UIDeviceBuiltInSpeaker  ||
+			UIDeviceSupportsVibration  ||
+			UIDeviceBuiltInProximitySensor  ||
+			UIDeviceSupportsAccessibility  ||
+			UIDeviceSupportsVoiceControl ||
+			UIDeviceSupportsBrightnessSensor;
+		case UIDeviceUnknowniPhone: return 0;
+			
+		case UIDevice1GiPod: 
+			// UIDeviceSupportsTelephony  ||
+			// UIDeviceSupportsSMS  ||
+			// UIDeviceSupportsStillCamera  ||
+			// UIDeviceSupportsVideoCamera  ||
+			UIDeviceSupportsWifi  ||
+			UIDeviceSupportsAccelerometer  ||
+			UIDeviceSupportsLocationServices  ||
+			// UIDeviceSupportsGPS  ||
+			// UIDeviceSupportsMagnetometer  ||
+			// UIDeviceSupportsBuiltInMicrophone  ||
+			UIDeviceSupportsExternalMicrophone  ||
+			UIDeviceSupportsOPENGLES1  ||
+			// UIDeviceSupportsOPENGLES2  ||
+			// UIDeviceBuiltInSpeaker  ||
+			// UIDeviceSupportsVibration  ||
+			// UIDeviceBuiltInProximitySensor  ||
+			// UIDeviceSupportsAccessibility  ||
+			// UIDeviceSupportsVoiceControl ||
+			UIDeviceSupportsBrightnessSensor;
+		case UIDevice2GiPod: 
+			// UIDeviceSupportsTelephony  ||
+			// UIDeviceSupportsSMS  ||
+			// UIDeviceSupportsStillCamera  ||
+			// UIDeviceSupportsVideoCamera  ||
+			UIDeviceSupportsWifi  ||
+			UIDeviceSupportsAccelerometer  ||
+			UIDeviceSupportsLocationServices  ||
+			// UIDeviceSupportsGPS  ||
+			// UIDeviceSupportsMagnetometer  ||
+			// UIDeviceSupportsBuiltInMicrophone  ||
+			UIDeviceSupportsExternalMicrophone  ||
+			UIDeviceSupportsOPENGLES1  ||
+			// UIDeviceSupportsOPENGLES2  ||
+			UIDeviceBuiltInSpeaker  ||
+			// UIDeviceSupportsVibration  ||
+			// UIDeviceBuiltInProximitySensor  ||
+			// UIDeviceSupportsAccessibility  ||
+			// UIDeviceSupportsVoiceControl ||
+			UIDeviceSupportsBrightnessSensor;
+			
+		case UIDeviceUnknowniPod:  return 0;
+			
+		case UIDeviceiPhoneSimulator: 
+			// UIDeviceSupportsTelephony  ||
+			// UIDeviceSupportsSMS  ||
+			// UIDeviceSupportsStillCamera  ||
+			// UIDeviceSupportsVideoCamera  ||
+			UIDeviceSupportsWifi  ||
+			// UIDeviceSupportsAccelerometer  ||
+			UIDeviceSupportsLocationServices  ||
+			// UIDeviceSupportsGPS  ||
+			// UIDeviceSupportsMagnetometer  ||
+			// UIDeviceSupportsBuiltInMicrophone  ||
+			// UIDeviceSupportsExternalMicrophone  ||
+			UIDeviceSupportsOPENGLES1  ||
+			// UIDeviceSupportsOPENGLES2  ||
+			UIDeviceBuiltInSpeaker;
+			// UIDeviceSupportsVibration  ||
+			// UIDeviceBuiltInProximitySensor  ||
+			// UIDeviceSupportsAccessibility  ||
+			// UIDeviceSupportsVoiceControl ||
+			// UIDeviceSupportsBrightnessSensor;
 		
 		default: return 0;
 	}
@@ -134,7 +264,7 @@
 #pragma mark MAC addy
 // Return the local MAC addy
 // Courtesy of FreeBSD hackers email list
-- (NSString *) macaddress
++ (NSString *) macaddress
 {
 	int					mib[6];
 	size_t				len;
@@ -175,6 +305,26 @@
 	NSString *outstring = [NSString stringWithFormat:@"%02x:%02x:%02x:%02x:%02x:%02x", *ptr, *(ptr+1), *(ptr+2), *(ptr+3), *(ptr+4), *(ptr+5)];
 	free(buf);
 	return [outstring uppercaseString];
+}
+
++ (NSString *) platformCode
+{
+	switch ([self platformType])
+	{
+		case UIDevice1GiPhone: return @"M68";
+		case UIDevice3GiPhone: return @"N82";
+		case UIDevice3GSiPhone:	return @"N88";
+		case UIDeviceUnknowniPhone: return nil;
+			
+		case UIDevice1GiPod: return @"N45";
+		case UIDevice2GiPod: return @"N72";
+		//  case UIDevice3GiPod: return @"N80"; 
+		case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
+			
+		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
+			
+		default: return IPOD_FAMILY_UNKNOWN_DEVICE;
+	}
 }
 @end
 

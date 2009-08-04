@@ -10,28 +10,42 @@
 
 #define SUPPORTS_UNDOCUMENTED_API	1
 
+@protocol ReachabilityWatcher <NSObject>
+- (void) reachabilityChanged;
+@end
+
+
 @interface UIDevice (Reachability)
-- (NSString *) hostname;
++ (NSString *) stringFromAddress: (const struct sockaddr *) address;
++ (BOOL)addressFromString:(NSString *)IPAddress address:(struct sockaddr_in *)address;
 
-- (NSString *) localWiFiIPAddress;
-- (NSString *) localIPAddress;
-- (NSString *) whatismyipdotcom;
++ (NSString *) hostname;
++ (NSString *) getIPAddressForHost: (NSString *) theHost;
++ (NSString *) localIPAddress;
++ (NSString *) localWiFiIPAddress;
++ (NSString *) whatismyipdotcom;
 
-- (BOOL) activeWLAN;
-- (BOOL) addressFromString:(NSString *)IPAddress address:(struct sockaddr_in *)address; // via Apple
++ (BOOL) hostAvailable: (NSString *) theHost;
++ (BOOL) networkAvailable;
++ (BOOL) activeWLAN;
++ (BOOL) activeWWAN;
++ (BOOL) performWiFiCheck;
 
-- (BOOL) forceWWAN; // via Apple
-- (void) shutdownWWAN; // via Apple
++ (BOOL) forceWWAN; // via Apple
++ (void) shutdownWWAN; // via Apple
+
++ (BOOL) scheduleReachabilityWatcher: (id) watcher;
++ (void) unscheduleReachabilityWatcher;
+
+#ifdef SUPPORTS_UNDOCUMENTED_API
+// Don't use this code in real life, boys and girls. It is not App Store friendly.
+// It is, however, really nice for testing callbacks
+// DEVICE ONLY!!!!
++ (void) setAPMode: (BOOL) yorn;
+#endif
 @end
 
-// Methods which rely on undocumented API methods 
-#if SUPPORTS_UNDOCUMENTED_API
-
-@interface UIDevice (UIDevice_Undocumented_Reachability)
-- (BOOL) networkAvailable;
-- (BOOL) activeWWAN;
-@end
-
+#ifdef SUPPORTS_UNDOCUMENTED_API
 @interface NSHost : NSObject
 {
     NSArray *names;
@@ -55,4 +69,5 @@
 - (void)dealloc;
 
 @end
-#endif // SUPPORTS_UNDOCUMENTED_API
+#endif
+
