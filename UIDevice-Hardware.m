@@ -25,12 +25,6 @@
  iPod2,1   -> iPod touch 2G 
  
  i386 -> iPhone Simulator
- 
- NOT ANNOUNCED
- iPod3,1   -> iPod touch 3G
- iFGPA 
- iProd0,1
- unknownHardware
 */
 
 
