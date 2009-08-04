@@ -66,6 +66,8 @@ enum {
 + (NSString *) platformString;
 + (NSString *) platformCode;
 
++ (NSArray *) capabilityArray;
+
 + (NSUInteger) cpuFrequency;
 + (NSUInteger) busFrequency;
 + (NSUInteger) totalMemory;
@@ -83,3 +85,8 @@ enum {
 @property (nonatomic, readonly) NSString *orientationString;
 @end
 
+/*
+@interface UIDevice (ClassAccess)
++ (NSString *) uniqueIdentifier;
+@end
+*/

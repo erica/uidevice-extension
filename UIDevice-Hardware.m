@@ -145,6 +145,7 @@
 			UIDeviceSupportsBrightnessSensor;
 			
 		case UIDevice3GiPhone: 
+			return
 			UIDeviceSupportsTelephony  ||
 			UIDeviceSupportsSMS  ||
 			UIDeviceSupportsStillCamera  ||
@@ -166,6 +167,7 @@
 			UIDeviceSupportsBrightnessSensor;
 			
 		case UIDevice3GSiPhone: 
+			return
 			UIDeviceSupportsTelephony  ||
 			UIDeviceSupportsSMS  ||
 			UIDeviceSupportsStillCamera  ||
@@ -185,9 +187,11 @@
 			UIDeviceSupportsAccessibility  ||
 			UIDeviceSupportsVoiceControl ||
 			UIDeviceSupportsBrightnessSensor;
+			
 		case UIDeviceUnknowniPhone: return 0;
 			
 		case UIDevice1GiPod: 
+			return
 			// UIDeviceSupportsTelephony  ||
 			// UIDeviceSupportsSMS  ||
 			// UIDeviceSupportsStillCamera  ||
@@ -207,7 +211,9 @@
 			// UIDeviceSupportsAccessibility  ||
 			// UIDeviceSupportsVoiceControl ||
 			UIDeviceSupportsBrightnessSensor;
+			
 		case UIDevice2GiPod: 
+			return
 			// UIDeviceSupportsTelephony  ||
 			// UIDeviceSupportsSMS  ||
 			// UIDeviceSupportsStillCamera  ||
@@ -231,6 +237,7 @@
 		case UIDeviceUnknowniPod:  return 0;
 			
 		case UIDeviceiPhoneSimulator: 
+			return
 			// UIDeviceSupportsTelephony  ||
 			// UIDeviceSupportsSMS  ||
 			// UIDeviceSupportsStillCamera  ||
@@ -250,9 +257,37 @@
 			// UIDeviceSupportsAccessibility  ||
 			// UIDeviceSupportsVoiceControl ||
 			// UIDeviceSupportsBrightnessSensor;
-		
+			
 		default: return 0;
 	}
+}
+
++ (NSArray *) capabilityArray
+{
+	NSUInteger flags = [self platformCapabilities];
+	NSMutableArray *array = [NSMutableArray array];
+	
+	if (flags & UIDeviceSupportsTelephony) [array addObject:@"Telephony"];
+	if (flags & UIDeviceSupportsSMS) [array addObject:@"SMS"];
+	if (flags & UIDeviceSupportsStillCamera) [array addObject:@"Still Camera"];
+	if (flags & UIDeviceSupportsVideoCamera) [array addObject:@"Video Camera"];
+	if (flags & UIDeviceSupportsWifi) [array addObject:@"WiFi"];
+	if (flags & UIDeviceSupportsAccelerometer) [array addObject:@"Accelerometer"];
+	if (flags & UIDeviceSupportsLocationServices) [array addObject:@"Location Services"];
+	if (flags & UIDeviceSupportsGPS) [array addObject:@"GPS"];
+	if (flags & UIDeviceSupportsMagnetometer) [array addObject:@"Magnetometer"];
+	if (flags & UIDeviceSupportsBuiltInMicrophone) [array addObject:@"Built-in Microphone"];
+	if (flags & UIDeviceSupportsExternalMicrophone) [array addObject:@"External Microphone Support"];
+	if (flags & UIDeviceSupportsOPENGLES1) [array addObject:@"OpenGL ES 1.x"];
+	if (flags & UIDeviceSupportsOPENGLES2) [array addObject:@"OpenGL ES 2.x"];
+	if (flags & UIDeviceBuiltInSpeaker) [array addObject:@"Built-in Speaker"];
+	if (flags & UIDeviceSupportsVibration) [array addObject:@"Vibration"];
+	if (flags & UIDeviceBuiltInProximitySensor) [array addObject:@"Proximity Sensor"];
+	if (flags & UIDeviceSupportsAccessibility) [array addObject:@"Accessibility"];
+	if (flags & UIDeviceSupportsVoiceControl) [array addObject:@"Voice Control"];
+	if (flags & UIDeviceSupportsBrightnessSensor) [array addObject:@"Brightness Sensor"];
+	
+	return array;
 }
 
 #pragma mark MAC addy
@@ -349,3 +384,12 @@
 	return nil;
 }
 @end
+
+/*
+@interface UIDevice (ClassAccess)
++ (float) batteryLevel {return [[UIDevice currentDevice] batteryLevel];}
++ (NSString *) uniqueIdentifier {return [[UIDevice currentDevice] uniqueIdentifier];}
++ (UIDeviceBatteryState) batteryState {return [[UIDevice currentDevice] batteryState];}
++ 
+@end
+*/
