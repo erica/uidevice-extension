@@ -80,7 +80,8 @@
 	return [self getSysInfo:KIPC_MAXSOCKBUF];
 }
 
-#pragma mark file system
+#pragma mark file system -- Thanks Joachim Bean!
+
 + (NSNumber *) totalDiskSpace
 {
 	NSDictionary *fattributes = [[NSFileManager defaultManager] fileSystemAttributesAtPath:NSHomeDirectory()];
@@ -404,12 +405,3 @@
 	return nil;
 }
 @end
-
-/*
-@interface UIDevice (ClassAccess)
-+ (float) batteryLevel {return [[UIDevice currentDevice] batteryLevel];}
-+ (NSString *) uniqueIdentifier {return [[UIDevice currentDevice] uniqueIdentifier];}
-+ (UIDeviceBatteryState) batteryState {return [[UIDevice currentDevice] batteryState];}
-+ 
-@end
-*/

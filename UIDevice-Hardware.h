@@ -88,9 +88,3 @@ enum {
 @property (nonatomic, readonly) BOOL isPortrait;
 @property (nonatomic, readonly) NSString *orientationString;
 @end
-
-/*
-@interface UIDevice (ClassAccess)
-+ (NSString *) uniqueIdentifier;
-@end
-*/
