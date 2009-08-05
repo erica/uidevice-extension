@@ -379,13 +379,13 @@
 {
 	switch ([[UIDevice currentDevice] orientation])
 	{
-		case UIDeviceOrientationUnknown: return @"Unknown"; break;
-		case UIDeviceOrientationPortrait: return @"Portrait"; break;
-		case UIDeviceOrientationPortraitUpsideDown: return @"Portrait Upside Down"; break;
-		case UIDeviceOrientationLandscapeLeft: return @"Landscape Left"; break;
-		case UIDeviceOrientationLandscapeRight: return @"Landscape Right"; break;
-		case UIDeviceOrientationFaceUp: return @"Face Up"; break;
-		case UIDeviceOrientationFaceDown: return @"Face Down"; break;
+		case UIDeviceOrientationUnknown: return @"Unknown";
+		case UIDeviceOrientationPortrait: return @"Portrait";
+		case UIDeviceOrientationPortraitUpsideDown: return @"Portrait Upside Down";
+		case UIDeviceOrientationLandscapeLeft: return @"Landscape Left";
+		case UIDeviceOrientationLandscapeRight: return @"Landscape Right";
+		case UIDeviceOrientationFaceUp: return @"Face Up";
+		case UIDeviceOrientationFaceDown: return @"Face Down";
 		default: break;
 	}
 	return nil;
