@@ -127,6 +127,7 @@
 			(UIDeviceSupportsTelephony  |
 			 UIDeviceSupportsSMS  |
 			 UIDeviceSupportsStillCamera  |
+			 // UIDeviceSupportsAutofocusCamera |
 			 // UIDeviceSupportsVideoCamera  |
 			 UIDeviceSupportsWifi  |
 			 UIDeviceSupportsAccelerometer  |
@@ -149,6 +150,7 @@
 			(UIDeviceSupportsTelephony  |
 			 UIDeviceSupportsSMS  |
 			 UIDeviceSupportsStillCamera  |
+			 // UIDeviceSupportsAutofocusCamera |
 			 // UIDeviceSupportsVideoCamera  |
 			 UIDeviceSupportsWifi  |
 			 UIDeviceSupportsAccelerometer  |
@@ -171,6 +173,7 @@
 			(UIDeviceSupportsTelephony  |
 			 UIDeviceSupportsSMS  |
 			 UIDeviceSupportsStillCamera  |
+			 UIDeviceSupportsAutofocusCamera |
 			 UIDeviceSupportsVideoCamera  |
 			 UIDeviceSupportsWifi  |
 			 UIDeviceSupportsAccelerometer  |
@@ -195,6 +198,7 @@
 			(// UIDeviceSupportsTelephony  |
 			 // UIDeviceSupportsSMS  |
 			 // UIDeviceSupportsStillCamera  |
+			 // UIDeviceSupportsAutofocusCamera |
 			 // UIDeviceSupportsVideoCamera  |
 			 UIDeviceSupportsWifi  |
 			 UIDeviceSupportsAccelerometer  |
@@ -217,6 +221,7 @@
 			(// UIDeviceSupportsTelephony  |
 			 // UIDeviceSupportsSMS  |
 			 // UIDeviceSupportsStillCamera  |
+			 // UIDeviceSupportsAutofocusCamera |
 			 // UIDeviceSupportsVideoCamera  |
 			 UIDeviceSupportsWifi  |
 			 UIDeviceSupportsAccelerometer  |
@@ -241,6 +246,7 @@
 			(// UIDeviceSupportsTelephony  |
 			 // UIDeviceSupportsSMS  |
 			 // UIDeviceSupportsStillCamera  |
+			 // UIDeviceSupportsAutofocusCamera |
 			 // UIDeviceSupportsVideoCamera  |
 			 UIDeviceSupportsWifi  |
 			 // UIDeviceSupportsAccelerometer  |
@@ -270,6 +276,7 @@
 	if (flags & UIDeviceSupportsTelephony) [array addObject:@"Telephony"];
 	if (flags & UIDeviceSupportsSMS) [array addObject:@"SMS"];
 	if (flags & UIDeviceSupportsStillCamera) [array addObject:@"Still Camera"];
+	if (flags & UIDeviceSupportsAutofocusCamera) [array addObject:@"AutoFocus Camera"];
 	if (flags & UIDeviceSupportsVideoCamera) [array addObject:@"Video Camera"];
 	if (flags & UIDeviceSupportsWifi) [array addObject:@"WiFi"];
 	if (flags & UIDeviceSupportsAccelerometer) [array addObject:@"Accelerometer"];
