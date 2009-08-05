@@ -10,6 +10,7 @@
 #import "UIDevice-Hardware.h"
 #define COOKBOOK_PURPLE_COLOR	[UIColor colorWithRed:0.20392f green:0.19607f blue:0.61176f alpha:1.0f]
 #define BARBUTTON(TITLE, SELECTOR) 	[[[UIBarButtonItem alloc] initWithTitle:TITLE style:UIBarButtonItemStylePlain target:self action:SELECTOR] autorelease]
+#define CFN(X) [self commasForNumber:X]
 
 @interface TestBedViewController : UIViewController
 {
@@ -34,6 +35,12 @@
 	[self.log appendString:outstring];
 	[self.log appendString:@"\n"];
 	self.textView.text = self.log;
+}
+
+- (NSString *) commasForNumber: (long long) num
+{
+	if (num < 1000) return [NSString stringWithFormat:@"%d", num];
+	return	[[self commasForNumber:num/1000] stringByAppendingFormat:@",%03d", (num % 1000)];
 }
 
 - (void) action: (UIBarButtonItem *) bbi
@@ -63,7 +70,7 @@
 	[self doLog:@"Platform: %@", [UIDevice platform]];
 	[self doLog:@"Platform String: %@", [UIDevice platformString]];
 	[self doLog:@"Platform Code: %@", [UIDevice platformCode]];
-	[self doLog:@"CPU Freq: %d\nBus Freq: %d\nTotal Memory: %d\nUser Memory: %d", [UIDevice cpuFrequency], [UIDevice busFrequency], [UIDevice totalMemory], [UIDevice userMemory]];
+	[self doLog:@"CPU Freq: %d\nBus Freq: %@\nTotal Memory: %@\nUser Memory: %@", CFN([UIDevice cpuFrequency]), CFN([UIDevice busFrequency]), CFN([UIDevice totalMemory]), CFN([UIDevice userMemory])];
 	[self doLog:@"Mac addy: %@", [UIDevice macaddress]];
 }
 

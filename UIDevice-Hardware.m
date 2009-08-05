@@ -80,6 +80,19 @@
 	return [self getSysInfo:KIPC_MAXSOCKBUF];
 }
 
+#pragma mark file system
++ (NSNumber *) totalDiskSpace
+{
+	NSDictionary *fattributes = [[NSFileManager defaultManager] fileSystemAttributesAtPath:NSHomeDirectory()];
+	return [fattributes objectForKey:NSFileSystemSize];
+}
+
++ (NSNumber *) freeDiskSpace
+{
+	NSDictionary *fattributes = [[NSFileManager defaultManager] fileSystemAttributesAtPath:NSHomeDirectory()];
+	return [fattributes objectForKey:NSFileSystemFreeSize];
+}
+
 #pragma mark platform type and name utils
 + (NSUInteger) platformType
 {

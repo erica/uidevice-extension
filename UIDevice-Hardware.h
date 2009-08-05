@@ -74,6 +74,9 @@ enum {
 + (NSUInteger) totalMemory;
 + (NSUInteger) userMemory;
 
++ (NSNumber *) totalDiskSpace;
++ (NSNumber *) freeDiskSpace;
+
 + (NSString *) macaddress;
 @end
 
