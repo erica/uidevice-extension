@@ -5,7 +5,6 @@ if ($#argv != 1) then
     exit 1
 endif
 
-cp ../UIDevice/*.[hm] .
 rm -rf build
 rm .DS_Store
 rm */.DS_Store
