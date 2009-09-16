@@ -13,6 +13,7 @@
 
 #define IPOD_1G_NAMESTRING @"iPod touch 1G"
 #define IPOD_2G_NAMESTRING @"iPod touch 2G"
+#define IPOD_3G_NAMESTRING @"iPod touch 3G"
 #define IPOD_UNKNOWN_NAMESTRING @"Unknown iPod"
 
 #define IPOD_FAMILY_UNKNOWN_DEVICE @"Unknown device in the iPhone/iPod family"
@@ -23,10 +24,11 @@ typedef enum {
 	UIDeviceUnknown,
 	UIDeviceiPhoneSimulator,
 	UIDevice1GiPhone,
-	UIDevice1GiPod,
 	UIDevice3GiPhone,
 	UIDevice3GSiPhone,
+	UIDevice1GiPod,
 	UIDevice2GiPod,
+	UIDevice3GiPod,
 	UIDeviceUnknowniPhone,
 	UIDeviceUnknowniPod,
 } UIDevicePlatform;

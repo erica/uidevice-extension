@@ -104,6 +104,7 @@
 	
 	if ([platform isEqualToString:@"iPod1,1"])   return UIDevice1GiPod;
 	if ([platform isEqualToString:@"iPod2,1"])   return UIDevice2GiPod;
+	if ([platform isEqualToString:@"iPod3,1"])   return UIDevice3GiPod;
 	
 	if ([platform hasPrefix:@"iPhone"]) return UIDeviceUnknowniPhone;
 	if ([platform hasPrefix:@"iPod"]) return UIDeviceUnknowniPod;
@@ -123,6 +124,7 @@
 		
 		case UIDevice1GiPod: return IPOD_1G_NAMESTRING;
 		case UIDevice2GiPod: return IPOD_2G_NAMESTRING;
+		case UIDevice3GiPod: return IPOD_3G_NAMESTRING;
 		case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
 			
 		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
@@ -252,6 +254,29 @@
 			 // UIDeviceSupportsAccessibility  |
 			 // UIDeviceSupportsVoiceControl |
 			 UIDeviceSupportsBrightnessSensor);
+			
+		case UIDevice3GiPod: 
+			return
+			(// UIDeviceSupportsTelephony  |
+			 // UIDeviceSupportsSMS  |
+			 // UIDeviceSupportsStillCamera  |
+			 // UIDeviceSupportsAutofocusCamera |
+			 // UIDeviceSupportsVideoCamera  |
+			 UIDeviceSupportsWifi  |
+			 UIDeviceSupportsAccelerometer  |
+			 UIDeviceSupportsLocationServices  |
+			 // UIDeviceSupportsGPS  |
+			 // UIDeviceSupportsMagnetometer  |
+			 // UIDeviceSupportsBuiltInMicrophone  |
+			 UIDeviceSupportsExternalMicrophone  |
+			 UIDeviceSupportsOPENGLES1  |
+			 UIDeviceSupportsOPENGLES2  |
+			 UIDeviceBuiltInSpeaker  |
+			 // UIDeviceSupportsVibration  |
+			 // UIDeviceBuiltInProximitySensor  |
+			 UIDeviceSupportsAccessibility  |
+			 UIDeviceSupportsVoiceControl |
+			 UIDeviceSupportsBrightnessSensor);			
 			
 		case UIDeviceUnknowniPod:  return 0;
 			
