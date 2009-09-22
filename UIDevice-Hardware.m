@@ -152,13 +152,15 @@
 			 // UIDeviceSupportsMagnetometer  |
 			 UIDeviceSupportsBuiltInMicrophone  |
 			 UIDeviceSupportsExternalMicrophone  |
-			 UIDeviceSupportsOPENGLES1  |
+			 UIDeviceSupportsOPENGLES1_1  |
 			 // UIDeviceSupportsOPENGLES2  |
 			 UIDeviceBuiltInSpeaker  |
 			 UIDeviceSupportsVibration  |
 			 UIDeviceBuiltInProximitySensor  |
 			 // UIDeviceSupportsAccessibility  |
 			 // UIDeviceSupportsVoiceControl |
+			 // UIDeviceSupportsPeerToPeer |
+			 // UIDeviceSupportsARMV7 |
 			 UIDeviceSupportsBrightnessSensor);
 			
 		case UIDevice3GiPhone: 
@@ -175,13 +177,15 @@
 			 // UIDeviceSupportsMagnetometer  |
 			 UIDeviceSupportsBuiltInMicrophone  |
 			 UIDeviceSupportsExternalMicrophone  |
-			 UIDeviceSupportsOPENGLES1  |
+			 UIDeviceSupportsOPENGLES1_1  |
 			 // UIDeviceSupportsOPENGLES2  |
 			 UIDeviceBuiltInSpeaker  |
 			 UIDeviceSupportsVibration  |
 			 UIDeviceBuiltInProximitySensor  |
 			 // UIDeviceSupportsAccessibility  |
 			 // UIDeviceSupportsVoiceControl |
+			 UIDeviceSupportsPeerToPeer |
+			 // UIDeviceSupportsARMV7 |
 			 UIDeviceSupportsBrightnessSensor);
 			
 		case UIDevice3GSiPhone: 
@@ -198,13 +202,15 @@
 			 UIDeviceSupportsMagnetometer  |
 			 UIDeviceSupportsBuiltInMicrophone  |
 			 UIDeviceSupportsExternalMicrophone  |
-			 UIDeviceSupportsOPENGLES1  |
+			 UIDeviceSupportsOPENGLES1_1  |
 			 UIDeviceSupportsOPENGLES2  |
 			 UIDeviceBuiltInSpeaker  |
 			 UIDeviceSupportsVibration  |
 			 UIDeviceBuiltInProximitySensor  |
 			 UIDeviceSupportsAccessibility  |
 			 UIDeviceSupportsVoiceControl |
+			 UIDeviceSupportsPeerToPeer |
+			 UIDeviceSupportsARMV7 |
 			 UIDeviceSupportsBrightnessSensor);
 			
 		case UIDeviceUnknowniPhone: return 0;
@@ -223,7 +229,7 @@
 			 // UIDeviceSupportsMagnetometer  |
 			 // UIDeviceSupportsBuiltInMicrophone  |
 			 UIDeviceSupportsExternalMicrophone  |
-			 UIDeviceSupportsOPENGLES1  |
+			 UIDeviceSupportsOPENGLES1_1  |
 			 // UIDeviceSupportsOPENGLES2  |
 			 // UIDeviceBuiltInSpeaker  |
 			 // UIDeviceSupportsVibration  |
@@ -246,13 +252,15 @@
 			 // UIDeviceSupportsMagnetometer  |
 			 // UIDeviceSupportsBuiltInMicrophone  |
 			 UIDeviceSupportsExternalMicrophone  |
-			 UIDeviceSupportsOPENGLES1  |
+			 UIDeviceSupportsOPENGLES1_1  |
 			 // UIDeviceSupportsOPENGLES2  |
 			 UIDeviceBuiltInSpeaker  |
 			 // UIDeviceSupportsVibration  |
 			 // UIDeviceBuiltInProximitySensor  |
 			 // UIDeviceSupportsAccessibility  |
 			 // UIDeviceSupportsVoiceControl |
+			 UIDeviceSupportsPeerToPeer |
+			 // UIDeviceSupportsARMV7 |
 			 UIDeviceSupportsBrightnessSensor);
 			
 		case UIDevice3GiPod: 
@@ -269,13 +277,15 @@
 			 // UIDeviceSupportsMagnetometer  |
 			 // UIDeviceSupportsBuiltInMicrophone  |
 			 UIDeviceSupportsExternalMicrophone  |
-			 UIDeviceSupportsOPENGLES1  |
+			 UIDeviceSupportsOPENGLES1_1  |
 			 UIDeviceSupportsOPENGLES2  |
 			 UIDeviceBuiltInSpeaker  |
 			 // UIDeviceSupportsVibration  |
 			 // UIDeviceBuiltInProximitySensor  |
 			 UIDeviceSupportsAccessibility  |
 			 UIDeviceSupportsVoiceControl |
+			 UIDeviceSupportsPeerToPeer |
+			 UIDeviceSupportsARMV7 |
 			 UIDeviceSupportsBrightnessSensor);			
 			
 		case UIDeviceUnknowniPod:  return 0;
@@ -294,15 +304,16 @@
 			 // UIDeviceSupportsMagnetometer  |
 			 // UIDeviceSupportsBuiltInMicrophone  |
 			 // UIDeviceSupportsExternalMicrophone  |
-			 UIDeviceSupportsOPENGLES1  |
+			 UIDeviceSupportsOPENGLES1_1  |
 			 // UIDeviceSupportsOPENGLES2  |
 			 UIDeviceBuiltInSpeaker);
 			// UIDeviceSupportsVibration  |
 			// UIDeviceBuiltInProximitySensor  |
 			// UIDeviceSupportsAccessibility  |
 			// UIDeviceSupportsVoiceControl |
+			// UIDeviceSupportsPeerToPeer |
+			// UIDeviceSupportsARMV7 |
 			// UIDeviceSupportsBrightnessSensor;
-			
 		default: return 0;
 	}
 }
@@ -324,7 +335,7 @@
 	if (flags & UIDeviceSupportsMagnetometer) [array addObject:@"Magnetometer"];
 	if (flags & UIDeviceSupportsBuiltInMicrophone) [array addObject:@"Built-in Microphone"];
 	if (flags & UIDeviceSupportsExternalMicrophone) [array addObject:@"External Microphone Support"];
-	if (flags & UIDeviceSupportsOPENGLES1) [array addObject:@"OpenGL ES 1.x"];
+	if (flags & UIDeviceSupportsOPENGLES1_1) [array addObject:@"OpenGL ES 1.x"];
 	if (flags & UIDeviceSupportsOPENGLES2) [array addObject:@"OpenGL ES 2.x"];
 	if (flags & UIDeviceBuiltInSpeaker) [array addObject:@"Built-in Speaker"];
 	if (flags & UIDeviceSupportsVibration) [array addObject:@"Vibration"];

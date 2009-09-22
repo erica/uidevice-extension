@@ -51,7 +51,7 @@ enum {
 	UIDeviceSupportsMagnetometer = 1 << 9,
 	UIDeviceSupportsBuiltInMicrophone = 1 << 10,
 	UIDeviceSupportsExternalMicrophone = 1 << 11,
-	UIDeviceSupportsOPENGLES1 = 1 << 12,
+	UIDeviceSupportsOPENGLES1_1 = 1 << 12,
 	UIDeviceSupportsOPENGLES2 = 1 << 13,
 	UIDeviceBuiltInSpeaker = 1 << 14,
 	UIDeviceSupportsVibration = 1 << 15,
@@ -59,6 +59,8 @@ enum {
 	UIDeviceSupportsAccessibility = 1 << 17,
 	UIDeviceSupportsVoiceControl = 1 << 18,
 	UIDeviceSupportsBrightnessSensor = 1 << 19,
+	UIDeviceSupportsPeerToPeer = 1 << 20,
+	UIDeviceSupportsARMV7 = 1 << 21,
 };
 
 @interface UIDevice (Hardware)
