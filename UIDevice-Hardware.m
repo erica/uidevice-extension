@@ -158,6 +158,7 @@
 			 UIDeviceSupportsVibration  |
 			 UIDeviceBuiltInProximitySensor  |
 			 // UIDeviceSupportsAccessibility  |
+			 // UIDeviceSupportsVoiceOver |
 			 // UIDeviceSupportsVoiceControl |
 			 // UIDeviceSupportsPeerToPeer |
 			 // UIDeviceSupportsARMV7 |
@@ -183,6 +184,7 @@
 			 UIDeviceSupportsVibration  |
 			 UIDeviceBuiltInProximitySensor  |
 			 // UIDeviceSupportsAccessibility  |
+			 // UIDeviceSupportsVoiceOver |
 			 // UIDeviceSupportsVoiceControl |
 			 UIDeviceSupportsPeerToPeer |
 			 // UIDeviceSupportsARMV7 |
@@ -208,6 +210,7 @@
 			 UIDeviceSupportsVibration  |
 			 UIDeviceBuiltInProximitySensor  |
 			 UIDeviceSupportsAccessibility  |
+			 UIDeviceSupportsVoiceOver |
 			 UIDeviceSupportsVoiceControl |
 			 UIDeviceSupportsPeerToPeer |
 			 UIDeviceSupportsARMV7 |
@@ -235,6 +238,7 @@
 			 // UIDeviceSupportsVibration  |
 			 // UIDeviceBuiltInProximitySensor  |
 			 // UIDeviceSupportsAccessibility  |
+			 // UIDeviceSupportsVoiceOver |
 			 // UIDeviceSupportsVoiceControl |
 			 UIDeviceSupportsBrightnessSensor);
 			
@@ -258,6 +262,7 @@
 			 // UIDeviceSupportsVibration  |
 			 // UIDeviceBuiltInProximitySensor  |
 			 // UIDeviceSupportsAccessibility  |
+			 // UIDeviceSupportsVoiceOver |
 			 // UIDeviceSupportsVoiceControl |
 			 UIDeviceSupportsPeerToPeer |
 			 // UIDeviceSupportsARMV7 |
@@ -283,6 +288,7 @@
 			 // UIDeviceSupportsVibration  |
 			 // UIDeviceBuiltInProximitySensor  |
 			 UIDeviceSupportsAccessibility  |
+			 UIDeviceSupportsVoiceOver |
 			 UIDeviceSupportsVoiceControl |
 			 UIDeviceSupportsPeerToPeer |
 			 UIDeviceSupportsARMV7 |
@@ -306,10 +312,11 @@
 			 // UIDeviceSupportsExternalMicrophone  |
 			 UIDeviceSupportsOPENGLES1_1  |
 			 // UIDeviceSupportsOPENGLES2  |
+			 UIDeviceSupportsAccessibility  | // with limitations
+			 UIDeviceSupportsVoiceOver | // with limitations
 			 UIDeviceBuiltInSpeaker);
 			// UIDeviceSupportsVibration  |
 			// UIDeviceBuiltInProximitySensor  |
-			// UIDeviceSupportsAccessibility  |
 			// UIDeviceSupportsVoiceControl |
 			// UIDeviceSupportsPeerToPeer |
 			// UIDeviceSupportsARMV7 |
@@ -335,14 +342,17 @@
 	if (flags & UIDeviceSupportsMagnetometer) [array addObject:@"Magnetometer"];
 	if (flags & UIDeviceSupportsBuiltInMicrophone) [array addObject:@"Built-in Microphone"];
 	if (flags & UIDeviceSupportsExternalMicrophone) [array addObject:@"External Microphone Support"];
-	if (flags & UIDeviceSupportsOPENGLES1_1) [array addObject:@"OpenGL ES 1.x"];
+	if (flags & UIDeviceSupportsOPENGLES1_1) [array addObject:@"OpenGL ES 1.1"];
 	if (flags & UIDeviceSupportsOPENGLES2) [array addObject:@"OpenGL ES 2.x"];
 	if (flags & UIDeviceBuiltInSpeaker) [array addObject:@"Built-in Speaker"];
 	if (flags & UIDeviceSupportsVibration) [array addObject:@"Vibration"];
 	if (flags & UIDeviceBuiltInProximitySensor) [array addObject:@"Proximity Sensor"];
 	if (flags & UIDeviceSupportsAccessibility) [array addObject:@"Accessibility"];
+	if (flags & UIDeviceSupportsVoiceOver) [array addObject:@"VoiceOver"];
 	if (flags & UIDeviceSupportsVoiceControl) [array addObject:@"Voice Control"];
 	if (flags & UIDeviceSupportsBrightnessSensor) [array addObject:@"Brightness Sensor"];
+	if (flags & UIDeviceSupportsPeerToPeer) [array addObject:@"Peer to Peer Bluetooth"];
+	if (flags & UIDeviceSupportsARMV7) [array addObject:@"The armv7 instruction set"];
 	
 	return array;
 }

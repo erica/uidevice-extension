@@ -57,10 +57,11 @@ enum {
 	UIDeviceSupportsVibration = 1 << 15,
 	UIDeviceBuiltInProximitySensor = 1 << 16,
 	UIDeviceSupportsAccessibility = 1 << 17,
-	UIDeviceSupportsVoiceControl = 1 << 18,
-	UIDeviceSupportsBrightnessSensor = 1 << 19,
-	UIDeviceSupportsPeerToPeer = 1 << 20,
-	UIDeviceSupportsARMV7 = 1 << 21,
+	UIDeviceSupportsVoiceOver = 1 << 18,
+	UIDeviceSupportsVoiceControl = 1 << 19,
+	UIDeviceSupportsBrightnessSensor = 1 << 20,
+	UIDeviceSupportsPeerToPeer = 1 << 21,
+	UIDeviceSupportsARMV7 = 1 << 22,
 };
 
 @interface UIDevice (Hardware)
