@@ -19,23 +19,23 @@
 + (NSString *) stringFromAddress: (const struct sockaddr *) address;
 + (BOOL)addressFromString:(NSString *)IPAddress address:(struct sockaddr_in *)address;
 
-+ (NSString *) hostname;
-+ (NSString *) getIPAddressForHost: (NSString *) theHost;
-+ (NSString *) localIPAddress;
-+ (NSString *) localWiFiIPAddress;
-+ (NSString *) whatismyipdotcom;
+- (NSString *) hostname;
+- (NSString *) getIPAddressForHost: (NSString *) theHost;
+- (NSString *) localIPAddress;
+- (NSString *) localWiFiIPAddress;
+- (NSString *) whatismyipdotcom;
 
-+ (BOOL) hostAvailable: (NSString *) theHost;
-+ (BOOL) networkAvailable;
-+ (BOOL) activeWLAN;
-+ (BOOL) activeWWAN;
-+ (BOOL) performWiFiCheck;
+- (BOOL) hostAvailable: (NSString *) theHost;
+- (BOOL) networkAvailable;
+- (BOOL) activeWLAN;
+- (BOOL) activeWWAN;
+- (BOOL) performWiFiCheck;
 
-+ (BOOL) forceWWAN; // via Apple
-+ (void) shutdownWWAN; // via Apple
+- (BOOL) forceWWAN; // via Apple
+- (void) shutdownWWAN; // via Apple
 
-+ (BOOL) scheduleReachabilityWatcher: (id) watcher;
-+ (void) unscheduleReachabilityWatcher;
+- (BOOL) scheduleReachabilityWatcher: (id) watcher;
+- (void) unscheduleReachabilityWatcher;
 
 #ifdef SUPPORTS_UNDOCUMENTED_API
 // Don't use this code in real life, boys and girls. It is not App Store friendly.

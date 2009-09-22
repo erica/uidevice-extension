@@ -51,7 +51,7 @@ SCNetworkReachabilityRef reachability;
 	return YES;
 }
 
-+ (NSString *) hostname
+- (NSString *) hostname
 {
 	char baseHostName[255];
 	int success = gethostname(baseHostName, 255);
@@ -65,7 +65,7 @@ SCNetworkReachabilityRef reachability;
     #endif
 }
 
-+ (NSString *) getIPAddressForHost: (NSString *) theHost
+- (NSString *) getIPAddressForHost: (NSString *) theHost
 {
 	struct hostent *host = gethostbyname([theHost UTF8String]);
     if (!host) {herror("resolv"); return NULL; }
@@ -74,7 +74,7 @@ SCNetworkReachabilityRef reachability;
 	return addressString;
 }
 
-+ (NSString *) localIPAddress
+- (NSString *) localIPAddress
 {
 	struct hostent *host = gethostbyname([[self hostname] UTF8String]);
     if (!host) {herror("resolv"); return nil;}
@@ -85,7 +85,7 @@ SCNetworkReachabilityRef reachability;
 // Matt Brown's get WiFi IP addy solution
 // Author gave permission to use in Cookbook under cookbook license
 // http://mattbsoftware.blogspot.com/2009/04/how-to-get-ip-address-of-iphone-os-v221.html
-+ (NSString *) localWiFiIPAddress
+- (NSString *) localWiFiIPAddress
 {
 	BOOL success;
 	struct ifaddrs * addrs;
@@ -109,7 +109,7 @@ SCNetworkReachabilityRef reachability;
 	return nil;
 }
 
-+ (NSString *) whatismyipdotcom
+- (NSString *) whatismyipdotcom
 {
 	NSError *error;
     NSURL *ipURL = [NSURL URLWithString:@"http://www.whatismyip.com/automation/n09230945.asp"];
@@ -117,7 +117,7 @@ SCNetworkReachabilityRef reachability;
 	return ip ? ip : [error localizedDescription];
 }
 
-+ (BOOL) hostAvailable: (NSString *) theHost
+- (BOOL) hostAvailable: (NSString *) theHost
 {
 	
     NSString *addressString = [self getIPAddressForHost:theHost];
@@ -128,7 +128,7 @@ SCNetworkReachabilityRef reachability;
     }
 	
     struct sockaddr_in address;
-    BOOL gotAddress = [self addressFromString:addressString address:&address];
+    BOOL gotAddress = [UIDevice addressFromString:addressString address:&address];
 	
     if (!gotAddress)
     {
@@ -154,7 +154,7 @@ SCNetworkReachabilityRef reachability;
 
 #pragma mark Checking Connections
 
-+ (void) pingReachabilityInternal
+- (void) pingReachabilityInternal
 {
 	if (!reachability)
 	{
@@ -180,7 +180,7 @@ SCNetworkReachabilityRef reachability;
 	if (!didRetrieveFlags) printf("Error. Could not recover network reachability flags\n");
 }
 
-+ (BOOL) networkAvailable
+- (BOOL) networkAvailable
 {
 	[self pingReachabilityInternal];
 	BOOL isReachable = ((connectionFlags & kSCNetworkFlagsReachable) != 0);
@@ -188,15 +188,15 @@ SCNetworkReachabilityRef reachability;
     return (isReachable && !needsConnection) ? YES : NO;
 }
 
-+ (BOOL) activeWWAN
+- (BOOL) activeWWAN
 {
 	if (![self networkAvailable]) return NO;
 	return ((connectionFlags & kSCNetworkReachabilityFlagsIsWWAN) != 0);
 }
 
-+ (BOOL) activeWLAN
+- (BOOL) activeWLAN
 {
-	return ([UIDevice localWiFiIPAddress] != nil);
+	return ([[UIDevice currentDevice] localWiFiIPAddress] != nil);
 }
 
 
@@ -213,7 +213,7 @@ SCNetworkReachabilityRef reachability;
 	[av show];
 }
 
-+ (BOOL) performWiFiCheck
+- (BOOL) performWiFiCheck
 {
 	if (![self networkAvailable] || ![self activeWLAN])
 	{
@@ -231,7 +231,7 @@ static void myClientCallback(void *refCon)
 	printf("myClientCallback entered - value from refCon is %d\n", *val);
 }
 
-+ (BOOL) forceWWAN
+- (BOOL) forceWWAN
 {
 	int value = 0;
 	myInfoPtr = (MyStreamInfoPtr) StartWWAN(myClientCallback, &value);
@@ -239,7 +239,7 @@ static void myClientCallback(void *refCon)
 	return (!(myInfoPtr == NULL));
 }
 
-+ (void) shutdownWWAN
+- (void) shutdownWWAN
 {
 	if (myInfoPtr) StopWWAN((MyInfoRef) myInfoPtr);
 }
@@ -252,7 +252,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkConne
 	[pool release];
 }
 
-+ (BOOL) scheduleReachabilityWatcher: (id) watcher
+- (BOOL) scheduleReachabilityWatcher: (id) watcher
 {
 	if (![watcher conformsToProtocol:@protocol(ReachabilityWatcher)]) 
 	{
@@ -281,7 +281,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkConne
 	return YES;
 }
 
-+ (void) unscheduleReachabilityWatcher
+- (void) unscheduleReachabilityWatcher
 {
 	SCNetworkReachabilitySetCallback(reachability, NULL, NULL);
 	if (SCNetworkReachabilityUnscheduleFromRunLoop(reachability, CFRunLoopGetCurrent(), kCFRunLoopCommonModes))
@@ -319,7 +319,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkConne
 {
 	// Unavailable has only one address: 127.0.0.1
 	return !(([[[NSHost currentHost] addresses] count] == 1) && 
-			 [[UIDevice localIPAddress] isEqualToString:@"127.0.0.1"]);
+			 [[[UIDevice currentDevice] localIPAddress] isEqualToString:@"127.0.0.1"]);
 }
 #endif
 @end

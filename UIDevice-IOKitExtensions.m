@@ -96,21 +96,21 @@ NSArray *getValue(NSString *iosearch)
     return [p1 componentsSeparatedByString:@"\0"];
 }
 
-+ (NSString *) imei
+- (NSString *) imei
 {
 	NSArray *results = getValue(@"device-imei");
 	if (results) return [results objectAtIndex:0];
 	return nil;
 }
 
-+ (NSString *) serialnumber
+- (NSString *) serialnumber
 {
 	NSArray *results = getValue(@"serial-number");
 	if (results) return [results objectAtIndex:0];
 	return nil;
 }
 
-+ (NSString *) backlightlevel
+- (NSString *) backlightlevel
 {
 	NSArray *results = getValue(@"backlight-level");
 	if (results) return [results objectAtIndex:0];

@@ -62,24 +62,23 @@ enum {
 };
 
 @interface UIDevice (Hardware)
+- (NSString *) platform;
+- (NSUInteger) platformType;
+- (NSUInteger) platformCapabilities;
+- (NSString *) platformString;
+- (NSString *) platformCode;
 
-+ (NSString *) platform;
-+ (NSUInteger) platformType;
-+ (NSUInteger) platformCapabilities;
-+ (NSString *) platformString;
-+ (NSString *) platformCode;
+- (NSArray *) capabilityArray;
 
-+ (NSArray *) capabilityArray;
+- (NSUInteger) cpuFrequency;
+- (NSUInteger) busFrequency;
+- (NSUInteger) totalMemory;
+- (NSUInteger) userMemory;
 
-+ (NSUInteger) cpuFrequency;
-+ (NSUInteger) busFrequency;
-+ (NSUInteger) totalMemory;
-+ (NSUInteger) userMemory;
+- (NSNumber *) totalDiskSpace;
+- (NSNumber *) freeDiskSpace;
 
-+ (NSNumber *) totalDiskSpace;
-+ (NSNumber *) freeDiskSpace;
-
-+ (NSString *) macaddress;
+- (NSString *) macaddress;
 @end
 
 @interface UIDevice (Orientation)

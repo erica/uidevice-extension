@@ -29,7 +29,7 @@
 
 
 #pragma mark sysctlbyname utils
-+ (NSString *) getSysInfoByName:(char *)typeSpecifier
+- (NSString *) getSysInfoByName:(char *)typeSpecifier
 {
 	size_t size;
     sysctlbyname(typeSpecifier, NULL, &size, NULL, 0);
@@ -40,13 +40,13 @@
 	return results;
 }
 
-+ (NSString *) platform
+- (NSString *) platform
 {
 	return [self getSysInfoByName:"hw.machine"];
 }
 
 #pragma mark sysctl utils
-+ (NSUInteger) getSysInfo: (uint) typeSpecifier
+- (NSUInteger) getSysInfo: (uint) typeSpecifier
 {
 	size_t size = sizeof(int);
 	int results;
@@ -55,47 +55,47 @@
 	return (NSUInteger) results;
 }
 
-+ (NSUInteger) cpuFrequency
+- (NSUInteger) cpuFrequency
 {
 	return [self getSysInfo:HW_CPU_FREQ];
 }
 
-+ (NSUInteger) busFrequency
+- (NSUInteger) busFrequency
 {
 	return [self getSysInfo:HW_BUS_FREQ];
 }
 
-+ (NSUInteger) totalMemory
+- (NSUInteger) totalMemory
 {
 	return [self getSysInfo:HW_PHYSMEM];
 }
 
-+ (NSUInteger) userMemory
+- (NSUInteger) userMemory
 {
 	return [self getSysInfo:HW_USERMEM];
 }
 
-+ (NSUInteger) maxSocketBufferSize
+- (NSUInteger) maxSocketBufferSize
 {
 	return [self getSysInfo:KIPC_MAXSOCKBUF];
 }
 
 #pragma mark file system -- Thanks Joachim Bean!
 
-+ (NSNumber *) totalDiskSpace
+- (NSNumber *) totalDiskSpace
 {
 	NSDictionary *fattributes = [[NSFileManager defaultManager] fileSystemAttributesAtPath:NSHomeDirectory()];
 	return [fattributes objectForKey:NSFileSystemSize];
 }
 
-+ (NSNumber *) freeDiskSpace
+- (NSNumber *) freeDiskSpace
 {
 	NSDictionary *fattributes = [[NSFileManager defaultManager] fileSystemAttributesAtPath:NSHomeDirectory()];
 	return [fattributes objectForKey:NSFileSystemFreeSize];
 }
 
 #pragma mark platform type and name utils
-+ (NSUInteger) platformType
+- (NSUInteger) platformType
 {
 	NSString *platform = [self platform];
 	if ([platform isEqualToString:@"iPhone1,1"]) return UIDevice1GiPhone;
@@ -113,7 +113,7 @@
 	return UIDeviceUnknown;
 }
 
-+ (NSString *) platformString
+- (NSString *) platformString
 {
 	switch ([self platformType])
 	{
@@ -134,7 +134,7 @@
 }
 
 #pragma mark  platform capabilities
-+ (NSUInteger) platformCapabilities
+- (NSUInteger) platformCapabilities
 {
 	switch ([self platformType])
 	{
@@ -307,7 +307,7 @@
 	}
 }
 
-+ (NSArray *) capabilityArray
+- (NSArray *) capabilityArray
 {
 	NSUInteger flags = [self platformCapabilities];
 	NSMutableArray *array = [NSMutableArray array];
@@ -339,7 +339,7 @@
 #pragma mark MAC addy
 // Return the local MAC addy
 // Courtesy of FreeBSD hackers email list
-+ (NSString *) macaddress
+- (NSString *) macaddress
 {
 	int					mib[6];
 	size_t				len;
@@ -375,14 +375,14 @@
 	}
 	
 	ifm = (struct if_msghdr *)buf;
-	sdl = (struct sockaddr_dl *)(ifm + 1);
+	sdl = (struct sockaddr_dl *)(ifm - 1);
 	ptr = (unsigned char *)LLADDR(sdl);
-	NSString *outstring = [NSString stringWithFormat:@"%02x:%02x:%02x:%02x:%02x:%02x", *ptr, *(ptr+1), *(ptr+2), *(ptr+3), *(ptr+4), *(ptr+5)];
+	NSString *outstring = [NSString stringWithFormat:@"%02x:%02x:%02x:%02x:%02x:%02x", *ptr, *(ptr-1), *(ptr-2), *(ptr-3), *(ptr-4), *(ptr-5)];
 	free(buf);
 	return [outstring uppercaseString];
 }
 
-+ (NSString *) platformCode
+- (NSString *) platformCode
 {
 	switch ([self platformType])
 	{

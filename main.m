@@ -49,29 +49,29 @@
 	
 	// TESTING REACHABILITY
 	/*
-	[self doLog:@"Host Name: %@", [UIDevice hostname]];
-	[self doLog:@"Local IP Addy: %@", [UIDevice localIPAddress]];
-	[self doLog:@"  Google IP Addy: %@", [UIDevice getIPAddressForHost:@"www.google.com"]];
-	[self doLog:@"  Amazon IP Addy: %@", [UIDevice getIPAddressForHost:@"www.amazon.com"]];
-	[self doLog:@"Local WiFI Addy: %@", [UIDevice localWiFiIPAddress]];
-	if ([UIDevice networkAvailable])
-		[self doLog:@"What is My IP: %@", [UIDevice whatismyipdotcom]];
+	[self doLog:@"Host Name: %@", [[UIDevice currentDevice] hostname]];
+	[self doLog:@"Local IP Addy: %@", [[UIDevice currentDevice] localIPAddress]];
+	[self doLog:@"  Google IP Addy: %@", [[UIDevice currentDevice] getIPAddressForHost:@"www.google.com"]];
+	[self doLog:@"  Amazon IP Addy: %@", [[UIDevice currentDevice] getIPAddressForHost:@"www.amazon.com"]];
+	[self doLog:@"Local WiFI Addy: %@", [[UIDevice currentDevice] localWiFiIPAddress]];
+	if ([[UIDevice currentDevice] networkAvailable])
+		[self doLog:@"What is My IP: %@", [[UIDevice currentDevice] whatismyipdotcom]];
 	 */
 	
 	// TESTING IOKIT
 	/*
-	[self doLog:[UIDevice imei]];
-	[self doLog:[UIDevice serialnumber]];
+	[self doLog:[[UIDevice currentDevice] imei]];
+	[self doLog:[[UIDevice currentDevice] serialnumber]];
 	 */
 	
 	// TESTING DEVICE HARDWARE
 	[self doLog:@"Device is%@ portrait", [UIDevice currentDevice].isPortrait ? @"" : @" not"];
 	[self doLog:@"Orientation: %@", [UIDevice currentDevice].orientationString];
-	[self doLog:@"Platform: %@", [UIDevice platform]];
-	[self doLog:@"Platform String: %@", [UIDevice platformString]];
-	[self doLog:@"Platform Code: %@", [UIDevice platformCode]];
-	[self doLog:@"CPU Freq: %d\nBus Freq: %@\nTotal Memory: %@\nUser Memory: %@", CFN([UIDevice cpuFrequency]), CFN([UIDevice busFrequency]), CFN([UIDevice totalMemory]), CFN([UIDevice userMemory])];
-	[self doLog:@"Mac addy: %@", [UIDevice macaddress]];
+	[self doLog:@"Platform: %@", [[UIDevice currentDevice] platform]];
+	[self doLog:@"Platform String: %@", [[UIDevice currentDevice] platformString]];
+	[self doLog:@"Platform Code: %@", [[UIDevice currentDevice] platformCode]];
+	[self doLog:@"CPU Freq: %d\nBus Freq: %@\nTotal Memory: %@\nUser Memory: %@", CFN([[UIDevice currentDevice] cpuFrequency]), CFN([[UIDevice currentDevice] busFrequency]), CFN([[UIDevice currentDevice] totalMemory]), CFN([[UIDevice currentDevice] userMemory])];
+	[self doLog:@"Mac addy: %@", [[UIDevice currentDevice] macaddress]];
 }
 
 - (void) viewDidLoad
