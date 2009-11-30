@@ -484,7 +484,7 @@
 		case UIDevice1GiPhone: return @"M68";
 		case UIDevice3GiPhone: return @"N82";
 		case UIDevice3GSiPhone:	return @"N88";
-		case UIDeviceUnknowniPhone: return nil;
+		case UIDeviceUnknowniPhone: return IPHONE_UNKNOWN_NAMESTRING;
 			
 		case UIDevice1GiPod: return @"N45";
 		case UIDevice2GiPod: return @"N72";
