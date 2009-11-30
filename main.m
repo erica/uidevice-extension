@@ -65,6 +65,7 @@
 	 */
 	
 	// TESTING DEVICE HARDWARE
+	/*
 	[self doLog:@"Device is%@ portrait", [UIDevice currentDevice].isPortrait ? @"" : @" not"];
 	[self doLog:@"Orientation: %@", [UIDevice currentDevice].orientationString];
 	[self doLog:@"Platform: %@", [[UIDevice currentDevice] platform]];
@@ -72,6 +73,7 @@
 	[self doLog:@"Platform Code: %@", [[UIDevice currentDevice] platformCode]];
 	[self doLog:@"CPU Freq: %d\nBus Freq: %@\nTotal Memory: %@\nUser Memory: %@", CFN([[UIDevice currentDevice] cpuFrequency]), CFN([[UIDevice currentDevice] busFrequency]), CFN([[UIDevice currentDevice] totalMemory]), CFN([[UIDevice currentDevice] userMemory])];
 	[self doLog:@"Mac addy: %@", [[UIDevice currentDevice] macaddress]];
+	 */
 }
 
 - (void) viewDidLoad

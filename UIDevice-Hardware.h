@@ -6,15 +6,23 @@
 
 #import <UIKit/UIKit.h>
 
-#define IPHONE_1G_NAMESTRING @"iPhone 1G"
-#define IPHONE_3G_NAMESTRING @"iPhone 3G"
-#define IPHONE_3GS_NAMESTRING @"iPhone 3GS" 
-#define IPHONE_UNKNOWN_NAMESTRING @"Unknown iPhone"
+#define IFPGA_NAMESTRING				@"iFPGA"
 
-#define IPOD_1G_NAMESTRING @"iPod touch 1G"
-#define IPOD_2G_NAMESTRING @"iPod touch 2G"
-#define IPOD_3G_NAMESTRING @"iPod touch 3G"
-#define IPOD_UNKNOWN_NAMESTRING @"Unknown iPod"
+#define IPHONE_1G_NAMESTRING			@"iPhone 1G"
+#define IPHONE_3G_NAMESTRING			@"iPhone 3G"
+#define IPHONE_3GS_NAMESTRING			@"iPhone 3GS" 
+#define IPHONE_4G_NAMESTRING			@"iPhone 4G" 
+#define IPHONE_UNKNOWN_NAMESTRING		@"Unknown iPhone"
+
+#define IPOD_1G_NAMESTRING				@"iPod touch 1G"
+#define IPOD_2G_NAMESTRING				@"iPod touch 2G"
+#define IPOD_2GPLUS_NAMESTRING			@"iPod touch 2G Plus"
+#define IPOD_3G_NAMESTRING				@"iPod touch 3G"
+#define IPOD_4G_NAMESTRING				@"iPod touch 4G"
+#define IPOD_UNKNOWN_NAMESTRING			@"Unknown iPod"
+
+#define IPROD_1G_NAMESTRING				@"iProd 1G"
+#define IPROD_2G_NAMESTRING				@"iProd 2G"
 
 #define IPOD_FAMILY_UNKNOWN_DEVICE @"Unknown device in the iPhone/iPod family"
 
@@ -26,11 +34,17 @@ typedef enum {
 	UIDevice1GiPhone,
 	UIDevice3GiPhone,
 	UIDevice3GSiPhone,
+	UIDevice4GiPhone,
 	UIDevice1GiPod,
 	UIDevice2GiPod,
+	UIDevice2GPlusiPod,
 	UIDevice3GiPod,
+	UIDevice4GiPod,
 	UIDeviceUnknowniPhone,
 	UIDeviceUnknowniPod,
+	UIDeviceIFPGA,
+	UIDeviceiProd1G,
+	UIDeviceiProd2G,
 } UIDevicePlatform;
 
 typedef enum {
@@ -62,7 +76,19 @@ enum {
 	UIDeviceSupportsBrightnessSensor = 1 << 20,
 	UIDeviceSupportsPeerToPeer = 1 << 21,
 	UIDeviceSupportsARMV7 = 1 << 22,
+	UIDeviceSupportsEncodeAAC = 1 << 23,
+	UIDeviceSupportBluetooth = 1 << 24,
+	UIDeviceSupportNike = 1 << 25,
+	UIDeviceSupportPiezoClicker = 1 << 26,
+	UIDeviceSupportVolumeButtons = 1 << 27,
 };
+
+/*
+ NOT Covered:
+ launch-applications-while-animating, load-thumbnails-while-scrolling,
+ delay-sleep-for-headset-click, Unified iPod, standalone contacts,
+ fcc-logos-via-software, gas-gauge-battery & hiccough-interval
+ */
 
 @interface UIDevice (Hardware)
 - (NSString *) platform;

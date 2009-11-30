@@ -16,13 +16,20 @@
 
 /*
  Platforms
+ 
+ iFPGA ->		??
+ iProd0,1 ->	??
+ iProd1,1 ->	??
 
- iPhone1,1 -> iPhone 1G
- iPhone1,2 -> iPhone 3G
- iPhone2,1 -> iPhone 3GS
+ iPhone1,1 ->	iPhone 1G
+ iPhone1,2 ->	iPhone 3G
+ iPhone2,1 ->	iPhone 3GS
+ iPhone 3,1 ->	iPhone 4G
  
  iPod1,1   -> iPod touch 1G 
  iPod2,1   -> iPod touch 2G 
+ iPod2,2   -> iPod touch 2.5G
+ iPod3,1   -> iPod touch 3G
  
  i386 -> iPhone Simulator
 */
@@ -98,13 +105,22 @@
 - (NSUInteger) platformType
 {
 	NSString *platform = [self platform];
-	if ([platform isEqualToString:@"iPhone1,1"]) return UIDevice1GiPhone;
-	if ([platform isEqualToString:@"iPhone1,2"]) return UIDevice3GiPhone;
-	if ([platform isEqualToString:@"iPhone2,1"])   return UIDevice3GSiPhone;
+	// if ([platform isEqualToString:@"XX"])			return UIDeviceUnknown;
+	
+	if ([platform isEqualToString:@"iFPGA"])		return UIDeviceIFPGA;
+	if ([platform isEqualToString:@"iProd0,1"])		return UIDeviceiProd1G;
+	if ([platform isEqualToString:@"iProd1,1"])		return UIDeviceiProd2G;
+
+	if ([platform isEqualToString:@"iPhone1,1"])	return UIDevice1GiPhone;
+	if ([platform isEqualToString:@"iPhone1,2"])	return UIDevice3GiPhone;
+	if ([platform isEqualToString:@"iPhone2,1"])	return UIDevice3GSiPhone;
+	if ([platform isEqualToString:@"iPhone3,1"])	return UIDevice4GiPhone;
 	
 	if ([platform isEqualToString:@"iPod1,1"])   return UIDevice1GiPod;
 	if ([platform isEqualToString:@"iPod2,1"])   return UIDevice2GiPod;
+	if ([platform isEqualToString:@"iPod2,2"])   return UIDevice2GPlusiPod;
 	if ([platform isEqualToString:@"iPod3,1"])   return UIDevice3GiPod;
+	if ([platform isEqualToString:@"iPod4,1"])   return UIDevice4GiPod;
 	
 	if ([platform hasPrefix:@"iPhone"]) return UIDeviceUnknowniPhone;
 	if ([platform hasPrefix:@"iPod"]) return UIDeviceUnknowniPod;
@@ -120,14 +136,20 @@
 		case UIDevice1GiPhone: return IPHONE_1G_NAMESTRING;
 		case UIDevice3GiPhone: return IPHONE_3G_NAMESTRING;
 		case UIDevice3GSiPhone:	return IPHONE_3GS_NAMESTRING;
+		case UIDevice4GiPhone:	return IPHONE_4G_NAMESTRING;
 		case UIDeviceUnknowniPhone: return IPHONE_UNKNOWN_NAMESTRING;
 		
 		case UIDevice1GiPod: return IPOD_1G_NAMESTRING;
 		case UIDevice2GiPod: return IPOD_2G_NAMESTRING;
 		case UIDevice3GiPod: return IPOD_3G_NAMESTRING;
+		case UIDevice4GiPod: return IPOD_4G_NAMESTRING;
 		case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
 			
 		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
+			
+		case UIDeviceiProd1G: return IPROD_1G_NAMESTRING;
+		case UIDeviceiProd2G: return IPROD_2G_NAMESTRING;
+		case UIDeviceIFPGA: return IFPGA_NAMESTRING;
 
 		default: return IPOD_FAMILY_UNKNOWN_DEVICE;
 	}
@@ -162,7 +184,13 @@
 			 // UIDeviceSupportsVoiceControl |
 			 // UIDeviceSupportsPeerToPeer |
 			 // UIDeviceSupportsARMV7 |
-			 UIDeviceSupportsBrightnessSensor);
+			 UIDeviceSupportsBrightnessSensor |
+			 UIDeviceSupportsEncodeAAC |
+			 UIDeviceSupportBluetooth | // M68.plist says YES for this
+			 // UIDeviceSupportNike |
+			 // UIDeviceSupportPiezoClicker |
+			 UIDeviceSupportVolumeButtons
+			 );
 			
 		case UIDevice3GiPhone: 
 			return
@@ -188,7 +216,13 @@
 			 // UIDeviceSupportsVoiceControl |
 			 UIDeviceSupportsPeerToPeer |
 			 // UIDeviceSupportsARMV7 |
-			 UIDeviceSupportsBrightnessSensor);
+			 UIDeviceSupportsBrightnessSensor |
+			 UIDeviceSupportsEncodeAAC |
+			 UIDeviceSupportBluetooth |
+			 UIDeviceSupportNike |
+			 // UIDeviceSupportPiezoClicker |
+			 UIDeviceSupportVolumeButtons
+			 );
 			
 		case UIDevice3GSiPhone: 
 			return
@@ -214,8 +248,13 @@
 			 UIDeviceSupportsVoiceControl |
 			 UIDeviceSupportsPeerToPeer |
 			 UIDeviceSupportsARMV7 |
-			 UIDeviceSupportsBrightnessSensor);
-			
+			 UIDeviceSupportsBrightnessSensor |
+			 UIDeviceSupportsEncodeAAC |
+			 UIDeviceSupportBluetooth |
+			 UIDeviceSupportNike |
+			 // UIDeviceSupportPiezoClicker |
+			 UIDeviceSupportVolumeButtons
+			 );			
 		case UIDeviceUnknowniPhone: return 0;
 			
 		case UIDevice1GiPod: 
@@ -240,9 +279,16 @@
 			 // UIDeviceSupportsAccessibility  |
 			 // UIDeviceSupportsVoiceOver |
 			 // UIDeviceSupportsVoiceControl |
-			 UIDeviceSupportsBrightnessSensor);
+			 UIDeviceSupportsBrightnessSensor |
+			 // UIDeviceSupportsEncodeAAC |
+			 // UIDeviceSupportBluetooth |
+			 // UIDeviceSupportNike |
+			 UIDeviceSupportPiezoClicker |
+			 // UIDeviceSupportVolumeButtons
+			 );
 			
 		case UIDevice2GiPod: 
+		case UIDevice2GPlusiPod:
 			return
 			(// UIDeviceSupportsTelephony  |
 			 // UIDeviceSupportsSMS  |
@@ -266,7 +312,14 @@
 			 // UIDeviceSupportsVoiceControl |
 			 UIDeviceSupportsPeerToPeer |
 			 // UIDeviceSupportsARMV7 |
-			 UIDeviceSupportsBrightnessSensor);
+			 UIDeviceSupportsBrightnessSensor |
+			UIDeviceSupportsEncodeAAC |
+			UIDeviceSupportBluetooth |
+			UIDeviceSupportNike |
+			// UIDeviceSupportPiezoClicker |
+			UIDeviceSupportVolumeButtons
+			 );
+			
 			
 		case UIDevice3GiPod: 
 			return
@@ -292,8 +345,13 @@
 			 UIDeviceSupportsVoiceControl |
 			 UIDeviceSupportsPeerToPeer |
 			 UIDeviceSupportsARMV7 |
-			 UIDeviceSupportsBrightnessSensor);			
-			
+			 UIDeviceSupportsBrightnessSensor |
+			 UIDeviceSupportsEncodeAAC |
+			 UIDeviceSupportBluetooth |
+			 UIDeviceSupportNike |
+			 // UIDeviceSupportPiezoClicker |
+			 UIDeviceSupportVolumeButtons
+			 );			
 		case UIDeviceUnknowniPod:  return 0;
 			
 		case UIDeviceiPhoneSimulator: 
@@ -314,13 +372,19 @@
 			 // UIDeviceSupportsOPENGLES2  |
 			 UIDeviceSupportsAccessibility  | // with limitations
 			 UIDeviceSupportsVoiceOver | // with limitations
-			 UIDeviceBuiltInSpeaker);
+			 UIDeviceBuiltInSpeaker |
 			// UIDeviceSupportsVibration  |
 			// UIDeviceBuiltInProximitySensor  |
 			// UIDeviceSupportsVoiceControl |
 			// UIDeviceSupportsPeerToPeer |
 			// UIDeviceSupportsARMV7 |
-			// UIDeviceSupportsBrightnessSensor;
+			// UIDeviceSupportsBrightnessSensor |
+			// UIDeviceSupportsEncodeAAC |
+			// UIDeviceSupportBluetooth |
+			// UIDeviceSupportNike |
+			// UIDeviceSupportPiezoClicker |
+			// UIDeviceSupportVolumeButtons
+			);
 		default: return 0;
 	}
 }
@@ -414,7 +478,7 @@
 			
 		case UIDevice1GiPod: return @"N45";
 		case UIDevice2GiPod: return @"N72";
-		//  case UIDevice3GiPod: return @"N80"; 
+		case UIDevice3GiPod: return @"N18"; 
 		case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
 			
 		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
