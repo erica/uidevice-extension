@@ -176,9 +176,9 @@
 			 UIDeviceSupportsExternalMicrophone  |
 			 UIDeviceSupportsOPENGLES1_1  |
 			 // UIDeviceSupportsOPENGLES2  |
-			 UIDeviceBuiltInSpeaker  |
+			 UIDeviceSupportsBuiltInSpeaker  |
 			 UIDeviceSupportsVibration  |
-			 UIDeviceBuiltInProximitySensor  |
+			 UIDeviceSupportsBuiltInProximitySensor  |
 			 // UIDeviceSupportsAccessibility  |
 			 // UIDeviceSupportsVoiceOver |
 			 // UIDeviceSupportsVoiceControl |
@@ -189,7 +189,7 @@
 			 UIDeviceSupportsBluetooth | // M68.plist says YES for this
 			 // UIDeviceSupportsNike |
 			 // UIDeviceSupportsPiezoClicker |
-			 UIDeviceSupportVolumeButtons
+			 UIDeviceSupportsVolumeButtons
 			 );
 			
 		case UIDevice3GiPhone: 
@@ -208,9 +208,9 @@
 			 UIDeviceSupportsExternalMicrophone  |
 			 UIDeviceSupportsOPENGLES1_1  |
 			 // UIDeviceSupportsOPENGLES2  |
-			 UIDeviceBuiltInSpeaker  |
+			 UIDeviceSupportsBuiltInSpeaker  |
 			 UIDeviceSupportsVibration  |
-			 UIDeviceBuiltInProximitySensor  |
+			 UIDeviceSupportsBuiltInProximitySensor  |
 			 // UIDeviceSupportsAccessibility  |
 			 // UIDeviceSupportsVoiceOver |
 			 // UIDeviceSupportsVoiceControl |
@@ -221,7 +221,7 @@
 			 UIDeviceSupportsBluetooth |
 			 UIDeviceSupportsNike |
 			 // UIDeviceSupportsPiezoClicker |
-			 UIDeviceSupportVolumeButtons
+			 UIDeviceSupportsVolumeButtons
 			 );
 			
 		case UIDevice3GSiPhone: 
@@ -240,9 +240,9 @@
 			 UIDeviceSupportsExternalMicrophone  |
 			 UIDeviceSupportsOPENGLES1_1  |
 			 UIDeviceSupportsOPENGLES2  |
-			 UIDeviceBuiltInSpeaker  |
+			 UIDeviceSupportsBuiltInSpeaker  |
 			 UIDeviceSupportsVibration  |
-			 UIDeviceBuiltInProximitySensor  |
+			 UIDeviceSupportsBuiltInProximitySensor  |
 			 UIDeviceSupportsAccessibility  |
 			 UIDeviceSupportsVoiceOver |
 			 UIDeviceSupportsVoiceControl |
@@ -253,7 +253,7 @@
 			 UIDeviceSupportsBluetooth |
 			 UIDeviceSupportsNike |
 			 // UIDeviceSupportsPiezoClicker |
-			 UIDeviceSupportVolumeButtons
+			 UIDeviceSupportsVolumeButtons
 			 );			
 		case UIDeviceUnknowniPhone: return 0;
 			
@@ -273,9 +273,9 @@
 			 UIDeviceSupportsExternalMicrophone  |
 			 UIDeviceSupportsOPENGLES1_1  |
 			 // UIDeviceSupportsOPENGLES2  |
-			 // UIDeviceBuiltInSpeaker  |
+			 // UIDeviceSupportsBuiltInSpeaker  |
 			 // UIDeviceSupportsVibration  |
-			 // UIDeviceBuiltInProximitySensor  |
+			 // UIDeviceSupportsBuiltInProximitySensor  |
 			 // UIDeviceSupportsAccessibility  |
 			 // UIDeviceSupportsVoiceOver |
 			 // UIDeviceSupportsVoiceControl |
@@ -283,8 +283,8 @@
 			 // UIDeviceSupportsEncodeAAC |
 			 // UIDeviceSupportsBluetooth |
 			 // UIDeviceSupportsNike |
-			 UIDeviceSupportsPiezoClicker |
-			 // UIDeviceSupportVolumeButtons
+			 UIDeviceSupportsPiezoClicker
+			 // UIDeviceSupportsVolumeButtons
 			 );
 			
 		case UIDevice2GiPod: 
@@ -304,9 +304,9 @@
 			 UIDeviceSupportsExternalMicrophone  |
 			 UIDeviceSupportsOPENGLES1_1  |
 			 // UIDeviceSupportsOPENGLES2  |
-			 UIDeviceBuiltInSpeaker  |
+			 UIDeviceSupportsBuiltInSpeaker  |
 			 // UIDeviceSupportsVibration  |
-			 // UIDeviceBuiltInProximitySensor  |
+			 // UIDeviceSupportsBuiltInProximitySensor  |
 			 // UIDeviceSupportsAccessibility  |
 			 // UIDeviceSupportsVoiceOver |
 			 // UIDeviceSupportsVoiceControl |
@@ -317,7 +317,7 @@
 			UIDeviceSupportsBluetooth |
 			UIDeviceSupportsNike |
 			// UIDeviceSupportsPiezoClicker |
-			UIDeviceSupportVolumeButtons
+			UIDeviceSupportsVolumeButtons
 			 );
 			
 			
@@ -337,9 +337,9 @@
 			 UIDeviceSupportsExternalMicrophone  |
 			 UIDeviceSupportsOPENGLES1_1  |
 			 UIDeviceSupportsOPENGLES2  |
-			 UIDeviceBuiltInSpeaker  |
+			 UIDeviceSupportsBuiltInSpeaker  |
 			 // UIDeviceSupportsVibration  |
-			 // UIDeviceBuiltInProximitySensor  |
+			 // UIDeviceSupportsBuiltInProximitySensor  |
 			 UIDeviceSupportsAccessibility  |
 			 UIDeviceSupportsVoiceOver |
 			 UIDeviceSupportsVoiceControl |
@@ -350,7 +350,7 @@
 			 UIDeviceSupportsBluetooth |
 			 UIDeviceSupportsNike |
 			 // UIDeviceSupportsPiezoClicker |
-			 UIDeviceSupportVolumeButtons
+			 UIDeviceSupportsVolumeButtons
 			 );			
 		case UIDeviceUnknowniPod:  return 0;
 			
@@ -372,9 +372,9 @@
 			 // UIDeviceSupportsOPENGLES2  |
 			 UIDeviceSupportsAccessibility  | // with limitations
 			 UIDeviceSupportsVoiceOver | // with limitations
-			 UIDeviceBuiltInSpeaker |
+			 UIDeviceSupportsBuiltInSpeaker
 			// UIDeviceSupportsVibration  |
-			// UIDeviceBuiltInProximitySensor  |
+			// UIDeviceSupportsBuiltInProximitySensor  |
 			// UIDeviceSupportsVoiceControl |
 			// UIDeviceSupportsPeerToPeer |
 			// UIDeviceSupportsARMV7 |
@@ -383,7 +383,7 @@
 			// UIDeviceSupportsBluetooth |
 			// UIDeviceSupportsNike |
 			// UIDeviceSupportsPiezoClicker |
-			// UIDeviceSupportVolumeButtons
+			// UIDeviceSupportsVolumeButtons
 			);
 		default: return 0;
 	}
@@ -399,25 +399,34 @@
 	if (flags & UIDeviceSupportsStillCamera) [array addObject:@"Still Camera"];
 	if (flags & UIDeviceSupportsAutofocusCamera) [array addObject:@"AutoFocus Camera"];
 	if (flags & UIDeviceSupportsVideoCamera) [array addObject:@"Video Camera"];
+
 	if (flags & UIDeviceSupportsWifi) [array addObject:@"WiFi"];
 	if (flags & UIDeviceSupportsAccelerometer) [array addObject:@"Accelerometer"];
 	if (flags & UIDeviceSupportsLocationServices) [array addObject:@"Location Services"];
 	if (flags & UIDeviceSupportsGPS) [array addObject:@"GPS"];
 	if (flags & UIDeviceSupportsMagnetometer) [array addObject:@"Magnetometer"];
+
 	if (flags & UIDeviceSupportsBuiltInMicrophone) [array addObject:@"Built-in Microphone"];
 	if (flags & UIDeviceSupportsExternalMicrophone) [array addObject:@"External Microphone Support"];
 	if (flags & UIDeviceSupportsOPENGLES1_1) [array addObject:@"OpenGL ES 1.1"];
 	if (flags & UIDeviceSupportsOPENGLES2) [array addObject:@"OpenGL ES 2.x"];
-	if (flags & UIDeviceBuiltInSpeaker) [array addObject:@"Built-in Speaker"];
+	if (flags & UIDeviceSupportsBuiltInSpeaker) [array addObject:@"Built-in Speaker"];
+
 	if (flags & UIDeviceSupportsVibration) [array addObject:@"Vibration"];
-	if (flags & UIDeviceBuiltInProximitySensor) [array addObject:@"Proximity Sensor"];
+	if (flags & UIDeviceSupportsBuiltInProximitySensor) [array addObject:@"Proximity Sensor"];
 	if (flags & UIDeviceSupportsAccessibility) [array addObject:@"Accessibility"];
 	if (flags & UIDeviceSupportsVoiceOver) [array addObject:@"VoiceOver"];
 	if (flags & UIDeviceSupportsVoiceControl) [array addObject:@"Voice Control"];
+
 	if (flags & UIDeviceSupportsBrightnessSensor) [array addObject:@"Brightness Sensor"];
 	if (flags & UIDeviceSupportsPeerToPeer) [array addObject:@"Peer to Peer Bluetooth"];
 	if (flags & UIDeviceSupportsARMV7) [array addObject:@"The armv7 instruction set"];
-	if (flags & UIDeviceSupportsEncodeAAC
+	if (flags & UIDeviceSupportsEncodeAAC) [array addObject:@"AAC Encoding"];
+	if (flags & UIDeviceSupportsBluetooth) [array addObject:@"Basic Bluetooth"];
+
+	if (flags & UIDeviceSupportsNike) [array addObject:@"Nike"];
+	if (flags & UIDeviceSupportsPiezoClicker) [array addObject:@"Piezo clicker"];
+	if (flags & UIDeviceSupportsVolumeButtons) [array addObject:@"Physical volume rocker"];
 	
 	return array;
 }

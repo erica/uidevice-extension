@@ -67,9 +67,9 @@ enum {
 	UIDeviceSupportsExternalMicrophone = 1 << 11,
 	UIDeviceSupportsOPENGLES1_1 = 1 << 12,
 	UIDeviceSupportsOPENGLES2 = 1 << 13,
-	UIDeviceBuiltInSpeaker = 1 << 14,
+	UIDeviceSupportsBuiltInSpeaker = 1 << 14,
 	UIDeviceSupportsVibration = 1 << 15,
-	UIDeviceBuiltInProximitySensor = 1 << 16,
+	UIDeviceSupportsBuiltInProximitySensor = 1 << 16,
 	UIDeviceSupportsAccessibility = 1 << 17,
 	UIDeviceSupportsVoiceOver = 1 << 18,
 	UIDeviceSupportsVoiceControl = 1 << 19,
@@ -80,7 +80,7 @@ enum {
 	UIDeviceSupportsBluetooth = 1 << 24,
 	UIDeviceSupportsNike = 1 << 25,
 	UIDeviceSupportsPiezoClicker = 1 << 26,
-	UIDeviceSupportVolumeButtons = 1 << 27,
+	UIDeviceSupportsVolumeButtons = 1 << 27,
 };
 
 /*
