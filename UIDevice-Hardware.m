@@ -219,7 +219,7 @@
 			 UIDeviceSupportsBrightnessSensor |
 			 UIDeviceSupportsEncodeAAC |
 			 UIDeviceSupportsBluetooth |
-			 UIDeviceSupportsNike |
+			 // UIDeviceSupportsNike |
 			 // UIDeviceSupportsPiezoClicker |
 			 UIDeviceSupportsVolumeButtons
 			 );
