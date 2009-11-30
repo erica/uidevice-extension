@@ -186,9 +186,9 @@
 			 // UIDeviceSupportsARMV7 |
 			 UIDeviceSupportsBrightnessSensor |
 			 UIDeviceSupportsEncodeAAC |
-			 UIDeviceSupportBluetooth | // M68.plist says YES for this
-			 // UIDeviceSupportNike |
-			 // UIDeviceSupportPiezoClicker |
+			 UIDeviceSupportsBluetooth | // M68.plist says YES for this
+			 // UIDeviceSupportsNike |
+			 // UIDeviceSupportsPiezoClicker |
 			 UIDeviceSupportVolumeButtons
 			 );
 			
@@ -218,9 +218,9 @@
 			 // UIDeviceSupportsARMV7 |
 			 UIDeviceSupportsBrightnessSensor |
 			 UIDeviceSupportsEncodeAAC |
-			 UIDeviceSupportBluetooth |
-			 UIDeviceSupportNike |
-			 // UIDeviceSupportPiezoClicker |
+			 UIDeviceSupportsBluetooth |
+			 UIDeviceSupportsNike |
+			 // UIDeviceSupportsPiezoClicker |
 			 UIDeviceSupportVolumeButtons
 			 );
 			
@@ -250,9 +250,9 @@
 			 UIDeviceSupportsARMV7 |
 			 UIDeviceSupportsBrightnessSensor |
 			 UIDeviceSupportsEncodeAAC |
-			 UIDeviceSupportBluetooth |
-			 UIDeviceSupportNike |
-			 // UIDeviceSupportPiezoClicker |
+			 UIDeviceSupportsBluetooth |
+			 UIDeviceSupportsNike |
+			 // UIDeviceSupportsPiezoClicker |
 			 UIDeviceSupportVolumeButtons
 			 );			
 		case UIDeviceUnknowniPhone: return 0;
@@ -281,9 +281,9 @@
 			 // UIDeviceSupportsVoiceControl |
 			 UIDeviceSupportsBrightnessSensor |
 			 // UIDeviceSupportsEncodeAAC |
-			 // UIDeviceSupportBluetooth |
-			 // UIDeviceSupportNike |
-			 UIDeviceSupportPiezoClicker |
+			 // UIDeviceSupportsBluetooth |
+			 // UIDeviceSupportsNike |
+			 UIDeviceSupportsPiezoClicker |
 			 // UIDeviceSupportVolumeButtons
 			 );
 			
@@ -314,9 +314,9 @@
 			 // UIDeviceSupportsARMV7 |
 			 UIDeviceSupportsBrightnessSensor |
 			UIDeviceSupportsEncodeAAC |
-			UIDeviceSupportBluetooth |
-			UIDeviceSupportNike |
-			// UIDeviceSupportPiezoClicker |
+			UIDeviceSupportsBluetooth |
+			UIDeviceSupportsNike |
+			// UIDeviceSupportsPiezoClicker |
 			UIDeviceSupportVolumeButtons
 			 );
 			
@@ -347,9 +347,9 @@
 			 UIDeviceSupportsARMV7 |
 			 UIDeviceSupportsBrightnessSensor |
 			 UIDeviceSupportsEncodeAAC |
-			 UIDeviceSupportBluetooth |
-			 UIDeviceSupportNike |
-			 // UIDeviceSupportPiezoClicker |
+			 UIDeviceSupportsBluetooth |
+			 UIDeviceSupportsNike |
+			 // UIDeviceSupportsPiezoClicker |
 			 UIDeviceSupportVolumeButtons
 			 );			
 		case UIDeviceUnknowniPod:  return 0;
@@ -380,9 +380,9 @@
 			// UIDeviceSupportsARMV7 |
 			// UIDeviceSupportsBrightnessSensor |
 			// UIDeviceSupportsEncodeAAC |
-			// UIDeviceSupportBluetooth |
-			// UIDeviceSupportNike |
-			// UIDeviceSupportPiezoClicker |
+			// UIDeviceSupportsBluetooth |
+			// UIDeviceSupportsNike |
+			// UIDeviceSupportsPiezoClicker |
 			// UIDeviceSupportVolumeButtons
 			);
 		default: return 0;
@@ -417,6 +417,7 @@
 	if (flags & UIDeviceSupportsBrightnessSensor) [array addObject:@"Brightness Sensor"];
 	if (flags & UIDeviceSupportsPeerToPeer) [array addObject:@"Peer to Peer Bluetooth"];
 	if (flags & UIDeviceSupportsARMV7) [array addObject:@"The armv7 instruction set"];
+	if (flags & UIDeviceSupportsEncodeAAC
 	
 	return array;
 }

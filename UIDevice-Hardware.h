@@ -77,9 +77,9 @@ enum {
 	UIDeviceSupportsPeerToPeer = 1 << 21,
 	UIDeviceSupportsARMV7 = 1 << 22,
 	UIDeviceSupportsEncodeAAC = 1 << 23,
-	UIDeviceSupportBluetooth = 1 << 24,
-	UIDeviceSupportNike = 1 << 25,
-	UIDeviceSupportPiezoClicker = 1 << 26,
+	UIDeviceSupportsBluetooth = 1 << 24,
+	UIDeviceSupportsNike = 1 << 25,
+	UIDeviceSupportsPiezoClicker = 1 << 26,
 	UIDeviceSupportVolumeButtons = 1 << 27,
 };
 
