@@ -79,7 +79,7 @@ static void MyCFWriteStreamClientCallBack(CFWriteStreamRef stream, CFStreamEvent
 {
 	MyStreamInfoPtr	myInfoPtr = (MyStreamInfoPtr) clientCallBackInfo;
 	
-	printf("MyCFWriteStreamClientCallBack entered - event is %d\n", type);
+	printf("MyCFWriteStreamClientCallBack entered - event is %d\n", (int) type);
 	
 	switch (type)
 	{
@@ -97,11 +97,10 @@ static void MyCFWriteStreamClientCallBack(CFWriteStreamRef stream, CFStreamEvent
 		case kCFStreamEventErrorOccurred:
 			myInfoPtr->errorOccurred = TRUE;
 			myInfoPtr->error = CFWriteStreamGetError(myInfoPtr->wStreamRef);
-			printf("write stream error %d .. giving up\n", myInfoPtr->error.error);
+			printf("write stream error %d .. giving up\n", (int)myInfoPtr->error.error);
 			break;
 			
 		default:
-			printf("event type %d occurred\n");
 			break;
 	}
 	// stop the run loop at this point
