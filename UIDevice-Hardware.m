@@ -434,6 +434,7 @@
 #pragma mark MAC addy
 // Return the local MAC addy
 // Courtesy of FreeBSD hackers email list
+// Accidentally munged during previous update. Fixed thanks to mlamb.
 - (NSString *) macaddress
 {
 	int					mib[6];
@@ -470,9 +471,9 @@
 	}
 	
 	ifm = (struct if_msghdr *)buf;
-	sdl = (struct sockaddr_dl *)(ifm - 1);
+	sdl = (struct sockaddr_dl *)(ifm + 1);
 	ptr = (unsigned char *)LLADDR(sdl);
-	NSString *outstring = [NSString stringWithFormat:@"%02x:%02x:%02x:%02x:%02x:%02x", *ptr, *(ptr-1), *(ptr-2), *(ptr-3), *(ptr-4), *(ptr-5)];
+	NSString *outstring = [NSString stringWithFormat:@"%02x:%02x:%02x:%02x:%02x:%02x", *ptr, *(ptr+1), *(ptr+2), *(ptr+3), *(ptr+4), *(ptr+5)];
 	free(buf);
 	return [outstring uppercaseString];
 }
