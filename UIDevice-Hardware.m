@@ -32,6 +32,8 @@
  iPod3,1   -> iPod touch 3G
  
  i386 -> iPhone Simulator
+ 
+ Tablet1,1 ->  Tablet 1G
 */
 
 
@@ -122,6 +124,8 @@
 	if ([platform isEqualToString:@"iPod3,1"])   return UIDevice3GiPod;
 	if ([platform isEqualToString:@"iPod4,1"])   return UIDevice4GiPod;
 	
+	// if ([platform isEqualToString:@"Tablet1,1"])   return UIDevice1GTablet; // space holder
+	
 	if ([platform hasPrefix:@"iPhone"]) return UIDeviceUnknowniPhone;
 	if ([platform hasPrefix:@"iPod"]) return UIDeviceUnknowniPod;
 	
@@ -145,12 +149,14 @@
 		case UIDevice4GiPod: return IPOD_4G_NAMESTRING;
 		case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
 			
+		case UIDevice1GTablet : return TABLET_1G_NAMESTRING;
+			
 		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
 			
 		case UIDeviceiProd1G: return IPROD_1G_NAMESTRING;
 		case UIDeviceiProd2G: return IPROD_2G_NAMESTRING;
 		case UIDeviceIFPGA: return IFPGA_NAMESTRING;
-
+			
 		default: return IPOD_FAMILY_UNKNOWN_DEVICE;
 	}
 }
@@ -354,6 +360,39 @@
 			 );			
 		case UIDeviceUnknowniPod:  return 0;
 			
+		case UIDevice1GiPod:
+			return
+			(// UIDeviceSupportsTelephony  |
+			 // UIDeviceSupportsSMS  |
+			 // UIDeviceSupportsStillCamera  |
+			 // UIDeviceSupportsAutofocusCamera |
+			 // UIDeviceSupportsVideoCamera  |
+			 UIDeviceSupportsWifi  |
+			 UIDeviceSupportsAccelerometer  |
+			 UIDeviceSupportsLocationServices  |
+			 // UIDeviceSupportsGPS  |
+			 // UIDeviceSupportsMagnetometer  |
+			 UIDeviceSupportsBuiltInMicrophone  |
+			 UIDeviceSupportsExternalMicrophone  |
+			 UIDeviceSupportsOPENGLES1_1  |
+			 UIDeviceSupportsOPENGLES2  |
+			 UIDeviceSupportsBuiltInSpeaker  |
+			 // UIDeviceSupportsVibration  |
+			 // UIDeviceSupportsBuiltInProximitySensor  |
+			 UIDeviceSupportsAccessibility  |
+			 UIDeviceSupportsVoiceOver |
+			 UIDeviceSupportsVoiceControl |
+			 UIDeviceSupportsPeerToPeer |
+			 UIDeviceSupportsARMV7 |
+			 UIDeviceSupportsBrightnessSensor |
+			 UIDeviceSupportsEncodeAAC |
+			 UIDeviceSupportsBluetooth |
+			 UIDeviceSupportsNike |
+			 // UIDeviceSupportsPiezoClicker |
+			 UIDeviceSupportsVolumeButtons |
+			 UIDeviceSupportsEnhancedMultitouch
+			 );	
+			
 		case UIDeviceiPhoneSimulator: 
 			return
 			(// UIDeviceSupportsTelephony  |
@@ -428,6 +467,8 @@
 	if (flags & UIDeviceSupportsPiezoClicker) [array addObject:@"Piezo clicker"];
 	if (flags & UIDeviceSupportsVolumeButtons) [array addObject:@"Physical volume rocker"];
 	
+	if (flags & UIDeviceSupportsEnhancedMultitouch) [array addObject:@"Enhanced Multitouch"];
+	
 	return array;
 }
 
@@ -491,6 +532,8 @@
 		case UIDevice2GiPod: return @"N72";
 		case UIDevice3GiPod: return @"N18"; 
 		case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
+			
+		case UIDevice1GTablet: return @"K48AP"; // http://www.boygeniusreport.com/2010/01/13/apples-tablet-is-an-iphone-on-steroids/
 			
 		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
 			

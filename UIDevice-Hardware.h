@@ -24,6 +24,8 @@
 #define IPROD_1G_NAMESTRING				@"iProd 1G"
 #define IPROD_2G_NAMESTRING				@"iProd 2G"
 
+#define TABLET_1G_NAMESTRING			@"Tablet"
+
 #define IPOD_FAMILY_UNKNOWN_DEVICE @"Unknown device in the iPhone/iPod family"
 
 #define IPHONE_SIMULATOR_NAMESTRING	@"iPhone Simulator"
@@ -40,6 +42,7 @@ typedef enum {
 	UIDevice2GPlusiPod,
 	UIDevice3GiPod,
 	UIDevice4GiPod,
+	UIDevice1GTablet,
 	UIDeviceUnknowniPhone,
 	UIDeviceUnknowniPod,
 	UIDeviceIFPGA,
@@ -50,6 +53,7 @@ typedef enum {
 typedef enum {
 	UIDeviceFirmware2,
 	UIDeviceFirmware3,
+	UIDeviceFirmware4,
 } UIDeviceFirmware;
 
 enum {
@@ -81,6 +85,7 @@ enum {
 	UIDeviceSupportsNike = 1 << 25,
 	UIDeviceSupportsPiezoClicker = 1 << 26,
 	UIDeviceSupportsVolumeButtons = 1 << 27,
+	UIDeviceSupportsEnhancedMultitouch = 1 << 28, // http://www.boygeniusreport.com/2010/01/13/apples-tablet-is-an-iphone-on-steroids/
 };
 
 /*
