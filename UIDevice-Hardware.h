@@ -24,7 +24,8 @@
 #define IPROD_1G_NAMESTRING				@"iProd 1G"
 #define IPROD_2G_NAMESTRING				@"iProd 2G"
 
-#define TABLET_1G_NAMESTRING			@"Tablet"
+#define IPAD_1G_NAMESTRING				@"iPad 1G"
+#define IPAD3G_1G_NAMESTRING			@"iPad3G 1G"
 
 #define IPOD_FAMILY_UNKNOWN_DEVICE @"Unknown device in the iPhone/iPod family"
 
@@ -42,7 +43,8 @@ typedef enum {
 	UIDevice2GPlusiPod,
 	UIDevice3GiPod,
 	UIDevice4GiPod,
-	UIDevice1GTablet,
+	UIDevice1GiPad,
+	UIDevice1GiPad3G,
 	UIDeviceUnknowniPhone,
 	UIDeviceUnknowniPod,
 	UIDeviceIFPGA,

@@ -149,7 +149,8 @@
 		case UIDevice4GiPod: return IPOD_4G_NAMESTRING;
 		case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
 			
-		case UIDevice1GTablet : return TABLET_1G_NAMESTRING;
+		case UIDevice1GiPad : return IPAD_1G_NAMESTRING;
+		case UIDevice1GiPad3G : return IPAD3G_1G_NAMESTRING;
 			
 		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
 			
@@ -360,7 +361,7 @@
 			 );			
 		case UIDeviceUnknowniPod:  return 0;
 			
-		case UIDevice1GiPod:
+		case UIDevice1GiPad:
 			return
 			(// UIDeviceSupportsTelephony  |
 			 // UIDeviceSupportsSMS  |
@@ -392,6 +393,39 @@
 			 UIDeviceSupportsVolumeButtons |
 			 UIDeviceSupportsEnhancedMultitouch
 			 );	
+			
+		case UIDevice1GiPad3G:
+			return
+			(// UIDeviceSupportsTelephony  |
+			 UIDeviceSupportsSMS  |
+			 // UIDeviceSupportsStillCamera  |
+			 // UIDeviceSupportsAutofocusCamera |
+			 // UIDeviceSupportsVideoCamera  |
+			 UIDeviceSupportsWifi  |
+			 UIDeviceSupportsAccelerometer  |
+			 UIDeviceSupportsLocationServices  |
+			 UIDeviceSupportsGPS  |
+			 // UIDeviceSupportsMagnetometer  |
+			 UIDeviceSupportsBuiltInMicrophone  |
+			 UIDeviceSupportsExternalMicrophone  |
+			 UIDeviceSupportsOPENGLES1_1  |
+			 UIDeviceSupportsOPENGLES2  |
+			 UIDeviceSupportsBuiltInSpeaker  |
+			 // UIDeviceSupportsVibration  |
+			 // UIDeviceSupportsBuiltInProximitySensor  |
+			 UIDeviceSupportsAccessibility  |
+			 UIDeviceSupportsVoiceOver |
+			 UIDeviceSupportsVoiceControl |
+			 UIDeviceSupportsPeerToPeer |
+			 UIDeviceSupportsARMV7 |
+			 UIDeviceSupportsBrightnessSensor |
+			 UIDeviceSupportsEncodeAAC |
+			 UIDeviceSupportsBluetooth |
+			 UIDeviceSupportsNike |
+			 // UIDeviceSupportsPiezoClicker |
+			 UIDeviceSupportsVolumeButtons |
+			 UIDeviceSupportsEnhancedMultitouch
+			 );				
 			
 		case UIDeviceiPhoneSimulator: 
 			return
@@ -526,14 +560,17 @@
 		case UIDevice1GiPhone: return @"M68";
 		case UIDevice3GiPhone: return @"N82";
 		case UIDevice3GSiPhone:	return @"N88";
+		case UIDevice4GiPhone: return @"N89";
 		case UIDeviceUnknowniPhone: return IPHONE_UNKNOWN_NAMESTRING;
 			
 		case UIDevice1GiPod: return @"N45";
 		case UIDevice2GiPod: return @"N72";
 		case UIDevice3GiPod: return @"N18"; 
+		case UIDevice4GiPod: return @"N80";
 		case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
 			
-		case UIDevice1GTablet: return @"K48AP"; // http://www.boygeniusreport.com/2010/01/13/apples-tablet-is-an-iphone-on-steroids/
+		case UIDevice1GiPad: return @"K48"; // http://www.boygeniusreport.com/2010/01/13/apples-tablet-is-an-iphone-on-steroids/
+		case UIDevice1GiPad3G: return @"K48"; // http://www.boygeniusreport.com/2010/01/13/apples-tablet-is-an-iphone-on-steroids/
 			
 		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
 			
