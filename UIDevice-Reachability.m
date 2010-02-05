@@ -201,7 +201,7 @@ SCNetworkReachabilityRef reachability;
 
 
 #pragma mark WiFi Check and Alert
-+ (void) showAlert: (id) formatstring,...
+- (void) privateShowAlert: (id) formatstring,...
 {
 	va_list arglist;
 	if (!formatstring) return;
@@ -217,7 +217,7 @@ SCNetworkReachabilityRef reachability;
 {
 	if (![self networkAvailable] || ![self activeWLAN])
 	{
-		[self performSelector:@selector(showAlert:) withObject:@"This application requires WiFi. Please enable WiFi in Settings and run this application again." afterDelay:0.5f];
+		[self performSelector:@selector(privateShowAlert:) withObject:@"This application requires WiFi. Please enable WiFi in Settings and run this application again." afterDelay:0.5f];
 		return NO;
 	}
 	return YES;
