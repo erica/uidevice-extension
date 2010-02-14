@@ -27,13 +27,17 @@
 #define IPAD_1G_NAMESTRING				@"iPad 1G"
 #define IPAD3G_1G_NAMESTRING			@"iPad3G 1G"
 
-#define IPOD_FAMILY_UNKNOWN_DEVICE @"Unknown device in the iPhone/iPod family"
+#define IPOD_FAMILY_UNKNOWN_DEVICE			@"Unknown device in the iPhone/iPod family"
 
-#define IPHONE_SIMULATOR_NAMESTRING	@"iPhone Simulator"
+#define IPHONE_SIMULATOR_NAMESTRING			@"iPhone Simulator"
+#define IPHONE_SIMULATOR_IPHONE_NAMESTRING	@"iPhone Simulator"
+#define IPHONE_SIMULATOR_IPAD_NAMESTRING	@"iPad Simulator"
 
 typedef enum {
 	UIDeviceUnknown,
 	UIDeviceiPhoneSimulator,
+	UIDeviceiPhoneSimulatoriPhone,
+	UIDeviceiPhoneSimulatoriPad,
 	UIDevice1GiPhone,
 	UIDevice3GiPhone,
 	UIDevice3GSiPhone,

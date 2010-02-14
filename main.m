@@ -65,6 +65,9 @@
 	 */
 	
 	// TESTING DEVICE HARDWARE
+	[self doLog:@"Platform: %@", [[UIDevice currentDevice] platform]];
+	[self doLog:@"Platform String: %@", [[UIDevice currentDevice] platformString]];
+
 	/*
 	[self doLog:@"Device is%@ portrait", [UIDevice currentDevice].isPortrait ? @"" : @" not"];
 	[self doLog:@"Orientation: %@", [UIDevice currentDevice].orientationString];
@@ -80,6 +83,12 @@
 {
 	self.navigationController.navigationBar.tintColor = COOKBOOK_PURPLE_COLOR;
 	self.navigationItem.rightBarButtonItem = BARBUTTON(@"Action", @selector(action:));
+	if ([[[UIDevice currentDevice] platformString] hasPrefix:@"iPad"])
+	{
+		UIImageView *imgView = (UIImageView *)[self.view viewWithTag:999];
+		imgView.frame = [[UIScreen mainScreen] applicationFrame];
+		imgView.image = [UIImage imageNamed:([[UIDevice currentDevice] isLandscape]) ? @"Default-Landscape.png" : @"Default-Portrait.png"];
+	}
 }
 @end
 

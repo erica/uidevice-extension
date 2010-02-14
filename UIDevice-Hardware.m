@@ -129,7 +129,15 @@
 	if ([platform hasPrefix:@"iPhone"]) return UIDeviceUnknowniPhone;
 	if ([platform hasPrefix:@"iPod"]) return UIDeviceUnknowniPod;
 	
-	if ([platform hasSuffix:@"86"]) return UIDeviceiPhoneSimulator;
+	if ([platform hasSuffix:@"86"])
+	{
+		if ([[UIScreen mainScreen] bounds].size.width < 768)
+			return UIDeviceiPhoneSimulatoriPhone;
+		else 
+			return UIDeviceiPhoneSimulatoriPad;
+
+		return UIDeviceiPhoneSimulator;
+	}
 	return UIDeviceUnknown;
 }
 
@@ -153,6 +161,8 @@
 		case UIDevice1GiPad3G : return IPAD3G_1G_NAMESTRING;
 			
 		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
+		case UIDeviceiPhoneSimulatoriPhone: return IPHONE_SIMULATOR_IPHONE_NAMESTRING;
+		case UIDeviceiPhoneSimulatoriPad: return IPHONE_SIMULATOR_IPAD_NAMESTRING;
 			
 		case UIDeviceiProd1G: return IPROD_1G_NAMESTRING;
 		case UIDeviceiProd2G: return IPROD_2G_NAMESTRING;
