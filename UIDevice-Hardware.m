@@ -472,7 +472,7 @@
 }
 
 // Courtesy of Danny Sung <dannys@mail.com>
-- (BOOL) platformHasCapability:(UIDeviceCapability)capability 
+- (BOOL) platformHasCapability:(NSUInteger)capability 
 {
     if( ([self platformCapabilities] & capability) == capability )
         return YES;

@@ -104,6 +104,7 @@ enum {
 - (NSString *) platformCode;
 
 - (NSArray *) capabilityArray;
+- (BOOL) platformHasCapability:(NSUInteger)capability;
 
 - (NSUInteger) cpuFrequency;
 - (NSUInteger) busFrequency;
