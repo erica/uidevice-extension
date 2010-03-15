@@ -471,7 +471,7 @@
 	}
 }
 
-// Courtesy of dannys42
+// Courtesy of Danny Sung <dannys@mail.com>
 - (BOOL) platformHasCapability:(UIDeviceCapability)capability 
 {
     if( ([self platformCapabilities] & capability) == capability )
