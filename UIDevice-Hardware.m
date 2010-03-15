@@ -471,6 +471,14 @@
 	}
 }
 
+// Courtesy of dannys42
+- (BOOL) platformHasCapability:(UIDeviceCapability)capability 
+{
+    if( ([self platformCapabilities] & capability) == capability )
+        return YES;
+    return NO;
+}
+
 - (NSArray *) capabilityArray
 {
 	NSUInteger flags = [self platformCapabilities];

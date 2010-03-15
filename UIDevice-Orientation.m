@@ -1,10 +1,10 @@
-//
-//  UIDevice-Orientation.m
-//  HelloWorld
-//
-//  Created by Erica Sadun on 3/15/10.
-//  Copyright 2010 Up To No Good, Inc. All rights reserved.
-//
+/*
+ Erica Sadun, http://ericasadun.com
+ iPhone Developer's Cookbook, 3.0 Edition
+ BSD License, Use at your own risk
+ */
+
+// Thanks jweinberg, Emanuele Vulcano, rincewind42, Jonah Williams
 
 #import "UIDevice-Orientation.h"
 
