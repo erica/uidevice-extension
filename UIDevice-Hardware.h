@@ -21,9 +21,6 @@
 #define IPOD_4G_NAMESTRING				@"iPod touch 4G"
 #define IPOD_UNKNOWN_NAMESTRING			@"Unknown iPod"
 
-#define IPROD_1G_NAMESTRING				@"iProd 1G"
-#define IPROD_2G_NAMESTRING				@"iProd 2G"
-
 #define IPAD_1G_NAMESTRING				@"iPad 1G"
 #define IPAD3G_1G_NAMESTRING			@"iPad3G 1G"
 
@@ -52,8 +49,6 @@ typedef enum {
 	UIDeviceUnknowniPhone,
 	UIDeviceUnknowniPod,
 	UIDeviceIFPGA,
-	UIDeviceiProd1G,
-	UIDeviceiProd2G,
 } UIDevicePlatform;
 
 typedef enum {
@@ -119,13 +114,4 @@ enum {
 - (NSNumber *) freeDiskSpace;
 
 - (NSString *) macaddress;
-@end
-
-@interface UIDevice (Orientation)
-- (BOOL) isLandscape;
-- (BOOL) isPortrait;
-- (NSString *) orientationString;
-@property (nonatomic, readonly) BOOL isLandscape;
-@property (nonatomic, readonly) BOOL isPortrait;
-@property (nonatomic, readonly) NSString *orientationString;
 @end

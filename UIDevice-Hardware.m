@@ -7,9 +7,11 @@
 // Thanks to Emanuele Vulcano, Kevin Ballard/Eridius, Ryandjohnson, Matt Brown, etc.
 // TTD:  - Bluetooth?  Screen pixels? Dot pitch? Accelerometer? GPS enabled/disabled
 
+#include <sys/socket.h> // Per msqr
 #include <sys/sysctl.h>
 #include <net/if.h>
 #include <net/if_dl.h>
+
 #import "UIDevice-Hardware.h"
 
 @implementation UIDevice (Hardware)
@@ -18,18 +20,19 @@
  Platforms
  
  iFPGA ->		??
- iProd0,1 ->	??
- iProd1,1 ->	??
 
  iPhone1,1 ->	iPhone 1G
  iPhone1,2 ->	iPhone 3G
  iPhone2,1 ->	iPhone 3GS
- iPhone 3,1 ->	iPhone 4G
+ iPhone3,1 ->	iPhone 4G
  
  iPod1,1   -> iPod touch 1G 
  iPod2,1   -> iPod touch 2G 
  iPod2,2   -> iPod touch 2.5G
  iPod3,1   -> iPod touch 3G
+ 
+ iPad?,?   -> iPad 1G, WiFi
+ iPad?,?   -> iPad 1G, 3G
  
  i386 -> iPhone Simulator
  
@@ -110,8 +113,6 @@
 	// if ([platform isEqualToString:@"XX"])			return UIDeviceUnknown;
 	
 	if ([platform isEqualToString:@"iFPGA"])		return UIDeviceIFPGA;
-	if ([platform isEqualToString:@"iProd0,1"])		return UIDeviceiProd1G;
-	if ([platform isEqualToString:@"iProd1,1"])		return UIDeviceiProd2G;
 
 	if ([platform isEqualToString:@"iPhone1,1"])	return UIDevice1GiPhone;
 	if ([platform isEqualToString:@"iPhone1,2"])	return UIDevice3GiPhone;
@@ -164,8 +165,6 @@
 		case UIDeviceiPhoneSimulatoriPhone: return IPHONE_SIMULATOR_IPHONE_NAMESTRING;
 		case UIDeviceiPhoneSimulatoriPad: return IPHONE_SIMULATOR_IPAD_NAMESTRING;
 			
-		case UIDeviceiProd1G: return IPROD_1G_NAMESTRING;
-		case UIDeviceiProd2G: return IPROD_2G_NAMESTRING;
 		case UIDeviceIFPGA: return IFPGA_NAMESTRING;
 			
 		default: return IPOD_FAMILY_UNKNOWN_DEVICE;
@@ -558,7 +557,8 @@
 	ifm = (struct if_msghdr *)buf;
 	sdl = (struct sockaddr_dl *)(ifm + 1);
 	ptr = (unsigned char *)LLADDR(sdl);
-	NSString *outstring = [NSString stringWithFormat:@"%02x:%02x:%02x:%02x:%02x:%02x", *ptr, *(ptr+1), *(ptr+2), *(ptr+3), *(ptr+4), *(ptr+5)];
+	// NSString *outstring = [NSString stringWithFormat:@"%02x:%02x:%02x:%02x:%02x:%02x", *ptr, *(ptr+1), *(ptr+2), *(ptr+3), *(ptr+4), *(ptr+5)];
+	NSString *outstring = [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x", *ptr, *(ptr+1), *(ptr+2), *(ptr+3), *(ptr+4), *(ptr+5)];
 	free(buf);
 	return [outstring uppercaseString];
 }
@@ -586,33 +586,5 @@
 			
 		default: return IPOD_FAMILY_UNKNOWN_DEVICE;
 	}
-}
-@end
-
-@implementation UIDevice (Orientation)
-- (BOOL) isLandscape
-{
-	return (self.orientation == UIDeviceOrientationLandscapeLeft) || (self.orientation == UIDeviceOrientationLandscapeRight);
-}
-
-- (BOOL) isPortrait
-{
-	return (self.orientation == UIDeviceOrientationPortrait) || (self.orientation == UIDeviceOrientationPortraitUpsideDown);
-}
-
-- (NSString *) orientationString
-{
-	switch ([[UIDevice currentDevice] orientation])
-	{
-		case UIDeviceOrientationUnknown: return @"Unknown";
-		case UIDeviceOrientationPortrait: return @"Portrait";
-		case UIDeviceOrientationPortraitUpsideDown: return @"Portrait Upside Down";
-		case UIDeviceOrientationLandscapeLeft: return @"Landscape Left";
-		case UIDeviceOrientationLandscapeRight: return @"Landscape Right";
-		case UIDeviceOrientationFaceUp: return @"Face Up";
-		case UIDeviceOrientationFaceDown: return @"Face Down";
-		default: break;
-	}
-	return nil;
 }
 @end

@@ -8,6 +8,8 @@
 #import "UIDevice-Reachability.h"
 #import "UIDevice-IOKitExtensions.h"
 #import "UIDevice-Hardware.h"
+#import "UIDevice-Orientation.h"
+
 #define COOKBOOK_PURPLE_COLOR	[UIColor colorWithRed:0.20392f green:0.19607f blue:0.61176f alpha:1.0f]
 #define BARBUTTON(TITLE, SELECTOR) 	[[[UIBarButtonItem alloc] initWithTitle:TITLE style:UIBarButtonItemStylePlain target:self action:SELECTOR] autorelease]
 #define CFN(X) [self commasForNumber:X]
@@ -46,6 +48,7 @@
 - (void) action: (UIBarButtonItem *) bbi
 {
 	self.log = [NSMutableString string];
+	[self doLog:@"Adjusted Orientation Angle: %f\n", [[UIDevice currentDevice] orientationAngleRelativeToOrientation:UIDeviceOrientationLandscapeLeft]];
 	
 	// TESTING REACHABILITY
 	/*
