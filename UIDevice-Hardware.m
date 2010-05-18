@@ -24,19 +24,21 @@
  iPhone1,1 ->	iPhone 1G
  iPhone1,2 ->	iPhone 3G
  iPhone2,1 ->	iPhone 3GS
- iPhone3,1 ->	iPhone 4G
- 
+ iPhone3,1 ->	iPhone 4G/AT&T
+ iPhone3,2 ->	iPhone 4G/Other Carrier
+ iPhone3,3 ->	iPhone 4G/Other Carrier
+
  iPod1,1   -> iPod touch 1G 
  iPod2,1   -> iPod touch 2G 
  iPod2,2   -> iPod touch 2.5G
  iPod3,1   -> iPod touch 3G
+ iPod4,1   -> iPod touch 4G
  
- iPad?,?   -> iPad 1G, WiFi
- iPad?,?   -> iPad 1G, 3G
- 
+ iPad1,1   -> iPad 1G, WiFi
+ iPad1,?   -> iPad 1G, 3G <- needs 3G owner to test
+ iPad2,1   -> iPad 2G
+
  i386 -> iPhone Simulator
- 
- Tablet1,1 ->  Tablet 1G
 */
 
 
@@ -124,9 +126,7 @@
 	if ([platform isEqualToString:@"iPod2,2"])   return UIDevice2GPlusiPod;
 	if ([platform isEqualToString:@"iPod3,1"])   return UIDevice3GiPod;
 	if ([platform isEqualToString:@"iPod4,1"])   return UIDevice4GiPod;
-	
-	// if ([platform isEqualToString:@"Tablet1,1"])   return UIDevice1GTablet; // space holder
-	
+		
 	if ([platform hasPrefix:@"iPhone"]) return UIDeviceUnknowniPhone;
 	if ([platform hasPrefix:@"iPod"]) return UIDeviceUnknowniPod;
 	
@@ -587,8 +587,8 @@
 		case UIDevice4GiPod: return @"N80";
 		case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
 			
-		case UIDevice1GiPad: return @"K48"; // http://www.boygeniusreport.com/2010/01/13/apples-tablet-is-an-iphone-on-steroids/
-		case UIDevice1GiPad3G: return @"K48"; // http://www.boygeniusreport.com/2010/01/13/apples-tablet-is-an-iphone-on-steroids/
+		case UIDevice1GiPad: return @"K48";
+		case UIDevice1GiPad3G: return @"K48";  // placeholder
 			
 		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
 			
