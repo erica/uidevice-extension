@@ -127,6 +127,13 @@
 	if ([platform isEqualToString:@"iPod3,1"])   return UIDevice3GiPod;
 	if ([platform isEqualToString:@"iPod4,1"])   return UIDevice4GiPod;
 		
+	if ([platform isEqualToString:@"iPad1,1"])   return UIDevice1GiPad;
+	// if ([platform isEqualToString:@"iPad2,1"])   return UIDevice2GiPad;
+	
+	/*
+	 MISSING A SOLUTION HERE TO DATE TO DIFFERENTIATE iPAD and iPAD 3G.... SORRY!
+	 */
+
 	if ([platform hasPrefix:@"iPhone"]) return UIDeviceUnknowniPhone;
 	if ([platform hasPrefix:@"iPod"]) return UIDeviceUnknowniPod;
 	
