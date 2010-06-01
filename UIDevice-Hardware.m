@@ -98,13 +98,13 @@
 
 - (NSNumber *) totalDiskSpace
 {
-	NSDictionary *fattributes = [[NSFileManager defaultManager] fileSystemAttributesAtPath:NSHomeDirectory()];
+	NSDictionary *fattributes = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:nil];
 	return [fattributes objectForKey:NSFileSystemSize];
 }
 
 - (NSNumber *) freeDiskSpace
 {
-	NSDictionary *fattributes = [[NSFileManager defaultManager] fileSystemAttributesAtPath:NSHomeDirectory()];
+	NSDictionary *fattributes = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:nil];
 	return [fattributes objectForKey:NSFileSystemFreeSize];
 }
 
