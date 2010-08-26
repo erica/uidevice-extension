@@ -22,7 +22,6 @@
 #define IPOD_UNKNOWN_NAMESTRING			@"Unknown iPod"
 
 #define IPAD_1G_NAMESTRING				@"iPad 1G"
-#define IPAD3G_1G_NAMESTRING			@"iPad3G 1G"
 #define IPAD_2G_NAMESTRING				@"iPad 2G"
 #define IPAD_UNKNOWN_NAMESTRING			@"Unknown iPad"
 
@@ -130,6 +129,7 @@ enum {
 
 @interface UIDevice (Hardware)
 - (NSString *) platform;
+- (NSString *) hwmodel;
 - (NSUInteger) platformType;
 - (NSUInteger) platformCapabilities;
 - (NSString *) platformString;

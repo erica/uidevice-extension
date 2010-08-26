@@ -65,7 +65,7 @@
 // Thanks, Atomicbird
 - (NSString *) hwmodel
 {
-	[return [self getSysInfoByName:"hw.model"];
+	return [self getSysInfoByName:"hw.model"];
 }
 
 #pragma mark sysctl utils
