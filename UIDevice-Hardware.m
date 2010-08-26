@@ -27,12 +27,14 @@
  iPhone3,1 ->	iPhone 4G/AT&T
  iPhone3,2 ->	iPhone 4G/Other Carrier
  iPhone3,3 ->	iPhone 4G/Other Carrier
+ iPhone4,1 ->	??
 
  iPod1,1   -> iPod touch 1G 
  iPod2,1   -> iPod touch 2G 
  iPod2,2   -> iPod touch 2.5G
  iPod3,1   -> iPod touch 3G
  iPod4,1   -> iPod touch 4G
+ iPod5,1   ->
  
  iPad1,1   -> iPad 1G, WiFi
  iPad1,?   -> iPad 1G, 3G <- needs 3G owner to test
@@ -57,6 +59,13 @@
 - (NSString *) platform
 {
 	return [self getSysInfoByName:"hw.machine"];
+}
+
+
+// Thanks, Atomicbird
+- (NSString *) hwmodel
+{
+	[return [self getSysInfoByName:"hw.model"];
 }
 
 #pragma mark sysctl utils
@@ -119,7 +128,7 @@
 	if ([platform isEqualToString:@"iPhone1,1"])	return UIDevice1GiPhone;
 	if ([platform isEqualToString:@"iPhone1,2"])	return UIDevice3GiPhone;
 	if ([platform isEqualToString:@"iPhone2,1"])	return UIDevice3GSiPhone;
-	if ([platform isEqualToString:@"iPhone3,1"])	return UIDevice4GiPhone;
+	if ([platform hasPrefix:@"iPhone3"])			return UIDevice4GiPhone;
 	
 	if ([platform isEqualToString:@"iPod1,1"])   return UIDevice1GiPod;
 	if ([platform isEqualToString:@"iPod2,1"])   return UIDevice2GiPod;
@@ -130,14 +139,18 @@
 	if ([platform isEqualToString:@"iPad1,1"])   return UIDevice1GiPad;
 	// if ([platform isEqualToString:@"iPad2,1"])   return UIDevice2GiPad;
 	
+	if ([platform isEqualToString:@"iTV1,1"])   return UIDevice1GiTV;
+	
 	/*
 	 MISSING A SOLUTION HERE TO DATE TO DIFFERENTIATE iPAD and iPAD 3G.... SORRY!
 	 */
 
 	if ([platform hasPrefix:@"iPhone"]) return UIDeviceUnknowniPhone;
 	if ([platform hasPrefix:@"iPod"]) return UIDeviceUnknowniPod;
+	if ([platform hasPrefix:@"iPad"]) return UIDeviceUnknowniPad;
+	if ([platform hasPrefix:@"iTV"]) return UIDeviceUnknowniTV;
 	
-	if ([platform hasSuffix:@"86"])
+	if ([platform hasSuffix:@"86"] || [platform isEqual:@"x86_64"]) // thanks Jordan Breeding
 	{
 		if ([[UIScreen mainScreen] bounds].size.width < 768)
 			return UIDeviceiPhoneSimulatoriPhone;
@@ -166,7 +179,8 @@
 		case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
 			
 		case UIDevice1GiPad : return IPAD_1G_NAMESTRING;
-		case UIDevice1GiPad3G : return IPAD3G_1G_NAMESTRING;
+			
+		case UIDevice1GiTV : return ITV_1G_NAMESTRING;
 			
 		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
 		case UIDeviceiPhoneSimulatoriPhone: return IPHONE_SIMULATOR_IPHONE_NAMESTRING;
@@ -185,295 +199,460 @@
 	{
 		case UIDevice1GiPhone: 
 			return 
-			(UIDeviceSupportsTelephony  |
-			 UIDeviceSupportsSMS  |
-			 UIDeviceSupportsStillCamera  |
-			 // UIDeviceSupportsAutofocusCamera |
-			 // UIDeviceSupportsVideoCamera  |
-			 UIDeviceSupportsWifi  |
-			 UIDeviceSupportsAccelerometer  |
-			 UIDeviceSupportsLocationServices  |
-			 // UIDeviceSupportsGPS  |
-			 // UIDeviceSupportsMagnetometer  |
-			 UIDeviceSupportsBuiltInMicrophone  |
-			 UIDeviceSupportsExternalMicrophone  |
-			 UIDeviceSupportsOPENGLES1_1  |
-			 // UIDeviceSupportsOPENGLES2  |
-			 UIDeviceSupportsBuiltInSpeaker  |
-			 UIDeviceSupportsVibration  |
-			 UIDeviceSupportsBuiltInProximitySensor  |
-			 // UIDeviceSupportsAccessibility  |
+			(
+			 UIDeviceSensorsSupportsAccelerometer |
+			 // UIDeviceSensorsSupportsGyro |
+			 // UIDeviceSensorsSupportsMagnetometer |
+			 UIDeviceSensorsSupportsBrightnessSensor |
+			 UIDeviceSensorsSupportsBuiltInProximitySensor |
+			 UIDeviceSensorsSupportsBuiltInMicrophone |
+			 UIDeviceSensorsSupportsExternalMicrophone |
+			 // UIDeviceSensorsSupportsDualMicNoiseSuppression |
+			 UIDeviceCamerasSupportsStillCamera |
+			 // UIDeviceCamerasSupportsAutofocusCamera |
+			 // UIDeviceCamerasSupportsVideoCamera |
+			 // UIDeviceCamerasSupportsFrontCamera |
+			 // UIDeviceCamerasSupportsBackLED |
+			 UIDeviceCommoSupportsTelephony |
+			 UIDeviceCommoSupportsSMS |
+			 UIDeviceCommoSupportsWifi |
+			 UIDeviceCommoSupportsBluetooth | // M68.plist says YES for this
+			 // UIDeviceCommoSupportsPeerToPeer |
+			 UIDeviceAudioSupportsBuiltInSpeaker |
+			 UIDeviceAudioSupportsVibration |
+			 // UIDeviceAudioSupportsPiezoClicker |
+			 UIDeviceAudioSupportsHardwareVolumeButtons |
+			 // UIDeviceAudioSupportsEncodeAAC |
+			 UIDeviceSupportsLocationServices |
+			 // UIDeviceSupportsGPS |
+			 UIDeviceSupportsOPENGLES1_1 |
+			 // UIDeviceSupportsOPENGLES2 |
+			 // UIDeviceSupportsARMV7 |
+			 UIDeviceSupportsNike 
+			 // UIDeviceSupportsAccessibility |
 			 // UIDeviceSupportsVoiceOver |
 			 // UIDeviceSupportsVoiceControl |
-			 // UIDeviceSupportsPeerToPeer |
-			 // UIDeviceSupportsARMV7 |
-			 UIDeviceSupportsBrightnessSensor |
-			 UIDeviceSupportsEncodeAAC |
-			 UIDeviceSupportsBluetooth | // M68.plist says YES for this
-			 // UIDeviceSupportsNike |
-			 // UIDeviceSupportsPiezoClicker |
-			 UIDeviceSupportsVolumeButtons
+			 // UIDeviceSupportsEnhancedMultitouch
 			 );
-			
 		case UIDevice3GiPhone: 
 			return
-			(UIDeviceSupportsTelephony  |
-			 UIDeviceSupportsSMS  |
-			 UIDeviceSupportsStillCamera  |
-			 // UIDeviceSupportsAutofocusCamera |
-			 // UIDeviceSupportsVideoCamera  |
-			 UIDeviceSupportsWifi  |
-			 UIDeviceSupportsAccelerometer  |
-			 UIDeviceSupportsLocationServices  |
-			 UIDeviceSupportsGPS  |
-			 // UIDeviceSupportsMagnetometer  |
-			 UIDeviceSupportsBuiltInMicrophone  |
-			 UIDeviceSupportsExternalMicrophone  |
-			 UIDeviceSupportsOPENGLES1_1  |
-			 // UIDeviceSupportsOPENGLES2  |
-			 UIDeviceSupportsBuiltInSpeaker  |
-			 UIDeviceSupportsVibration  |
-			 UIDeviceSupportsBuiltInProximitySensor  |
-			 // UIDeviceSupportsAccessibility  |
+			(
+			 UIDeviceSensorsSupportsAccelerometer |
+			 // UIDeviceSensorsSupportsGyro |
+			 // UIDeviceSensorsSupportsMagnetometer |
+			 UIDeviceSensorsSupportsBrightnessSensor |
+			 UIDeviceSensorsSupportsBuiltInProximitySensor |
+			 UIDeviceSensorsSupportsBuiltInMicrophone |
+			 UIDeviceSensorsSupportsExternalMicrophone |
+			 // UIDeviceSensorsSupportsDualMicNoiseSuppression |
+			 UIDeviceCamerasSupportsStillCamera |
+			 // UIDeviceCamerasSupportsAutofocusCamera |
+			 // UIDeviceCamerasSupportsVideoCamera |
+			 // UIDeviceCamerasSupportsFrontCamera |
+			 // UIDeviceCamerasSupportsBackLED |
+			 UIDeviceCommoSupportsTelephony |
+			 UIDeviceCommoSupportsSMS |
+			 UIDeviceCommoSupportsWifi |
+			 UIDeviceCommoSupportsBluetooth |
+			 UIDeviceCommoSupportsPeerToPeer |
+			 UIDeviceAudioSupportsBuiltInSpeaker |
+			 UIDeviceAudioSupportsVibration |
+			 // UIDeviceAudioSupportsPiezoClicker |
+			 UIDeviceAudioSupportsHardwareVolumeButtons |
+			 // UIDeviceAudioSupportsEncodeAAC |
+			 UIDeviceSupportsLocationServices |
+			 UIDeviceSupportsGPS |
+			 UIDeviceSupportsOPENGLES1_1 |
+			 // UIDeviceSupportsOPENGLES2 |
+			 // UIDeviceSupportsARMV7 |
+			 UIDeviceSupportsNike 
+			 // UIDeviceSupportsAccessibility |
 			 // UIDeviceSupportsVoiceOver |
 			 // UIDeviceSupportsVoiceControl |
-			 UIDeviceSupportsPeerToPeer |
-			 // UIDeviceSupportsARMV7 |
-			 UIDeviceSupportsBrightnessSensor |
-			 UIDeviceSupportsEncodeAAC |
-			 UIDeviceSupportsBluetooth |
-			 // UIDeviceSupportsNike |
-			 // UIDeviceSupportsPiezoClicker |
-			 UIDeviceSupportsVolumeButtons
+			 // UIDeviceSupportsEnhancedMultitouch
 			 );
 			
 		case UIDevice3GSiPhone: 
 			return
-			(UIDeviceSupportsTelephony  |
-			 UIDeviceSupportsSMS  |
-			 UIDeviceSupportsStillCamera  |
-			 UIDeviceSupportsAutofocusCamera |
-			 UIDeviceSupportsVideoCamera  |
-			 UIDeviceSupportsWifi  |
-			 UIDeviceSupportsAccelerometer  |
-			 UIDeviceSupportsLocationServices  |
-			 UIDeviceSupportsGPS  |
-			 UIDeviceSupportsMagnetometer  |
-			 UIDeviceSupportsBuiltInMicrophone  |
-			 UIDeviceSupportsExternalMicrophone  |
-			 UIDeviceSupportsOPENGLES1_1  |
-			 UIDeviceSupportsOPENGLES2  |
-			 UIDeviceSupportsBuiltInSpeaker  |
-			 UIDeviceSupportsVibration  |
-			 UIDeviceSupportsBuiltInProximitySensor  |
-			 UIDeviceSupportsAccessibility  |
+			(
+			 UIDeviceSensorsSupportsAccelerometer |
+			 // UIDeviceSensorsSupportsGyro |
+			 UIDeviceSensorsSupportsMagnetometer |
+			 UIDeviceSensorsSupportsBrightnessSensor |
+			 UIDeviceSensorsSupportsBuiltInProximitySensor |
+			 UIDeviceSensorsSupportsBuiltInMicrophone |
+			 UIDeviceSensorsSupportsExternalMicrophone |
+			 // UIDeviceSensorsSupportsDualMicNoiseSuppression |
+			 UIDeviceCamerasSupportsStillCamera |
+			 UIDeviceCamerasSupportsAutofocusCamera |
+			 UIDeviceCamerasSupportsVideoCamera |
+			 // UIDeviceCamerasSupportsFrontCamera |
+			 // UIDeviceCamerasSupportsBackLED |
+			 UIDeviceCommoSupportsTelephony |
+			 UIDeviceCommoSupportsSMS |
+			 UIDeviceCommoSupportsWifi |
+			 UIDeviceCommoSupportsBluetooth |
+			 UIDeviceCommoSupportsPeerToPeer |
+			 UIDeviceAudioSupportsBuiltInSpeaker |
+			 UIDeviceAudioSupportsVibration |
+			 // UIDeviceAudioSupportsPiezoClicker |
+			 UIDeviceAudioSupportsHardwareVolumeButtons |
+			 UIDeviceAudioSupportsEncodeAAC |
+			 UIDeviceSupportsLocationServices |
+			 UIDeviceSupportsGPS |
+			 UIDeviceSupportsOPENGLES1_1 |
+			 UIDeviceSupportsOPENGLES2 |
+			 UIDeviceSupportsARMV7 |
+			 UIDeviceSupportsNike |
+			 UIDeviceSupportsAccessibility |
 			 UIDeviceSupportsVoiceOver |
 			 UIDeviceSupportsVoiceControl |
-			 UIDeviceSupportsPeerToPeer |
+			 UIDeviceSupportsEnhancedMultitouch
+			 );
+		case UIDevice4GiPhone: 
+			return
+			(
+			 UIDeviceSensorsSupportsAccelerometer |
+			 UIDeviceSensorsSupportsGyro |
+			 UIDeviceSensorsSupportsMagnetometer |
+			 UIDeviceSensorsSupportsBrightnessSensor |
+			 UIDeviceSensorsSupportsBuiltInProximitySensor |
+			 UIDeviceSensorsSupportsBuiltInMicrophone |
+			 UIDeviceSensorsSupportsExternalMicrophone |
+			 UIDeviceSensorsSupportsDualMicNoiseSuppression |
+			 UIDeviceCamerasSupportsStillCamera |
+			 UIDeviceCamerasSupportsAutofocusCamera |
+			 UIDeviceCamerasSupportsVideoCamera |
+			 UIDeviceCamerasSupportsFrontCamera |
+			 UIDeviceCamerasSupportsBackLED |
+			 UIDeviceCommoSupportsTelephony |
+			 UIDeviceCommoSupportsSMS |
+			 UIDeviceCommoSupportsWifi |
+			 UIDeviceCommoSupportsBluetooth |
+			 UIDeviceCommoSupportsPeerToPeer |
+			 UIDeviceAudioSupportsBuiltInSpeaker |
+			 UIDeviceAudioSupportsVibration |
+			 // UIDeviceAudioSupportsPiezoClicker |
+			 UIDeviceAudioSupportsHardwareVolumeButtons |
+			 UIDeviceAudioSupportsEncodeAAC |
+			 UIDeviceSupportsLocationServices |
+			 UIDeviceSupportsGPS |
+			 UIDeviceSupportsOPENGLES1_1 |
+			 UIDeviceSupportsOPENGLES2 |
 			 UIDeviceSupportsARMV7 |
-			 UIDeviceSupportsBrightnessSensor |
-			 UIDeviceSupportsEncodeAAC |
-			 UIDeviceSupportsBluetooth |
 			 UIDeviceSupportsNike |
-			 // UIDeviceSupportsPiezoClicker |
-			 UIDeviceSupportsVolumeButtons
+			 UIDeviceSupportsAccessibility |
+			 UIDeviceSupportsVoiceOver |
+			 UIDeviceSupportsVoiceControl |
+			 UIDeviceSupportsEnhancedMultitouch
 			 );			
+			
 		case UIDeviceUnknowniPhone: return 0;
 			
 		case UIDevice1GiPod: 
-			return
-			(// UIDeviceSupportsTelephony  |
-			 // UIDeviceSupportsSMS  |
-			 // UIDeviceSupportsStillCamera  |
-			 // UIDeviceSupportsAutofocusCamera |
-			 // UIDeviceSupportsVideoCamera  |
-			 UIDeviceSupportsWifi  |
-			 UIDeviceSupportsAccelerometer  |
-			 UIDeviceSupportsLocationServices  |
-			 // UIDeviceSupportsGPS  |
-			 // UIDeviceSupportsMagnetometer  |
-			 // UIDeviceSupportsBuiltInMicrophone  |
-			 UIDeviceSupportsExternalMicrophone  |
-			 UIDeviceSupportsOPENGLES1_1  |
-			 // UIDeviceSupportsOPENGLES2  |
-			 // UIDeviceSupportsBuiltInSpeaker  |
-			 // UIDeviceSupportsVibration  |
-			 // UIDeviceSupportsBuiltInProximitySensor  |
-			 // UIDeviceSupportsAccessibility  |
+			(
+			 UIDeviceSensorsSupportsAccelerometer |
+			 // UIDeviceSensorsSupportsGyro |
+			 // UIDeviceSensorsSupportsMagnetometer |
+			 UIDeviceSensorsSupportsBrightnessSensor |
+			 // UIDeviceSensorsSupportsBuiltInProximitySensor |
+			 // UIDeviceSensorsSupportsBuiltInMicrophone |
+			 UIDeviceSensorsSupportsExternalMicrophone |
+			 // UIDeviceSensorsSupportsDualMicNoiseSuppression |
+			 // UIDeviceCamerasSupportsStillCamera |
+			 // UIDeviceCamerasSupportsAutofocusCamera |
+			 // UIDeviceCamerasSupportsVideoCamera |
+			 // UIDeviceCamerasSupportsFrontCamera |
+			 // UIDeviceCamerasSupportsBackLED |
+			 // UIDeviceCommoSupportsTelephony |
+			 // UIDeviceCommoSupportsSMS |
+			 UIDeviceCommoSupportsWifi |
+			 // UIDeviceCommoSupportsBluetooth |
+			 // UIDeviceCommoSupportsPeerToPeer |
+			 // UIDeviceAudioSupportsBuiltInSpeaker |
+			 // UIDeviceAudioSupportsVibration |
+			 UIDeviceAudioSupportsPiezoClicker |
+			 // UIDeviceAudioSupportsHardwareVolumeButtons |
+			 // UIDeviceAudioSupportsEncodeAAC |
+			 UIDeviceSupportsLocationServices |
+			 // UIDeviceSupportsGPS |
+			 UIDeviceSupportsOPENGLES1_1 
+			 // UIDeviceSupportsOPENGLES2 |
+			 // UIDeviceSupportsARMV7 |
+			 // UIDeviceSupportsNike |
+			 // UIDeviceSupportsAccessibility |
 			 // UIDeviceSupportsVoiceOver |
 			 // UIDeviceSupportsVoiceControl |
-			 UIDeviceSupportsBrightnessSensor |
-			 // UIDeviceSupportsEncodeAAC |
-			 // UIDeviceSupportsBluetooth |
+			 // UIDeviceSupportsEnhancedMultitouch
+			 );			
+			return
+			(
+			 UIDeviceSensorsSupportsAccelerometer |
+			 // UIDeviceSensorsSupportsGyro |
+			 // UIDeviceSensorsSupportsMagnetometer |
+			 UIDeviceSensorsSupportsBrightnessSensor |
+			 // UIDeviceSensorsSupportsBuiltInProximitySensor |
+			 // UIDeviceSensorsSupportsBuiltInMicrophone |
+			 UIDeviceSensorsSupportsExternalMicrophone |
+			 // UIDeviceSensorsSupportsDualMicNoiseSuppression |
+			 // UIDeviceCamerasSupportsStillCamera |
+			 // UIDeviceCamerasSupportsAutofocusCamera |
+			 // UIDeviceCamerasSupportsVideoCamera |
+			 // UIDeviceCamerasSupportsFrontCamera |
+			 // UIDeviceCamerasSupportsBackLED |
+			 // UIDeviceCommoSupportsTelephony |
+			 // UIDeviceCommoSupportsSMS |
+			 UIDeviceCommoSupportsWifi |
+			 UIDeviceCommoSupportsBluetooth |
+			 UIDeviceCommoSupportsPeerToPeer |
+			 UIDeviceAudioSupportsBuiltInSpeaker |
+			 // UIDeviceAudioSupportsVibration |
+			 // UIDeviceAudioSupportsPiezoClicker |
+			 UIDeviceAudioSupportsHardwareVolumeButtons |
+			 // UIDeviceAudioSupportsEncodeAAC |
+			 UIDeviceSupportsLocationServices |
+			 // UIDeviceSupportsGPS |
+			 UIDeviceSupportsOPENGLES1_1 
+			 // UIDeviceSupportsOPENGLES2 |
+			 // UIDeviceSupportsARMV7 |
 			 // UIDeviceSupportsNike |
-			 UIDeviceSupportsPiezoClicker
-			 // UIDeviceSupportsVolumeButtons
-			 );
+			 // UIDeviceSupportsAccessibility |
+			 // UIDeviceSupportsVoiceOver |
+			 // UIDeviceSupportsVoiceControl |
+			 // UIDeviceSupportsEnhancedMultitouch
+			 
+			);
 			
 		case UIDevice2GiPod: 
 		case UIDevice2GPlusiPod:
-			return
-			(// UIDeviceSupportsTelephony  |
-			 // UIDeviceSupportsSMS  |
-			 // UIDeviceSupportsStillCamera  |
-			 // UIDeviceSupportsAutofocusCamera |
-			 // UIDeviceSupportsVideoCamera  |
-			 UIDeviceSupportsWifi  |
-			 UIDeviceSupportsAccelerometer  |
-			 UIDeviceSupportsLocationServices  |
-			 // UIDeviceSupportsGPS  |
-			 // UIDeviceSupportsMagnetometer  |
-			 // UIDeviceSupportsBuiltInMicrophone  |
-			 UIDeviceSupportsExternalMicrophone  |
-			 UIDeviceSupportsOPENGLES1_1  |
-			 // UIDeviceSupportsOPENGLES2  |
-			 UIDeviceSupportsBuiltInSpeaker  |
-			 // UIDeviceSupportsVibration  |
-			 // UIDeviceSupportsBuiltInProximitySensor  |
-			 // UIDeviceSupportsAccessibility  |
+			(
+			 UIDeviceSensorsSupportsAccelerometer |
+			 // UIDeviceSensorsSupportsGyro |
+			 // UIDeviceSensorsSupportsMagnetometer |
+			 UIDeviceSensorsSupportsBrightnessSensor |
+			 // UIDeviceSensorsSupportsBuiltInProximitySensor |
+			 // UIDeviceSensorsSupportsBuiltInMicrophone |
+			 UIDeviceSensorsSupportsExternalMicrophone |
+			 // UIDeviceSensorsSupportsDualMicNoiseSuppression |
+			 // UIDeviceCamerasSupportsStillCamera |
+			 // UIDeviceCamerasSupportsAutofocusCamera |
+			 // UIDeviceCamerasSupportsVideoCamera |
+			 // UIDeviceCamerasSupportsFrontCamera |
+			 // UIDeviceCamerasSupportsBackLED |
+			 // UIDeviceCommoSupportsTelephony |
+			 // UIDeviceCommoSupportsSMS |
+			 UIDeviceCommoSupportsWifi |
+			 UIDeviceCommoSupportsBluetooth |
+			 UIDeviceCommoSupportsPeerToPeer |
+			 UIDeviceAudioSupportsBuiltInSpeaker |
+			 // UIDeviceAudioSupportsVibration |
+			 // UIDeviceAudioSupportsPiezoClicker |
+			 UIDeviceAudioSupportsHardwareVolumeButtons |
+			 // UIDeviceAudioSupportsEncodeAAC |
+			 UIDeviceSupportsLocationServices |
+			 // UIDeviceSupportsGPS |
+			 UIDeviceSupportsOPENGLES1_1 
+			 // UIDeviceSupportsOPENGLES2 |
+			 // UIDeviceSupportsARMV7 |
+			 // UIDeviceSupportsNike |
+			 // UIDeviceSupportsAccessibility |
 			 // UIDeviceSupportsVoiceOver |
 			 // UIDeviceSupportsVoiceControl |
-			 UIDeviceSupportsPeerToPeer |
-			 // UIDeviceSupportsARMV7 |
-			 UIDeviceSupportsBrightnessSensor |
-			UIDeviceSupportsEncodeAAC |
-			UIDeviceSupportsBluetooth |
-			UIDeviceSupportsNike |
-			// UIDeviceSupportsPiezoClicker |
-			UIDeviceSupportsVolumeButtons
+			 // UIDeviceSupportsEnhancedMultitouch
+			 
 			 );
 			
 			
 		case UIDevice3GiPod: 
 			return
-			(// UIDeviceSupportsTelephony  |
-			 // UIDeviceSupportsSMS  |
-			 // UIDeviceSupportsStillCamera  |
-			 // UIDeviceSupportsAutofocusCamera |
-			 // UIDeviceSupportsVideoCamera  |
-			 UIDeviceSupportsWifi  |
-			 UIDeviceSupportsAccelerometer  |
-			 UIDeviceSupportsLocationServices  |
-			 // UIDeviceSupportsGPS  |
-			 // UIDeviceSupportsMagnetometer  |
-			 // UIDeviceSupportsBuiltInMicrophone  |
-			 UIDeviceSupportsExternalMicrophone  |
-			 UIDeviceSupportsOPENGLES1_1  |
-			 UIDeviceSupportsOPENGLES2  |
-			 UIDeviceSupportsBuiltInSpeaker  |
-			 // UIDeviceSupportsVibration  |
-			 // UIDeviceSupportsBuiltInProximitySensor  |
-			 UIDeviceSupportsAccessibility  |
-			 UIDeviceSupportsVoiceOver |
-			 UIDeviceSupportsVoiceControl |
-			 UIDeviceSupportsPeerToPeer |
-			 UIDeviceSupportsARMV7 |
-			 UIDeviceSupportsBrightnessSensor |
-			 UIDeviceSupportsEncodeAAC |
-			 UIDeviceSupportsBluetooth |
+			(
+			 UIDeviceSensorsSupportsAccelerometer |
+			 // UIDeviceSensorsSupportsGyro |
+			 // UIDeviceSensorsSupportsMagnetometer |
+			 UIDeviceSensorsSupportsBrightnessSensor |
+			 // UIDeviceSensorsSupportsBuiltInProximitySensor |
+			 // UIDeviceSensorsSupportsBuiltInMicrophone |
+			 UIDeviceSensorsSupportsExternalMicrophone |
+			 // UIDeviceSensorsSupportsDualMicNoiseSuppression |
+			 // UIDeviceCamerasSupportsStillCamera |
+			 // UIDeviceCamerasSupportsAutofocusCamera |
+			 // UIDeviceCamerasSupportsVideoCamera |
+			 // UIDeviceCamerasSupportsFrontCamera |
+			 // UIDeviceCamerasSupportsBackLED |
+			 // UIDeviceCommoSupportsTelephony |
+			 // UIDeviceCommoSupportsSMS |
+			 UIDeviceCommoSupportsWifi |
+			 UIDeviceCommoSupportsBluetooth |
+			 UIDeviceCommoSupportsPeerToPeer |
+			 UIDeviceAudioSupportsBuiltInSpeaker |
+			 // UIDeviceAudioSupportsVibration |
+			 // UIDeviceAudioSupportsPiezoClicker |
+			 UIDeviceAudioSupportsHardwareVolumeButtons |
+			 UIDeviceAudioSupportsEncodeAAC |
+			 UIDeviceSupportsLocationServices |
+			 // UIDeviceSupportsGPS |
+			 UIDeviceSupportsOPENGLES1_1 |
+			 // UIDeviceSupportsOPENGLES2 |
+			 // UIDeviceSupportsARMV7 |
 			 UIDeviceSupportsNike |
-			 // UIDeviceSupportsPiezoClicker |
-			 UIDeviceSupportsVolumeButtons
-			 );			
+			 UIDeviceSupportsAccessibility |
+			 UIDeviceSupportsVoiceOver |
+			 UIDeviceSupportsVoiceControl
+			 // UIDeviceSupportsEnhancedMultitouch			 
+			 );
+			
+		case UIDevice4GiPod: // guessing
+			return
+			(
+			 UIDeviceSensorsSupportsAccelerometer |
+			 // UIDeviceSensorsSupportsGyro |
+			 // UIDeviceSensorsSupportsMagnetometer |
+			 UIDeviceSensorsSupportsBrightnessSensor |
+			 // UIDeviceSensorsSupportsBuiltInProximitySensor |
+			 // UIDeviceSensorsSupportsBuiltInMicrophone |
+			 UIDeviceSensorsSupportsExternalMicrophone |
+			 // UIDeviceSensorsSupportsDualMicNoiseSuppression |
+			 // UIDeviceCamerasSupportsStillCamera |
+			 // UIDeviceCamerasSupportsAutofocusCamera |
+			 // UIDeviceCamerasSupportsVideoCamera |
+			 // UIDeviceCamerasSupportsFrontCamera |
+			 // UIDeviceCamerasSupportsBackLED |
+			 // UIDeviceCommoSupportsTelephony |
+			 // UIDeviceCommoSupportsSMS |
+			 UIDeviceCommoSupportsWifi |
+			 UIDeviceCommoSupportsBluetooth |
+			 UIDeviceCommoSupportsPeerToPeer |
+			 UIDeviceAudioSupportsBuiltInSpeaker |
+			 // UIDeviceAudioSupportsVibration |
+			 // UIDeviceAudioSupportsPiezoClicker |
+			 UIDeviceAudioSupportsHardwareVolumeButtons |
+			 UIDeviceAudioSupportsEncodeAAC |
+			 UIDeviceSupportsLocationServices |
+			 // UIDeviceSupportsGPS |
+			 UIDeviceSupportsOPENGLES1_1 |
+			 // UIDeviceSupportsOPENGLES2 |
+			 // UIDeviceSupportsARMV7 |
+			 UIDeviceSupportsNike |
+			 UIDeviceSupportsAccessibility |
+			 UIDeviceSupportsVoiceOver |
+			 UIDeviceSupportsVoiceControl
+			 // UIDeviceSupportsEnhancedMultitouch			 
+			 );
 		case UIDeviceUnknowniPod:  return 0;
 			
-		case UIDevice1GiPad:
+		case UIDevice1GiPad: // cannot distinguish between wifi and 3g here, I'm afraid
 			return
-			(// UIDeviceSupportsTelephony  |
-			 // UIDeviceSupportsSMS  |
-			 // UIDeviceSupportsStillCamera  |
-			 // UIDeviceSupportsAutofocusCamera |
-			 // UIDeviceSupportsVideoCamera  |
-			 UIDeviceSupportsWifi  |
-			 UIDeviceSupportsAccelerometer  |
-			 UIDeviceSupportsLocationServices  |
-			 // UIDeviceSupportsGPS  |
-			 // UIDeviceSupportsMagnetometer  |
-			 UIDeviceSupportsBuiltInMicrophone  |
-			 UIDeviceSupportsExternalMicrophone  |
-			 UIDeviceSupportsOPENGLES1_1  |
-			 UIDeviceSupportsOPENGLES2  |
-			 UIDeviceSupportsBuiltInSpeaker  |
-			 // UIDeviceSupportsVibration  |
-			 // UIDeviceSupportsBuiltInProximitySensor  |
-			 UIDeviceSupportsAccessibility  |
+			(
+			 UIDeviceSensorsSupportsAccelerometer |
+			 // UIDeviceSensorsSupportsGyro |
+			 UIDeviceSensorsSupportsMagnetometer |
+			 UIDeviceSensorsSupportsBrightnessSensor |
+			 // UIDeviceSensorsSupportsBuiltInProximitySensor |
+			 UIDeviceSensorsSupportsBuiltInMicrophone |
+			 UIDeviceSensorsSupportsExternalMicrophone |
+			 // UIDeviceSensorsSupportsDualMicNoiseSuppression |
+			 // UIDeviceCamerasSupportsStillCamera |
+			 // UIDeviceCamerasSupportsAutofocusCamera |
+			 // UIDeviceCamerasSupportsVideoCamera |
+			 // UIDeviceCamerasSupportsFrontCamera |
+			 // UIDeviceCamerasSupportsBackLED |
+			 // UIDeviceCommoSupportsTelephony |
+			 // UIDeviceCommoSupportsSMS |
+			 UIDeviceCommoSupportsWifi |
+			 UIDeviceCommoSupportsBluetooth |
+			 UIDeviceCommoSupportsPeerToPeer |
+			 UIDeviceAudioSupportsBuiltInSpeaker |
+			 // UIDeviceAudioSupportsVibration |
+			 // UIDeviceAudioSupportsPiezoClicker |
+			 UIDeviceAudioSupportsHardwareVolumeButtons |
+			 UIDeviceAudioSupportsEncodeAAC |
+			 UIDeviceSupportsLocationServices |
+			 // UIDeviceSupportsGPS | // available on 3G -- still working on fix here
+			 UIDeviceSupportsOPENGLES1_1 |
+			 // UIDeviceSupportsOPENGLES2 |
+			 // UIDeviceSupportsARMV7 |
+			 UIDeviceSupportsNike |
+			 UIDeviceSupportsAccessibility |
 			 UIDeviceSupportsVoiceOver |
 			 UIDeviceSupportsVoiceControl |
-			 UIDeviceSupportsPeerToPeer |
-			 UIDeviceSupportsARMV7 |
-			 UIDeviceSupportsBrightnessSensor |
-			 UIDeviceSupportsEncodeAAC |
-			 UIDeviceSupportsBluetooth |
-			 UIDeviceSupportsNike |
-			 // UIDeviceSupportsPiezoClicker |
-			 UIDeviceSupportsVolumeButtons |
-			 UIDeviceSupportsEnhancedMultitouch
-			 );	
+			 UIDeviceSupportsEnhancedMultitouch			 
+			 );
 			
-		case UIDevice1GiPad3G:
+		case UIDevice2GiPad: // guesswork
 			return
-			(// UIDeviceSupportsTelephony  |
-			 UIDeviceSupportsSMS  |
-			 // UIDeviceSupportsStillCamera  |
-			 // UIDeviceSupportsAutofocusCamera |
-			 // UIDeviceSupportsVideoCamera  |
-			 UIDeviceSupportsWifi  |
-			 UIDeviceSupportsAccelerometer  |
-			 UIDeviceSupportsLocationServices  |
-			 UIDeviceSupportsGPS  |
-			 // UIDeviceSupportsMagnetometer  |
-			 UIDeviceSupportsBuiltInMicrophone  |
-			 UIDeviceSupportsExternalMicrophone  |
-			 UIDeviceSupportsOPENGLES1_1  |
-			 UIDeviceSupportsOPENGLES2  |
-			 UIDeviceSupportsBuiltInSpeaker  |
-			 // UIDeviceSupportsVibration  |
-			 // UIDeviceSupportsBuiltInProximitySensor  |
-			 UIDeviceSupportsAccessibility  |
+			(
+			 UIDeviceSensorsSupportsAccelerometer |
+			 // UIDeviceSensorsSupportsGyro |
+			 UIDeviceSensorsSupportsMagnetometer |
+			 UIDeviceSensorsSupportsBrightnessSensor |
+			 // UIDeviceSensorsSupportsBuiltInProximitySensor |
+			 UIDeviceSensorsSupportsBuiltInMicrophone |
+			 UIDeviceSensorsSupportsExternalMicrophone |
+			 // UIDeviceSensorsSupportsDualMicNoiseSuppression |
+			 // UIDeviceCamerasSupportsStillCamera |
+			 // UIDeviceCamerasSupportsAutofocusCamera |
+			 // UIDeviceCamerasSupportsVideoCamera |
+			 // UIDeviceCamerasSupportsFrontCamera |
+			 // UIDeviceCamerasSupportsBackLED |
+			 // UIDeviceCommoSupportsTelephony |
+			 // UIDeviceCommoSupportsSMS |
+			 UIDeviceCommoSupportsWifi |
+			 UIDeviceCommoSupportsBluetooth |
+			 UIDeviceCommoSupportsPeerToPeer |
+			 UIDeviceAudioSupportsBuiltInSpeaker |
+			 // UIDeviceAudioSupportsVibration |
+			 // UIDeviceAudioSupportsPiezoClicker |
+			 UIDeviceAudioSupportsHardwareVolumeButtons |
+			 UIDeviceAudioSupportsEncodeAAC |
+			 UIDeviceSupportsLocationServices |
+			 // UIDeviceSupportsGPS |
+			 UIDeviceSupportsOPENGLES1_1 |
+			 // UIDeviceSupportsOPENGLES2 |
+			 // UIDeviceSupportsARMV7 |
+			 UIDeviceSupportsNike |
+			 UIDeviceSupportsAccessibility |
 			 UIDeviceSupportsVoiceOver |
 			 UIDeviceSupportsVoiceControl |
-			 UIDeviceSupportsPeerToPeer |
-			 UIDeviceSupportsARMV7 |
-			 UIDeviceSupportsBrightnessSensor |
-			 UIDeviceSupportsEncodeAAC |
-			 UIDeviceSupportsBluetooth |
-			 UIDeviceSupportsNike |
-			 // UIDeviceSupportsPiezoClicker |
-			 UIDeviceSupportsVolumeButtons |
-			 UIDeviceSupportsEnhancedMultitouch
-			 );				
-			
+			 UIDeviceSupportsEnhancedMultitouch	
+			 );
+
 		case UIDeviceiPhoneSimulator: 
 			return
-			(// UIDeviceSupportsTelephony  |
-			 // UIDeviceSupportsSMS  |
-			 // UIDeviceSupportsStillCamera  |
-			 // UIDeviceSupportsAutofocusCamera |
-			 // UIDeviceSupportsVideoCamera  |
-			 UIDeviceSupportsWifi  |
-			 // UIDeviceSupportsAccelerometer  |
-			 UIDeviceSupportsLocationServices  |
-			 // UIDeviceSupportsGPS  |
-			 // UIDeviceSupportsMagnetometer  |
-			 // UIDeviceSupportsBuiltInMicrophone  |
-			 // UIDeviceSupportsExternalMicrophone  |
-			 UIDeviceSupportsOPENGLES1_1  |
-			 // UIDeviceSupportsOPENGLES2  |
-			 UIDeviceSupportsAccessibility  | // with limitations
-			 UIDeviceSupportsVoiceOver | // with limitations
-			 UIDeviceSupportsBuiltInSpeaker
-			// UIDeviceSupportsVibration  |
-			// UIDeviceSupportsBuiltInProximitySensor  |
-			// UIDeviceSupportsVoiceControl |
-			// UIDeviceSupportsPeerToPeer |
-			// UIDeviceSupportsARMV7 |
-			// UIDeviceSupportsBrightnessSensor |
-			// UIDeviceSupportsEncodeAAC |
-			// UIDeviceSupportsBluetooth |
-			// UIDeviceSupportsNike |
-			// UIDeviceSupportsPiezoClicker |
-			// UIDeviceSupportsVolumeButtons
-			);
+			(
+			 // UIDeviceSensorsSupportsAccelerometer |
+			 // UIDeviceSensorsSupportsGyro |
+			 // UIDeviceSensorsSupportsMagnetometer |
+			 // UIDeviceSensorsSupportsBrightnessSensor |
+			 // UIDeviceSensorsSupportsBuiltInProximitySensor |
+			 UIDeviceSensorsSupportsBuiltInMicrophone |
+			 UIDeviceSensorsSupportsExternalMicrophone |
+			 // UIDeviceSensorsSupportsDualMicNoiseSuppression |
+			 // UIDeviceCamerasSupportsStillCamera |
+			 // UIDeviceCamerasSupportsAutofocusCamera |
+			 // UIDeviceCamerasSupportsVideoCamera |
+			 // UIDeviceCamerasSupportsFrontCamera |
+			 // UIDeviceCamerasSupportsBackLED |
+			 // UIDeviceCommoSupportsTelephony |
+			 // UIDeviceCommoSupportsSMS |
+			 UIDeviceCommoSupportsWifi |
+			 // UIDeviceCommoSupportsBluetooth |
+			 // UIDeviceCommoSupportsPeerToPeer |
+			 UIDeviceAudioSupportsBuiltInSpeaker |
+			 // UIDeviceAudioSupportsVibration |
+			 // UIDeviceAudioSupportsPiezoClicker |
+			 // UIDeviceAudioSupportsHardwareVolumeButtons |
+			 // UIDeviceAudioSupportsEncodeAAC |
+			 UIDeviceSupportsLocationServices |
+			 // UIDeviceSupportsGPS |
+			 UIDeviceSupportsOPENGLES1_1 |
+			 // UIDeviceSupportsOPENGLES2 |
+			 // UIDeviceSupportsARMV7 |
+			 // UIDeviceSupportsNike |
+			 UIDeviceSupportsAccessibility |
+			 UIDeviceSupportsVoiceOver
+			 // UIDeviceSupportsVoiceControl |
+			 // UIDeviceSupportsEnhancedMultitouch	
+			 );
 		default: return 0;
 	}
 }
@@ -491,40 +670,47 @@
 	NSUInteger flags = [self platformCapabilities];
 	NSMutableArray *array = [NSMutableArray array];
 	
-	if (flags & UIDeviceSupportsTelephony) [array addObject:@"Telephony"];
-	if (flags & UIDeviceSupportsSMS) [array addObject:@"SMS"];
-	if (flags & UIDeviceSupportsStillCamera) [array addObject:@"Still Camera"];
-	if (flags & UIDeviceSupportsAutofocusCamera) [array addObject:@"AutoFocus Camera"];
-	if (flags & UIDeviceSupportsVideoCamera) [array addObject:@"Video Camera"];
+	if (flags & UIDeviceSensorsSupportsAccelerometer) [array addObject:@"Accelerometer"];
+	if (flags & UIDeviceSensorsSupportsGyro) [array addObject:@"Gyro"];
+	if (flags & UIDeviceSensorsSupportsMagnetometer) [array addObject:@"Magnetometer"];
+	if (flags & UIDeviceSensorsSupportsBrightnessSensor) [array addObject:@"Brightness Sesnsor"];
+	if (flags & UIDeviceSensorsSupportsBuiltInProximitySensor) [array addObject:@"Proximity Sensor"];
+	if (flags & UIDeviceSensorsSupportsBuiltInProximitySensor) [array addObject:@"Proximity Sensor"];
+	if (flags & UIDeviceSensorsSupportsBuiltInProximitySensor) [array addObject:@"Proximity Sensor"];
+	if (flags & UIDeviceSensorsSupportsBuiltInMicrophone) [array addObject:@"Built-in Microphone"];
+	if (flags & UIDeviceSensorsSupportsExternalMicrophone) [array addObject:@"External Microphone Support"];
+	if (flags & UIDeviceSensorsSupportsDualMicNoiseSuppression) [array addObject:@"Dual Mic Noise Suppression"];
+	
+	if (flags & UIDeviceCamerasSupportsStillCamera) [array addObject:@"Still Camera"];
+	if (flags & UIDeviceCamerasSupportsAutofocusCamera) [array addObject:@"Autofocus Camera"];
+	if (flags & UIDeviceCamerasSupportsVideoCamera) [array addObject:@"Video Camera"];
+	if (flags & UIDeviceCamerasSupportsFrontCamera) [array addObject:@"Front Camera"];
+	if (flags & UIDeviceCamerasSupportsBackLED) [array addObject:@"Back LED"];
 
-	if (flags & UIDeviceSupportsWifi) [array addObject:@"WiFi"];
-	if (flags & UIDeviceSupportsAccelerometer) [array addObject:@"Accelerometer"];
+	if (flags & UIDeviceCommoSupportsTelephony) [array addObject:@"Telephony"];
+	if (flags & UIDeviceCommoSupportsSMS) [array addObject:@"SMS"];
+	if (flags & UIDeviceCommoSupportsWifi) [array addObject:@"Wi-Fi"];
+	if (flags & UIDeviceCommoSupportsBluetooth) [array addObject:@"Bluetooth"];
+	if (flags & UIDeviceCommoSupportsPeerToPeer) [array addObject:@"Peer to Peer"];
+
+	if (flags & UIDeviceAudioSupportsBuiltInSpeaker) [array addObject:@"Built-in Speaker"];
+	if (flags & UIDeviceAudioSupportsVibration) [array addObject:@"Vibration"];
+	if (flags & UIDeviceAudioSupportsPiezoClicker) [array addObject:@"Piezo Clicker"];
+	if (flags & UIDeviceAudioSupportsHardwareVolumeButtons) [array addObject:@"Hardware Volume Buttons"];
+	if (flags & UIDeviceAudioSupportsEncodeAAC) [array addObject:@"AAC Encoding"];
+
 	if (flags & UIDeviceSupportsLocationServices) [array addObject:@"Location Services"];
 	if (flags & UIDeviceSupportsGPS) [array addObject:@"GPS"];
-	if (flags & UIDeviceSupportsMagnetometer) [array addObject:@"Magnetometer"];
+	
+	if (flags & UIDeviceSupportsOPENGLES1_1) [array addObject:@"OpenGLES 1.1"];
+	if (flags & UIDeviceSupportsOPENGLES2) [array addObject:@"OpenGLES 2.x"];
+	
+	if (flags & UIDeviceSupportsNike) [array addObject:@"Nike Support"];
 
-	if (flags & UIDeviceSupportsBuiltInMicrophone) [array addObject:@"Built-in Microphone"];
-	if (flags & UIDeviceSupportsExternalMicrophone) [array addObject:@"External Microphone Support"];
-	if (flags & UIDeviceSupportsOPENGLES1_1) [array addObject:@"OpenGL ES 1.1"];
-	if (flags & UIDeviceSupportsOPENGLES2) [array addObject:@"OpenGL ES 2.x"];
-	if (flags & UIDeviceSupportsBuiltInSpeaker) [array addObject:@"Built-in Speaker"];
-
-	if (flags & UIDeviceSupportsVibration) [array addObject:@"Vibration"];
-	if (flags & UIDeviceSupportsBuiltInProximitySensor) [array addObject:@"Proximity Sensor"];
 	if (flags & UIDeviceSupportsAccessibility) [array addObject:@"Accessibility"];
 	if (flags & UIDeviceSupportsVoiceOver) [array addObject:@"VoiceOver"];
 	if (flags & UIDeviceSupportsVoiceControl) [array addObject:@"Voice Control"];
 
-	if (flags & UIDeviceSupportsBrightnessSensor) [array addObject:@"Brightness Sensor"];
-	if (flags & UIDeviceSupportsPeerToPeer) [array addObject:@"Peer to Peer Bluetooth"];
-	if (flags & UIDeviceSupportsARMV7) [array addObject:@"The armv7 instruction set"];
-	if (flags & UIDeviceSupportsEncodeAAC) [array addObject:@"AAC Encoding"];
-	if (flags & UIDeviceSupportsBluetooth) [array addObject:@"Basic Bluetooth"];
-
-	if (flags & UIDeviceSupportsNike) [array addObject:@"Nike"];
-	if (flags & UIDeviceSupportsPiezoClicker) [array addObject:@"Piezo clicker"];
-	if (flags & UIDeviceSupportsVolumeButtons) [array addObject:@"Physical volume rocker"];
-	
 	if (flags & UIDeviceSupportsEnhancedMultitouch) [array addObject:@"Enhanced Multitouch"];
 	
 	return array;
@@ -595,11 +781,23 @@
 		case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
 			
 		case UIDevice1GiPad: return @"K48";
-		case UIDevice1GiPad3G: return @"K48";  // placeholder
+		// case UIDevice2GiPad: return nil;
+		case UIDeviceUnknowniPad: return IPAD_UNKNOWN_NAMESTRING;
+			
+		case UIDeviceUnknowniTV: return ITV_UNKNOWN_NAMESTRING;
 			
 		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
 			
 		default: return IPOD_FAMILY_UNKNOWN_DEVICE;
 	}
 }
+
+// Illicit Bluetooth check -- cannot be used in App Store
+/* Class  btclass = NSClassFromString(@"GKBluetoothSupport");
+if ([btclass respondsToSelector:@selector(bluetoothStatus)]) 
+{
+	printf("BTStatus %d\n", ((int)[btclass performSelector:@selector(bluetoothStatus)] & 1) != 0);
+	bluetooth = ((int)[btclass performSelector:@selector(bluetoothStatus)] & 1) != 0;
+	printf("Bluetooth %s enabled\n", bluetooth ? "is" : "isn't");
+}*/
 @end

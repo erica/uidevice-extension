@@ -34,6 +34,9 @@
 	va_start(arglist, formatstring);
 	NSString *outstring = [[[NSString alloc] initWithFormat:formatstring arguments:arglist] autorelease];
 	va_end(arglist);
+	
+	NSLog(@"%@", outstring);
+	
 	[self.log appendString:outstring];
 	[self.log appendString:@"\n"];
 	self.textView.text = self.log;
@@ -48,7 +51,7 @@
 - (void) action: (UIBarButtonItem *) bbi
 {
 	self.log = [NSMutableString string];
-	[self doLog:@"Adjusted Orientation Angle: %f\n", [[UIDevice currentDevice] orientationAngleRelativeToOrientation:UIDeviceOrientationLandscapeLeft]];
+	// [self doLog:@"Adjusted Orientation Angle: %f\n", [[UIDevice currentDevice] orientationAngleRelativeToOrientation:UIDeviceOrientationLandscapeLeft]];
 	
 	// TESTING REACHABILITY
 	/*
