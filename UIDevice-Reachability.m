@@ -7,11 +7,14 @@
  */
 
 #import <SystemConfiguration/SystemConfiguration.h>
-#include <arpa/inet.h>
-#include <netdb.h>
-#include <net/if.h>
-#include <ifaddrs.h>
+
+#import <arpa/inet.h>
+#import <netdb.h>
+#import <net/if.h>
+#import <ifaddrs.h>
+#import <unistd.h>
 #import <dlfcn.h>
+
 #import "UIDevice-Reachability.h"
 #import "wwanconnect.h"
 

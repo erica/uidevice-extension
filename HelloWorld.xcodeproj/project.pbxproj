@@ -11,10 +11,12 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		8E03075512382230000616A0 /* GraphicsServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E03075412382230000616A0 /* GraphicsServices.framework */; };
 		8E278438101E6BCE002772F5 /* wwanconnect.c in Sources */ = {isa = PBXBuildFile; fileRef = 8E278431101E6BCE002772F5 /* wwanconnect.c */; };
 		8E3A1F090FAA199F009B0518 /* cover320x416.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E3A1F080FAA199F009B0518 /* cover320x416.png */; };
 		8E3E64BD1028A0EB0009F50A /* UIDevice-IOKitExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3E64B91028A0EB0009F50A /* UIDevice-IOKitExtensions.m */; };
 		8E3E64BE1028A0EB0009F50A /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3E64BA1028A0EB0009F50A /* UIDevice-Hardware.m */; };
+		8E3E79ED1237E44200FAD883 /* UIDevice-Capabilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3E79EC1237E44200FAD883 /* UIDevice-Capabilities.m */; };
 		8E4156E90FA4EE0E0006D27C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4156E70FA4EE0E0006D27C /* Default.png */; };
 		8E4156EA0FA4EE0E0006D27C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4156E80FA4EE0E0006D27C /* icon.png */; };
 		8E43B864114EA15D0079785E /* UIDevice-Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E43B863114EA15D0079785E /* UIDevice-Orientation.m */; };
@@ -32,6 +34,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* HelloWorld_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorld_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E03075212382206000616A0 /* 40frameworks */ = {isa = PBXFileReference; lastKnownFileType = text; name = 40frameworks; path = /Users/ericasadun/40frameworks; sourceTree = "<absolute>"; };
+		8E03075412382230000616A0 /* GraphicsServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GraphicsServices.framework; path = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/System/Library/PrivateFrameworks/GraphicsServices.framework; sourceTree = "<absolute>"; };
 		8E278431101E6BCE002772F5 /* wwanconnect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wwanconnect.c; path = "Apple Sample Code/wwanconnect.c"; sourceTree = "<group>"; };
 		8E278432101E6BCE002772F5 /* wwanconnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wwanconnect.h; path = "Apple Sample Code/wwanconnect.h"; sourceTree = "<group>"; };
 		8E3A1F080FAA199F009B0518 /* cover320x416.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover320x416.png; sourceTree = "<group>"; };
@@ -39,6 +43,8 @@
 		8E3E64B91028A0EB0009F50A /* UIDevice-IOKitExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-IOKitExtensions.m"; sourceTree = "<group>"; };
 		8E3E64BA1028A0EB0009F50A /* UIDevice-Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Hardware.m"; sourceTree = "<group>"; };
 		8E3E64BB1028A0EB0009F50A /* UIDevice-IOKitExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-IOKitExtensions.h"; sourceTree = "<group>"; };
+		8E3E79EB1237E44200FAD883 /* UIDevice-Capabilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Capabilities.h"; sourceTree = "<group>"; };
+		8E3E79EC1237E44200FAD883 /* UIDevice-Capabilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Capabilities.m"; sourceTree = "<group>"; };
 		8E4156E70FA4EE0E0006D27C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8E4156E80FA4EE0E0006D27C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		8E43B862114EA15D0079785E /* UIDevice-Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Orientation.h"; sourceTree = "<group>"; };
@@ -62,6 +68,7 @@
 				1D3623EC0D0F72F000981E51 /* CoreGraphics.framework in Frameworks */,
 				8E9B2373101E2D3A005DB65B /* SystemConfiguration.framework in Frameworks */,
 				8E7EA6631028A1A7004DB9E8 /* IOKit.framework in Frameworks */,
+				8E03075512382230000616A0 /* GraphicsServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +89,8 @@
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				8E3E64B71028A0EB0009F50A /* UIDevice-Hardware.h */,
 				8E3E64BA1028A0EB0009F50A /* UIDevice-Hardware.m */,
+				8E3E79EB1237E44200FAD883 /* UIDevice-Capabilities.h */,
+				8E3E79EC1237E44200FAD883 /* UIDevice-Capabilities.m */,
 				8E3E64BB1028A0EB0009F50A /* UIDevice-IOKitExtensions.h */,
 				8E3E64B91028A0EB0009F50A /* UIDevice-IOKitExtensions.m */,
 				8E9B233D101E2BB0005DB65B /* UIDevice-Reachability.h */,
@@ -92,6 +101,8 @@
 				8EB688610FA64AD100489E4B /* Support */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				8E03075212382206000616A0 /* 40frameworks */,
+				8E03075412382230000616A0 /* GraphicsServices.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -159,6 +170,7 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "HelloWorld" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -200,6 +212,7 @@
 				8E3E64BD1028A0EB0009F50A /* UIDevice-IOKitExtensions.m in Sources */,
 				8E3E64BE1028A0EB0009F50A /* UIDevice-Hardware.m in Sources */,
 				8E43B864114EA15D0079785E /* UIDevice-Orientation.m in Sources */,
+				8E3E79ED1237E44200FAD883 /* UIDevice-Capabilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +225,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Erica Sadun";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -220,7 +237,7 @@
 				INFOPLIST_FILE = Info.plist;
 				PREBINDING = NO;
 				PRODUCT_NAME = HelloWorld;
-				SDKROOT = iphonesimulator4.0;
+				SDKROOT = iphoneos4.1;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -230,6 +247,10 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HelloWorld_Prefix.pch;
