@@ -26,6 +26,7 @@
 #define IPAD_UNKNOWN_NAMESTRING			@"Unknown iPad"
 
 // Nano? Apple TV?
+#define APPLETV_2G_NAMESTRING			@"Apple TV 2G"
 
 #define IPOD_FAMILY_UNKNOWN_DEVICE			@"Unknown iOS device"
 
@@ -53,6 +54,8 @@ typedef enum {
 	
 	UIDevice1GiPad, // both regular and 3G
 	UIDevice2GiPad,
+	
+	UIDeviceAppleTV2,
 	
 	UIDeviceUnknowniPhone,
 	UIDeviceUnknowniPod,

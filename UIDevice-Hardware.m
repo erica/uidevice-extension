@@ -38,6 +38,8 @@
  iPad1,1   -> iPad 1G, WiFi
  iPad1,?   -> iPad 1G, 3G <- needs 3G owner to test
  iPad2,1   -> iPad 2G (iProd 2,1)
+ 
+ AppleTV2,1 -> AppleTV 2
 
  i386, x86_64 -> iPhone Simulator
 */
@@ -137,6 +139,8 @@
 	if ([platform isEqualToString:@"iPad1,1"])   return UIDevice1GiPad;
 	if ([platform isEqualToString:@"iPad2,1"])   return UIDevice2GiPad;
 	
+	if ([platform isEqualToString:@"AppleTV2,1"])	return UIDeviceAppleTV2;
+	
 	/*
 	 MISSING A SOLUTION HERE TO DATE TO DIFFERENTIATE iPAD and iPAD 3G.... SORRY!
 	 */
@@ -176,6 +180,8 @@
 			
 		case UIDevice1GiPad : return IPAD_1G_NAMESTRING;
 		case UIDevice2GiPad : return IPAD_2G_NAMESTRING;
+			
+		case UIDeviceAppleTV2 : return APPLETV_2G_NAMESTRING;
 			
 		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
 		case UIDeviceiPhoneSimulatoriPhone: return IPHONE_SIMULATOR_IPHONE_NAMESTRING;
@@ -255,6 +261,8 @@
 		case UIDevice1GiPad: return @"K48";
 		case UIDevice2GiPad: return IPAD_UNKNOWN_NAMESTRING;
 		case UIDeviceUnknowniPad: return IPAD_UNKNOWN_NAMESTRING;
+			
+		case UIDeviceAppleTV2:	return @"K66";
 
 		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
 			
