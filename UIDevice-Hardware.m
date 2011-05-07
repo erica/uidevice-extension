@@ -37,7 +37,9 @@
  
  iPad1,1   -> iPad 1G, WiFi
  iPad1,?   -> iPad 1G, 3G <- needs 3G owner to test
- iPad2,1   -> iPad 2G (iProd 2,1)
+ iPad2,1   -> iPad 2G, WiFi
+ iPad2,2   -> iPad 2G, 3G GSM
+ iPad2,3   -> iPad 2G, 3G CDMA
  
  AppleTV2,1 -> AppleTV 2
 
@@ -127,7 +129,7 @@
 
 	if ([platform isEqualToString:@"iPhone1,1"])	return UIDevice1GiPhone;
 	if ([platform isEqualToString:@"iPhone1,2"])	return UIDevice3GiPhone;
-	if ([platform hasPrefix:@"iPhone2"])	return UIDevice3GSiPhone;
+	if ([platform hasPrefix:@"iPhone2"])			return UIDevice3GSiPhone;
 	if ([platform hasPrefix:@"iPhone3"])			return UIDevice4iPhone;
 	if ([platform hasPrefix:@"iPhone4"])			return UIDevice5iPhone;
 	
@@ -137,7 +139,9 @@
 	if ([platform isEqualToString:@"iPod4,1"])   return UIDevice4GiPod;
 		
 	if ([platform isEqualToString:@"iPad1,1"])   return UIDevice1GiPad;
-	if ([platform isEqualToString:@"iPad2,1"])   return UIDevice2GiPad;
+	if ([platform isEqualToString:@"iPad2,1"])   return UIDevice2GiPadWiFi;
+	if ([platform isEqualToString:@"iPad2,2"])   return UIDevice2GiPad3GGSM;
+	if ([platform isEqualToString:@"iPad2,3"])   return UIDevice2GiPad3GCDMA;
 	
 	if ([platform isEqualToString:@"AppleTV2,1"])	return UIDeviceAppleTV2;
 	
@@ -179,7 +183,9 @@
 		case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
 			
 		case UIDevice1GiPad : return IPAD_1G_NAMESTRING;
-		case UIDevice2GiPad : return IPAD_2G_NAMESTRING;
+		case UIDevice2GiPadWiFi : return IPAD_2G_WIFI_NAMESTRING;
+		case UIDevice2GiPad3GGSM : return IPAD_2G_3G_GSM_NAMESTRING;
+		case UIDevice2GiPad3GCDMA : return IPAD_2G_3G_CDMA_NAMESTRING;
 			
 		case UIDeviceAppleTV2 : return APPLETV_2G_NAMESTRING;
 			
@@ -259,7 +265,9 @@
 		case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
 			
 		case UIDevice1GiPad: return @"K48";
-		case UIDevice2GiPad: return IPAD_UNKNOWN_NAMESTRING;
+		case UIDevice2GiPadWiFi: return @"K93";
+		case UIDevice2GiPad3GGSM: return @"K94";
+		case UIDevice2GiPad3GCDMA: return @"K95";
 		case UIDeviceUnknowniPad: return IPAD_UNKNOWN_NAMESTRING;
 			
 		case UIDeviceAppleTV2:	return @"K66";
