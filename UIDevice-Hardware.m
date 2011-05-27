@@ -23,9 +23,9 @@
  iPhone1,1 ->	iPhone 1G
  iPhone1,2 ->	iPhone 3G
  iPhone2,1 ->	iPhone 3GS
- iPhone3,1 ->	iPhone 4/AT&T
- iPhone3,2 ->	iPhone 4/Other Carrier?
- iPhone3,3 ->	iPhone 4/Other Carrier?
+ iPhone3,1 ->	iPhone 4/AT&T (GSM)
+ iPhone3,2 ->	??iPhone 4/Unknown
+ iPhone3,3 ->	iPhone 4/Verizon Wireless (CDMA)
  iPhone4,1 ->	??iPhone 5
 
  iPod1,1   -> iPod touch 1G 
@@ -129,7 +129,8 @@
 	if ([platform isEqualToString:@"iPhone1,1"])	return UIDevice1GiPhone;
 	if ([platform isEqualToString:@"iPhone1,2"])	return UIDevice3GiPhone;
 	if ([platform hasPrefix:@"iPhone2"])			return UIDevice3GSiPhone;
-	if ([platform hasPrefix:@"iPhone3"])			return UIDevice4iPhone;
+	if ([platform isEqualToString:@"iPhone3,1"])    return UIDevice4iPhoneGSM;
+	if ([platform isEqualToString:@"iPhone3,3"])    return UIDevice4iPhoneCDMA;
 	if ([platform hasPrefix:@"iPhone4"])			return UIDevice5iPhone;
 	
 	if ([platform isEqualToString:@"iPod1,1"])   return UIDevice1GiPod;
@@ -172,7 +173,8 @@
 		case UIDevice1GiPhone: return IPHONE_1G_NAMESTRING;
 		case UIDevice3GiPhone: return IPHONE_3G_NAMESTRING;
 		case UIDevice3GSiPhone:	return IPHONE_3GS_NAMESTRING;
-		case UIDevice4iPhone:	return IPHONE_4_NAMESTRING;
+		case UIDevice4iPhoneGSM:        return IPHONE_4_GSM_NAMESTRING;
+		case UIDevice4iPhoneCDMA:       return IPHONE_4_CDMA_NAMESTRING;
 		case UIDevice5iPhone:	return IPHONE_5_NAMESTRING;
 		case UIDeviceUnknowniPhone: return IPHONE_UNKNOWN_NAMESTRING;
 		
@@ -254,7 +256,8 @@
 		case UIDevice1GiPhone: return @"M68";
 		case UIDevice3GiPhone: return @"N82";
 		case UIDevice3GSiPhone:	return @"N88";
-		case UIDevice4iPhone: return @"N89";
+		case UIDevice4iPhoneGSM: return @"N89";
+		case UIDevice4iPhoneCDMA: return @"N92";
 		case UIDevice5iPhone: return IPHONE_UNKNOWN_NAMESTRING;
 		case UIDeviceUnknowniPhone: return IPHONE_UNKNOWN_NAMESTRING;
 			
