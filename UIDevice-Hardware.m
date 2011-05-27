@@ -160,7 +160,7 @@
 		else 
 			return UIDeviceiPhoneSimulatoriPad;
 
-		return UIDeviceiPhoneSimulator;
+		return UIDeviceUnknownSimulator;
 	}
 
 	return UIDeviceUnknown;
@@ -191,7 +191,7 @@
 			
 		case UIDeviceAppleTV2 : return APPLETV_2G_NAMESTRING;
 			
-		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
+		case UIDeviceUnknownSimulator: return IPHONE_SIMULATOR_NAMESTRING;
 		case UIDeviceiPhoneSimulatoriPhone: return IPHONE_SIMULATOR_IPHONE_NAMESTRING;
 		case UIDeviceiPhoneSimulatoriPad: return IPHONE_SIMULATOR_IPAD_NAMESTRING;
 			
@@ -275,7 +275,7 @@
 			
 		case UIDeviceAppleTV2:	return @"K66";
 
-		case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
+		case UIDeviceUnknownSimulator: return IPHONE_SIMULATOR_NAMESTRING;
 			
 		default: return IPOD_FAMILY_UNKNOWN_DEVICE;
 	}
