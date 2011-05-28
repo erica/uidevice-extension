@@ -13,6 +13,37 @@
 
 #import "UIDevice-Hardware.h"
 
+
+#define IFPGA_NAMESTRING				@"iFPGA"
+
+#define IPHONE_1G_NAMESTRING			@"iPhone 1G"
+#define IPHONE_3G_NAMESTRING			@"iPhone 3G"
+#define IPHONE_3GS_NAMESTRING			@"iPhone 3GS" 
+#define IPHONE_4_GSM_NAMESTRING         @"iPhone 4 (GSM)"
+#define IPHONE_4_CDMA_NAMESTRING        @"iPhone 4 (CDMA)"
+#define IPHONE_5_NAMESTRING				@"iPhone 5"
+#define IPHONE_UNKNOWN_NAMESTRING		@"Unknown iPhone"
+
+#define IPOD_1G_NAMESTRING				@"iPod touch 1G"
+#define IPOD_2G_NAMESTRING				@"iPod touch 2G"
+#define IPOD_3G_NAMESTRING				@"iPod touch 3G"
+#define IPOD_4G_NAMESTRING				@"iPod touch 4G"
+#define IPOD_UNKNOWN_NAMESTRING			@"Unknown iPod"
+
+#define IPAD_1G_NAMESTRING				@"iPad 1G"
+#define IPAD_2G_WIFI_NAMESTRING			@"iPad 2G (WiFi)"
+#define IPAD_2G_3G_GSM_NAMESTRING		@"iPad 2G (3G GSM)"
+#define IPAD_2G_3G_CDMA_NAMESTRING		@"iPad 2G (3G CDMA)"
+#define IPAD_UNKNOWN_NAMESTRING			@"Unknown iPad"
+
+#define APPLETV_2G_NAMESTRING			@"Apple TV 2G"
+
+#define IPOD_FAMILY_UNKNOWN_DEVICE			@"Unknown iOS device"
+
+#define IPHONE_SIMULATOR_NAMESTRING			@"iPhone Simulator"
+#define IPHONE_SIMULATOR_IPHONE_NAMESTRING	@"iPhone Simulator"
+#define IPHONE_SIMULATOR_IPAD_NAMESTRING	@"iPad Simulator"
+
 @implementation UIDevice (Hardware)
 
 /*
