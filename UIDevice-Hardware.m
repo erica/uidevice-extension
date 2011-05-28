@@ -47,36 +47,16 @@
 @implementation UIDevice (Hardware)
 
 /*
- Platforms
- 
- iFPGA ->		??
-
- iPhone1,1 ->	iPhone 1G
- iPhone1,2 ->	iPhone 3G
- iPhone2,1 ->	iPhone 3GS
- iPhone3,1 ->	iPhone 4/AT&T (GSM)
- iPhone3,2 ->	??iPhone 4/Unknown
- iPhone3,3 ->	iPhone 4/Verizon Wireless (CDMA)
- iPhone4,1 ->	??iPhone 5
-
- iPod1,1   -> iPod touch 1G 
- iPod2,1   -> iPod touch 2G 
- iPod2,2   -> ??iPod touch 2.5G
- iPod3,1   -> iPod touch 3G
- iPod4,1   -> iPod touch 4G
- iPod5,1   -> ??iPod touch 5G
- 
- iPad1,1   -> iPad 1G, WiFi
- iPad1,?   -> iPad 1G, 3G <- needs 3G owner to test
- iPad2,1   -> iPad 2G, WiFi
- iPad2,2   -> iPad 2G, 3G GSM
- iPad2,3   -> iPad 2G, 3G CDMA
- 
- AppleTV2,1 -> AppleTV 2
-
- i386, x86_64 -> iPhone Simulator
-*/
-
+ * These are platforms returned by the hw.machine sysctl that we don't really know what to think about.
+ * 
+ * iPhone3,2    -> iPhone 4/Unknown (3,1 is GSM, 3,3 is CDMA - possibly a secondary CDMA model)
+ * iPod2,2      -> iPod Touch 2.5G ??
+ * iPad1,?      -> iPad 1G, 3G. (Needs 3G owner to verify)
+ *
+ * iFPGA        -> ??
+ * iPhone4,1    -> iPhone 5 ?? (Unreleased)
+ * iPod5,1      -> iPod Touch 5G (Unreleased)
+ */
 
 #pragma mark sysctlbyname utils
 - (NSString *) getSysInfoByName:(char *)typeSpecifier
