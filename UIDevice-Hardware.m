@@ -123,7 +123,6 @@
 - (NSUInteger) platformType
 {
 	NSString *platform = [self platform];
-	// if ([platform isEqualToString:@"XX"])			return UIDeviceUnknown;
 	
 	if ([platform isEqualToString:@"iFPGA"])		return UIDeviceIFPGA;
 
@@ -162,6 +161,7 @@
 
 		return UIDeviceiPhoneSimulator;
 	}
+
 	return UIDeviceUnknown;
 }
 
@@ -241,7 +241,7 @@
 	ifm = (struct if_msghdr *)buf;
 	sdl = (struct sockaddr_dl *)(ifm + 1);
 	ptr = (unsigned char *)LLADDR(sdl);
-	// NSString *outstring = [NSString stringWithFormat:@"%02x:%02x:%02x:%02x:%02x:%02x", *ptr, *(ptr+1), *(ptr+2), *(ptr+3), *(ptr+4), *(ptr+5)];
+
 	NSString *outstring = [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x", *ptr, *(ptr+1), *(ptr+2), *(ptr+3), *(ptr+4), *(ptr+5)];
 	free(buf);
 	return [outstring uppercaseString];
