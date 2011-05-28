@@ -38,6 +38,26 @@ typedef enum {
 	UIDeviceIFPGA                   = 0x100000,
 } UIDevicePlatform;
 
+#define UIDEVICE_PLATFORM_MASK_IPHONE3 (UIDeviceIPhone3G | UIDeviceIPhone3GS)
+#define UIDEVICE_PLATFORM_MASK_IPHONE4 (UIDeviceIPhone4_GSM | UIDeviceIPhone4_CDMA)
+#define UIDEVICE_PLATFORM_MASK_IPHONE (UIDeviceIPhone1G | UIDEVICE_PLATFORM_IPHONE3 | UIDEVICE_PLATFORM_IPHONE4 | UIDeviceIPhone5 | UIDeviceSimulatorIPhone | UIDeviceUnknownIPhone)
+#define UIDEVICE_PLATFORM_MASK_IPOD (UIDeviceIPod1G | UIDeviceIPod2G | UIDeviceIPod3G | UIDeviceIPod4G | UIDeviceUnknownIPod)
+#define UIDEVICE_PLATFORM_MASK_IPAD (UIDeviceIPad1 | UIDeviceIPad2_WiFi | UIDeviceIPad2_3G_GSM | UIDeviceIPad2_3G_CDMA | UIDeviceSimulatorIPad | UIDeviceUnknownIPad)
+#define UIDEVICE_PLATFORM_MASK_UNKNOWN (UIDeviceUnknownSimulator | UIDeviceUnknownIPhone | UIDeviceUnknownIPod | UIDeviceUnknownIPad)
+
+/* Use these macros to recognize families of devices. Usage:
+ * if (UIDEVICE_PLATFORMTYPE_IS_IPHONE([[UIDevice currentDevice] platformType])) {
+ *   do_iphone_specific_stuff();
+ * }
+ */
+
+#define UIDEVICE_PLATFORMTYPE_IS_IPHONE3(type) ((type & UIDEVICE_PLATFORM_MASK_IPHONE3) != 0)
+#define UIDEVICE_PLATFORMTYPE_IS_IPHONE4(type) ((type & UIDEVICE_PLATFORM_MASK_IPHONE4) != 0)
+#define UIDEVICE_PLATFORMTYPE_IS_IPHONE(type) ((type & UIDEVICE_PLATFORM_MASK_IPHONE) != 0)
+#define UIDEVICE_PLATFORMTYPE_IS_IPOD(type) ((type & UIDEVICE_PLATFORM_MASK_IPOD) != 0)
+#define UIDEVICE_PLATFORMTYPE_IS_IPAD(type) ((type & UIDEVICE_PLATFORM_MASK_IPAD) != 0)
+#define UIDEVICE_PLATFORMTYPE_IS_UNKNOWN(type) ((type & UIDEVICE_PLATFORM_MASK_UNKNOWN) != 0)
+
 @interface UIDevice (Hardware)
 - (NSString *) platform;
 - (NSString *) hwmodel;
