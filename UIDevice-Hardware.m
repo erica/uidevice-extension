@@ -37,7 +37,9 @@
  
  iPad1,1   -> iPad 1G, WiFi
  iPad1,?   -> iPad 1G, 3G <- needs 3G owner to test
- iPad2,1   -> iPad 2G (iProd 2,1)
+ iPad2,1   -> iPad 2, Wifi
+ iPad2,2   -> iPad 2, GSM
+ iPad2,3   -> iPad 2, CDMA
  
  AppleTV2,1 -> AppleTV 2
 
@@ -137,7 +139,9 @@
 	if ([platform isEqualToString:@"iPod4,1"])   return UIDevice4GiPod;
 		
 	if ([platform isEqualToString:@"iPad1,1"])   return UIDevice1GiPad;
-	if ([platform isEqualToString:@"iPad2,1"])   return UIDevice2GiPad;
+	if ([platform isEqualToString:@"iPad2,1"])   return UIDevice2GiPadWifi;
+	if ([platform isEqualToString:@"iPad2,2"])   return UIDevice2GiPadGSM;
+	if ([platform isEqualToString:@"iPad2,3"])   return UIDevice2GiPadCDMA;
 	
 	if ([platform isEqualToString:@"AppleTV2,1"])	return UIDeviceAppleTV2;
 	
@@ -179,7 +183,9 @@
 		case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
 			
 		case UIDevice1GiPad : return IPAD_1G_NAMESTRING;
-		case UIDevice2GiPad : return IPAD_2G_NAMESTRING;
+		case UIDevice2GiPadWifi : return IPAD_2G_Wifi_NAMESTRING;
+		case UIDevice2GiPadGSM : return IPAD_2G_GSM_NAMESTRING;
+		case UIDevice2GiPadCDMA : return IPAD_2G_CDMA_NAMESTRING;
 			
 		case UIDeviceAppleTV2 : return APPLETV_2G_NAMESTRING;
 			
@@ -259,7 +265,9 @@
 		case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
 			
 		case UIDevice1GiPad: return @"K48";
-		case UIDevice2GiPad: return IPAD_UNKNOWN_NAMESTRING;
+		case UIDevice2GiPadWifi: return IPAD_UNKNOWN_CODE_NAMESTRING;
+		case UIDevice2GiPadGSM: return IPAD_UNKNOWN_CODE_NAMESTRING;
+		case UIDevice2GiPadCDMA: return IPAD_UNKNOWN_CODE_NAMESTRING;
 		case UIDeviceUnknowniPad: return IPAD_UNKNOWN_NAMESTRING;
 			
 		case UIDeviceAppleTV2:	return @"K66";

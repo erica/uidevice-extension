@@ -22,7 +22,10 @@
 #define IPOD_UNKNOWN_NAMESTRING			@"Unknown iPod"
 
 #define IPAD_1G_NAMESTRING				@"iPad 1G"
-#define IPAD_2G_NAMESTRING				@"iPad 2G"
+#define IPAD_2G_Wifi_NAMESTRING			@"iPad 2 Wifi"
+#define IPAD_2G_GSM_NAMESTRING			@"iPad 2 GSM"
+#define IPAD_2G_CDMA_NAMESTRING			@"iPad 2 CDMA"
+#define IPAD_UNKNOWN_CODE_NAMESTRING     @"Unknown iPad Code"
 #define IPAD_UNKNOWN_NAMESTRING			@"Unknown iPad"
 
 // Nano? Apple TV?
@@ -53,7 +56,9 @@ typedef enum {
 	UIDevice4GiPod,
 	
 	UIDevice1GiPad, // both regular and 3G
-	UIDevice2GiPad,
+	UIDevice2GiPadWifi,
+	UIDevice2GiPadGSM,
+	UIDevice2GiPadCDMA,
 	
 	UIDeviceAppleTV2,
 	
