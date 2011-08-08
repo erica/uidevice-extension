@@ -76,6 +76,7 @@
 	// TESTING DEVICE HARDWARE
 	[self doLog:@"Platform: %@", [[UIDevice currentDevice] platform]];
 	[self doLog:@"Platform String: %@", [[UIDevice currentDevice] platformString]];
+    [self doLog:@"Mac: %@", [[UIDevice currentDevice] macaddress]];
 
 	/*
 	[self doLog:@"Device is%@ portrait", [UIDevice currentDevice].isPortrait ? @"" : @" not"];

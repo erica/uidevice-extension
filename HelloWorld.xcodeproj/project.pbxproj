@@ -34,8 +34,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* HelloWorld_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorld_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8E03075212382206000616A0 /* 40frameworks */ = {isa = PBXFileReference; lastKnownFileType = text; name = 40frameworks; path = /Users/ericasadun/40frameworks; sourceTree = "<absolute>"; };
-		8E03075412382230000616A0 /* GraphicsServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GraphicsServices.framework; path = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/System/Library/PrivateFrameworks/GraphicsServices.framework; sourceTree = "<absolute>"; };
+		8E03075412382230000616A0 /* GraphicsServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GraphicsServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.1.sdk/System/Library/PrivateFrameworks/GraphicsServices.framework; sourceTree = DEVELOPER_DIR; };
 		8E278431101E6BCE002772F5 /* wwanconnect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wwanconnect.c; path = "Apple Sample Code/wwanconnect.c"; sourceTree = "<group>"; };
 		8E278432101E6BCE002772F5 /* wwanconnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wwanconnect.h; path = "Apple Sample Code/wwanconnect.h"; sourceTree = "<group>"; };
 		8E3A1F080FAA199F009B0518 /* cover320x416.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover320x416.png; sourceTree = "<group>"; };
@@ -101,8 +100,6 @@
 				8EB688610FA64AD100489E4B /* Support */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				8E03075212382206000616A0 /* 40frameworks */,
-				8E03075412382230000616A0 /* GraphicsServices.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -110,6 +107,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8E03075412382230000616A0 /* GraphicsServices.framework */,
 				8E7EA6621028A1A7004DB9E8 /* IOKit.framework */,
 				8E9B2372101E2D3A005DB65B /* SystemConfiguration.framework */,
 				1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */,
