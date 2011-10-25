@@ -25,8 +25,7 @@
  iPhone3,1 ->    iPhone 4/AT&T, N89
  iPhone3,2 ->    iPhone 4/Other Carrier?, ??
  iPhone3,3 ->    iPhone 4/Verizon, TBD
- iPhone4,1 ->    (iPhone 5/AT&T), TBD
- iPhone4,2 ->    (iPhone 5/Verizon), TBD
+ iPhone4,1 ->    iPhone 4S
 
  iPod1,1   ->    iPod touch 1G, N45
  iPod2,1   ->    iPod touch 2G, N72
@@ -136,7 +135,7 @@
     if ([platform isEqualToString:@"iPhone1,2"])    return UIDevice3GiPhone;
     if ([platform hasPrefix:@"iPhone2"])            return UIDevice3GSiPhone;
     if ([platform hasPrefix:@"iPhone3"])            return UIDevice4iPhone;
-    if ([platform hasPrefix:@"iPhone4"])            return UIDevice5iPhone;
+    if ([platform hasPrefix:@"iPhone4"])            return UIDevice4SiPhone;
     
     // iPod
     if ([platform hasPrefix:@"iPod1"])             return UIDevice1GiPod;
@@ -174,7 +173,7 @@
         case UIDevice3GiPhone: return IPHONE_3G_NAMESTRING;
         case UIDevice3GSiPhone: return IPHONE_3GS_NAMESTRING;
         case UIDevice4iPhone: return IPHONE_4_NAMESTRING;
-        case UIDevice5iPhone: return IPHONE_5_NAMESTRING;
+        case UIDevice4SiPhone: return IPHONE_4S_NAMESTRING;
         case UIDeviceUnknowniPhone: return IPHONE_UNKNOWN_NAMESTRING;
         
         case UIDevice1GiPod: return IPOD_1G_NAMESTRING;
