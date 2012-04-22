@@ -6,13 +6,11 @@
 
 #import <UIKit/UIKit.h>
 
-#define IFPGA_NAMESTRING                @"iFPGA"
-
 #define IPHONE_1G_NAMESTRING            @"iPhone 1G"
 #define IPHONE_3G_NAMESTRING            @"iPhone 3G"
 #define IPHONE_3GS_NAMESTRING           @"iPhone 3GS" 
 #define IPHONE_4_NAMESTRING             @"iPhone 4" 
-#define IPHONE_5_NAMESTRING             @"iPhone 5"
+#define IPHONE_4S_NAMESTRING            @"iPhone 4S"
 #define IPHONE_UNKNOWN_NAMESTRING       @"Unknown iPhone"
 
 #define IPOD_1G_NAMESTRING              @"iPod touch 1G"
@@ -23,10 +21,11 @@
 
 #define IPAD_1G_NAMESTRING              @"iPad 1G"
 #define IPAD_2G_NAMESTRING              @"iPad 2G"
-#define IPAD_3G_NAMESTRING              @"iPad 3G"
+#define IPAD_3G_NAMESTRING              @"The New iPad"
 #define IPAD_UNKNOWN_NAMESTRING         @"Unknown iPad"
 
 #define APPLETV_2G_NAMESTRING           @"Apple TV 2G"
+#define APPLETV_3G_NAMESTRING           @"The New Apple TV"
 #define APPLETV_UNKNOWN_NAMESTRING      @"Unknown Apple TV"
 
 #define IOS_FAMILY_UNKNOWN_DEVICE       @"Unknown iOS device"
@@ -46,7 +45,7 @@ typedef enum {
     UIDevice3GiPhone,
     UIDevice3GSiPhone,
     UIDevice4iPhone,
-    UIDevice5iPhone,
+    UIDevice4SiPhone,
     
     UIDevice1GiPod,
     UIDevice2GiPod,
@@ -58,12 +57,12 @@ typedef enum {
     UIDevice3GiPad,
     
     UIDeviceAppleTV2,
+    UIDeviceAppleTV3,
     UIDeviceUnknownAppleTV,
     
     UIDeviceUnknowniPhone,
     UIDeviceUnknowniPod,
     UIDeviceUnknowniPad,
-    UIDeviceIFPGA,
 
 } UIDevicePlatform;
 
