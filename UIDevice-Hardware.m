@@ -16,21 +16,16 @@
 @implementation UIDevice (Hardware)
 /*
  Platforms
- 
- iFPGA ->        ??
 
  iPhone1,1 ->    iPhone 1G, M68
  iPhone1,2 ->    iPhone 3G, N82
  iPhone2,1 ->    iPhone 3GS, N88
  iPhone3,1 ->    iPhone 4/AT&T, N89
- iPhone3,2 ->    iPhone 4/Other Carrier?, ??
- iPhone3,3 ->    iPhone 4/Verizon, TBD
- iPhone4,1 ->    (iPhone 5/AT&T), TBD
- iPhone4,2 ->    (iPhone 5/Verizon), TBD
+ iPhone3,3 ->    iPhone 4/Verizon, N92
+ iPhone4,1 ->    iPhone 4S, N94
 
  iPod1,1   ->    iPod touch 1G, N45
  iPod2,1   ->    iPod touch 2G, N72
- iPod2,2   ->    Unknown, ??
  iPod3,1   ->    iPod touch 3G, N18
  iPod4,1   ->    iPod touch 4G, N80
  
@@ -39,10 +34,12 @@
  iPad2,1   ->    iPad 2G, WiFi, K93
  iPad2,2   ->    iPad 2G, GSM 3G, K94
  iPad2,3   ->    iPad 2G, CDMA 3G, K95
- iPad3,1   ->    (iPad 3G, GSM)
- iPad3,2   ->    (iPad 3G, CDMA)
+ iPad3,1   ->    The New iPad, WiFi, J1
+ iPad3,2   ->    The New iPad, 3G/LTE, J2
+ iPad3,3   ->    The New iPad, 3G/LTE International, J2A
 
  AppleTV2,1 ->   AppleTV 2, K66
+ AppleTV3,1 ->   The New Apple TV, K66
 
  i386, x86_64 -> iPhone Simulator
 */
@@ -151,6 +148,7 @@
     
     // Apple TV
     if ([platform hasPrefix:@"AppleTV2"])           return UIDeviceAppleTV2;
+    if ([platform hasPrefix:@"AppleTV3"])           return UIDeviceAppleTV3;
 
     if ([platform hasPrefix:@"iPhone"])             return UIDeviceUnknowniPhone;
     if ([platform hasPrefix:@"iPod"])               return UIDeviceUnknowniPod;
@@ -174,7 +172,7 @@
         case UIDevice3GiPhone: return IPHONE_3G_NAMESTRING;
         case UIDevice3GSiPhone: return IPHONE_3GS_NAMESTRING;
         case UIDevice4iPhone: return IPHONE_4_NAMESTRING;
-        case UIDevice5iPhone: return IPHONE_5_NAMESTRING;
+        case UIDevice4SiPhone: return IPHONE_4S_NAMESTRING;
         case UIDeviceUnknowniPhone: return IPHONE_UNKNOWN_NAMESTRING;
         
         case UIDevice1GiPod: return IPOD_1G_NAMESTRING;
@@ -189,6 +187,7 @@
         case UIDeviceUnknowniPad : return IPAD_UNKNOWN_NAMESTRING;
             
         case UIDeviceAppleTV2 : return APPLETV_2G_NAMESTRING;
+        case UIDeviceAppleTV3 : return APPLETV_3G_NAMESTRING;
         case UIDeviceUnknownAppleTV: return APPLETV_UNKNOWN_NAMESTRING;
             
         case UIDeviceiPhoneSimulator: return IPHONE_SIMULATOR_NAMESTRING;
