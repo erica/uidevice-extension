@@ -1,6 +1,6 @@
 /*
  Erica Sadun, http://ericasadun.com
- iPhone Developer's Cookbook, 3.0 Edition
+ iPhone Developer's Cookbook, 5.0 Edition
  BSD License for anything not specifically marked as developed by a third party.
  Apple's code excluded.
  Use at your own risk
@@ -27,8 +27,9 @@ SCNetworkReachabilityRef reachability;
 
 + (NSString *) stringFromAddress: (const struct sockaddr *) address
 {
-	if(address && address->sa_family == AF_INET) {
-		const struct sockaddr_in* sin = (struct sockaddr_in*) address;
+	if (address && address->sa_family == AF_INET) 
+    {
+		const struct sockaddr_in* sin = (struct sockaddr_in *) address;
 		return [NSString stringWithFormat:@"%@:%d", [NSString stringWithUTF8String:inet_ntoa(sin->sin_addr)], ntohs(sin->sin_port)];
 	}
 	
@@ -37,21 +38,51 @@ SCNetworkReachabilityRef reachability;
 
 + (BOOL)addressFromString:(NSString *)IPAddress address:(struct sockaddr_in *)address
 {
-	if (!IPAddress || ![IPAddress length]) {
-		return NO;
-	}
+	if (!IPAddress || ![IPAddress length]) return NO;
 	
 	memset((char *) address, sizeof(struct sockaddr_in), 0);
 	address->sin_family = AF_INET;
 	address->sin_len = sizeof(struct sockaddr_in);
 	
 	int conversionResult = inet_aton([IPAddress UTF8String], &address->sin_addr);
-	if (conversionResult == 0) {
+	if (conversionResult == 0) 
+    {
 		NSAssert1(conversionResult != 1, @"Failed to convert the IP address string into a sockaddr_in: %@", IPAddress);
 		return NO;
 	}
 	
 	return YES;
+}
+
++ (NSString *) addressFromData:(NSData *) addressData
+{
+    NSString *adr = nil;
+	
+    if (addressData != nil)
+    {
+		struct sockaddr_in addrIn = *(struct sockaddr_in *)[addressData bytes];
+		adr = [NSString stringWithFormat: @"%s", inet_ntoa(addrIn.sin_addr)];
+    }
+	
+    return adr;
+}
+
++ (NSString *) portFromData:(NSData *) addressData
+{
+    NSString *port = nil;
+	
+    if (addressData != nil)
+    {
+		struct sockaddr_in addrIn = *(struct sockaddr_in *)[addressData bytes];
+		port = [NSString stringWithFormat: @"%s", ntohs(addrIn.sin_port)];
+    }
+	
+    return port;
+}
+
++ (NSData *) dataFromAddress: (struct sockaddr_in) address
+{
+	return [NSData dataWithBytes:&address length:sizeof(struct sockaddr_in)];
 }
 
 - (NSString *) hostname
@@ -88,6 +119,8 @@ SCNetworkReachabilityRef reachability;
 // Matt Brown's get WiFi IP addy solution
 // Author gave permission to use in Cookbook under cookbook license
 // http://mattbsoftware.blogspot.com/2009/04/how-to-get-ip-address-of-iphone-os-v221.html
+// Updates: changed en0 to en.
+// More updates: TBD
 - (NSString *) localWiFiIPAddress
 {
 	BOOL success;
@@ -102,7 +135,7 @@ SCNetworkReachabilityRef reachability;
 			if (cursor->ifa_addr->sa_family == AF_INET && (cursor->ifa_flags & IFF_LOOPBACK) == 0) 
 			{
 				NSString *name = [NSString stringWithUTF8String:cursor->ifa_name];
-				if ([name isEqualToString:@"en0"])  // Wi-Fi adapter
+				if ([name isEqualToString:@"en"])  // Wi-Fi adapter -- was en0
 					return [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)cursor->ifa_addr)->sin_addr)];
 			}
 			cursor = cursor->ifa_next;
@@ -111,6 +144,36 @@ SCNetworkReachabilityRef reachability;
 	}
 	return nil;
 }
+
++ (NSArray *) localWiFiIPAddresses
+{
+	BOOL success;
+	struct ifaddrs * addrs;
+	const struct ifaddrs * cursor;
+	
+	NSMutableArray *array = [NSMutableArray array];
+	
+	success = getifaddrs(&addrs) == 0;
+	if (success) {
+		cursor = addrs;
+		while (cursor != NULL) {
+			// the second test keeps from picking up the loopback address
+			if (cursor->ifa_addr->sa_family == AF_INET && (cursor->ifa_flags & IFF_LOOPBACK) == 0) 
+			{
+				NSString *name = [NSString stringWithUTF8String:cursor->ifa_name];
+				if ([name hasPrefix:@"en"])
+					[array addObject:[NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)cursor->ifa_addr)->sin_addr)]];
+			}
+			cursor = cursor->ifa_next;
+		}
+		freeifaddrs(addrs);
+	}
+	
+	if (array.count) return array;
+	
+	return nil;
+}
+
 
 - (NSString *) whatismyipdotcom
 {
@@ -209,10 +272,10 @@ SCNetworkReachabilityRef reachability;
 	va_list arglist;
 	if (!formatstring) return;
 	va_start(arglist, formatstring);
-	id outstring = [[[NSString alloc] initWithFormat:formatstring arguments:arglist] autorelease];
+	id outstring = [[NSString alloc] initWithFormat:formatstring arguments:arglist];
 	va_end(arglist);
 	
-    UIAlertView *av = [[[UIAlertView alloc] initWithTitle:outstring message:nil delegate:nil cancelButtonTitle:@"OK"otherButtonTitles:nil] autorelease];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:outstring message:nil delegate:nil cancelButtonTitle:@"OK"otherButtonTitles:nil];
 	[av show];
 }
 
@@ -250,22 +313,24 @@ static void myClientCallback(void *refCon)
 #pragma mark Monitoring reachability
 static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkConnectionFlags flags, void* info)
 {
-	NSAutoreleasePool *pool = [NSAutoreleasePool new];
-	[(id)info performSelector:@selector(reachabilityChanged)];
-	[pool release];
+    @autoreleasepool {
+        id watcher = (__bridge id) info;
+        if ([watcher respondsToSelector:@selector(reachabilityChanged)])
+            [watcher performSelector:@selector(reachabilityChanged)];
+    }
 }
 
 - (BOOL) scheduleReachabilityWatcher: (id) watcher
 {
-	if (![watcher conformsToProtocol:@protocol(ReachabilityWatcher)]) 
+	if (![watcher respondsToSelector:@selector(reachabilityChanged)]) 
 	{
-		NSLog(@"Watcher must conform to ReachabilityWatcher protocol. Cannot continue.");
+		NSLog(@"Watcher must implement reachabilityChanged callback. Cannot continue.");
 		return NO;
 	}
 	
 	[self pingReachabilityInternal];
 
-	SCNetworkReachabilityContext context = {0, watcher, NULL, NULL, NULL};
+	SCNetworkReachabilityContext context = {0, (__bridge void *)watcher, NULL, NULL, NULL};
 	if(SCNetworkReachabilitySetCallback(reachability, ReachabilityCallback, &context)) 
 	{
 		if(!SCNetworkReachabilityScheduleWithRunLoop(reachability, CFRunLoopGetCurrent(), kCFRunLoopCommonModes)) 
@@ -295,34 +360,4 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkConne
 	CFRelease(reachability);
 	reachability = nil;
 }
-
-#ifdef SUPPORTS_UNDOCUMENTED_API
-#define SBSERVPATH  "/System/Library/PrivateFrameworks/SpringBoardServices.framework/SpringBoardServices"
-#define UIKITPATH "/System/Library/Framework/UIKit.framework/UIKit"
-
-// Don't use this code in real life, boys and girls. It is not App Store friendly.
-// It is, however, really nice for testing callbacks
-+ (void) setAPMode: (BOOL) yorn
-{
-	mach_port_t *thePort;
-	void *uikit = dlopen(UIKITPATH, RTLD_LAZY);
-	int (*SBSSpringBoardServerPort)() = dlsym(uikit, "SBSSpringBoardServerPort");
-	thePort = (mach_port_t *)SBSSpringBoardServerPort(); 
-	dlclose(uikit);
-	
-	// Link to SBSetAirplaneModeEnabled
-	void *sbserv = dlopen(SBSERVPATH, RTLD_LAZY);
-	int (*setAPMode)(mach_port_t* port, BOOL yorn) = dlsym(sbserv, "SBSetAirplaneModeEnabled");
-	setAPMode(thePort, yorn);
-	dlclose(sbserv);
-}
-
-// This uses the NSHost class illicitly
-+ (BOOL) networkAvailableByNSHost
-{
-	// Unavailable has only one address: 127.0.0.1
-	return !(([[[NSHost currentHost] addresses] count] == 1) && 
-			 [[[UIDevice currentDevice] localIPAddress] isEqualToString:@"127.0.0.1"]);
-}
-#endif
 @end

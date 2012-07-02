@@ -30,6 +30,12 @@
  * To use, you must add the (semi)public IOKit framework before compiling
  */
 
+/*
+ 
+ This category is no longer maintained.
+ 
+ */
+
 #if SUPPORTS_IOKIT_EXTENSIONS
 @interface UIDevice (IOKit_Extensions)
 - (NSString *) imei;

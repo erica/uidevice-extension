@@ -1,6 +1,6 @@
 /*
  Erica Sadun, http://ericasadun.com
- iPhone Developer's Cookbook, 3.0 Edition
+ iPhone Developer's Cookbook, 6.0 Edition
  BSD License, Use at your own risk
  */
 
@@ -9,23 +9,24 @@
 #import "UIDevice-Orientation.h"
 
 @implementation UIDevice (Orientation)
-
-float device_angle;
-CFRunLoopRef currentLoop;
+#pragma mark current angle
+CGFloat device_angle;
 
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
 {
-	float xx = [acceleration x];
-	float yy = -[acceleration y];
+	CGFloat xx = acceleration.x;
+	CGFloat yy = -acceleration.y;
 	device_angle = M_PI / 2.0f - atan2(yy, xx);
+    
+    if (device_angle > M_PI)
+        device_angle -= 2 * M_PI;
 	
-	CFRunLoopStop(currentLoop);
+	CFRunLoopStop(CFRunLoopGetCurrent());
 }
 
-- (float) orientationAngle
+- (CGFloat) orientationAngle
 {
 #if TARGET_IPHONE_SIMULATOR
-	// NSLog( @"Running in the simulator!" );
 	switch (self.orientation)
 	{
 		case UIDeviceOrientationPortrait: 
@@ -40,22 +41,39 @@ CFRunLoopRef currentLoop;
 			return 0.0f;
 	}
 #else
-	id accelerometer_delegate = [UIAccelerometer sharedAccelerometer].delegate;
+    // supercede current delegate
+	id priorDelegate = [UIAccelerometer sharedAccelerometer].delegate;
 	[UIAccelerometer sharedAccelerometer].delegate = self;
 	
 	// Wait for a reading
-	currentLoop = CFRunLoopGetCurrent();
 	CFRunLoopRun();
-	[UIAccelerometer sharedAccelerometer].delegate = accelerometer_delegate;
+    
+    // restore delgate
+	[UIAccelerometer sharedAccelerometer].delegate = priorDelegate;
 	
 	return device_angle;
 #endif
 }
 
-// Thanks Jonah Williams
-- (float) orientationAngleRelativeToOrientation:(UIDeviceOrientation) someOrientation
+// Limited to the four portrait/landscape options
+- (UIDeviceOrientation) acceleratorBasedOrientation
 {
-	float dOrientation = 0.0f;
+    CGFloat baseAngle = self.orientationAngle;
+    if ((baseAngle > -M_PI_4) && (baseAngle < M_PI_4))
+        return UIDeviceOrientationPortrait;
+    if ((baseAngle < -M_PI_4) && (baseAngle > -3 * M_PI_4))
+        return UIDeviceOrientationLandscapeLeft;
+    if ((baseAngle > M_PI_4) && (baseAngle < 3 * M_PI_4))
+        return UIDeviceOrientationLandscapeRight;
+    return UIDeviceOrientationPortraitUpsideDown;
+}
+
+#pragma mark relative orientation
+
+// Thanks Jonah Williams
+- (CGFloat) orientationAngleRelativeToOrientation:(UIDeviceOrientation) someOrientation
+{
+ 	CGFloat dOrientation = 0.0f;
 	switch (someOrientation)
 	{
 		case UIDeviceOrientationPortraitUpsideDown: {dOrientation = M_PI; break;}
@@ -64,10 +82,13 @@ CFRunLoopRef currentLoop;
 		default: break;
 	}
 	
-	float adjustedAngle = fmod(self.orientationAngle - dOrientation, 2.0f * M_PI);
-	if (adjustedAngle > (M_PI + 0.01f)) adjustedAngle = (adjustedAngle - 2.0f * M_PI);
+	CGFloat adjustedAngle = fmod(self.orientationAngle - dOrientation, 2.0f * M_PI);
+	if (adjustedAngle > (M_PI + 0.01f)) 
+        adjustedAngle = (adjustedAngle - 2.0f * M_PI);
 	return adjustedAngle;
 }
+
+#pragma mark basic orientation
 
 - (BOOL) isLandscape
 {
@@ -79,9 +100,10 @@ CFRunLoopRef currentLoop;
 	return UIDeviceOrientationIsPortrait(self.orientation);
 }
 
-- (NSString *) orientationString
+// Transform to real world-readable string for arbitrary orientation
++ (NSString *) orientationString: (UIDeviceOrientation) orientation
 {
-	switch ([[UIDevice currentDevice] orientation])
+	switch (orientation)
 	{
 		case UIDeviceOrientationUnknown: return @"Unknown";
 		case UIDeviceOrientationPortrait: return @"Portrait";
@@ -93,5 +115,11 @@ CFRunLoopRef currentLoop;
 		default: break;
 	}
 	return nil;
+}
+
+// String for current orientaiton
+- (NSString *) orientationString
+{
+    return [UIDevice orientationString:self.orientation];
 }
 @end

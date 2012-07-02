@@ -1,6 +1,6 @@
 /*
  Erica Sadun, http://ericasadun.com
- iPhone Developer's Cookbook, 5.0 Edition
+ iPhone Developer's Cookbook, 6.x Edition
  BSD License, Use at your own risk
  */
 
@@ -12,6 +12,7 @@
 #define IPHONE_3G_NAMESTRING            @"iPhone 3G"
 #define IPHONE_3GS_NAMESTRING           @"iPhone 3GS" 
 #define IPHONE_4_NAMESTRING             @"iPhone 4" 
+#define IPHONE_4S_NAMESTRING            @"iPhone 4S"
 #define IPHONE_5_NAMESTRING             @"iPhone 5"
 #define IPHONE_UNKNOWN_NAMESTRING       @"Unknown iPhone"
 
@@ -24,28 +25,34 @@
 #define IPAD_1G_NAMESTRING              @"iPad 1G"
 #define IPAD_2G_NAMESTRING              @"iPad 2G"
 #define IPAD_3G_NAMESTRING              @"iPad 3G"
+#define IPAD_4G_NAMESTRING              @"iPad 4G"
 #define IPAD_UNKNOWN_NAMESTRING         @"Unknown iPad"
 
 #define APPLETV_2G_NAMESTRING           @"Apple TV 2G"
+#define APPLETV_3G_NAMESTRING           @"Apple TV 3G"
+#define APPLETV_4G_NAMESTRING           @"Apple TV 4G"
 #define APPLETV_UNKNOWN_NAMESTRING      @"Unknown Apple TV"
 
 #define IOS_FAMILY_UNKNOWN_DEVICE       @"Unknown iOS device"
 
-#define IPHONE_SIMULATOR_NAMESTRING         @"iPhone Simulator"
-#define IPHONE_SIMULATOR_IPHONE_NAMESTRING  @"iPhone Simulator"
-#define IPHONE_SIMULATOR_IPAD_NAMESTRING    @"iPad Simulator"
+#define SIMULATOR_NAMESTRING            @"iPhone Simulator"
+#define SIMULATOR_IPHONE_NAMESTRING     @"iPhone Simulator"
+#define SIMULATOR_IPAD_NAMESTRING       @"iPad Simulator"
+#define SIMULATOR_APPLETV_NAMESTRING    @"Apple TV Simulator" // :)
 
 typedef enum {
     UIDeviceUnknown,
     
-    UIDeviceiPhoneSimulator,
-    UIDeviceiPhoneSimulatoriPhone, // both regular and iPhone 4 devices
-    UIDeviceiPhoneSimulatoriPad,
+    UIDeviceSimulator,
+    UIDeviceSimulatoriPhone,
+    UIDeviceSimulatoriPad,
+    UIDeviceSimulatorAppleTV,
     
     UIDevice1GiPhone,
     UIDevice3GiPhone,
     UIDevice3GSiPhone,
     UIDevice4iPhone,
+    UIDevice4SiPhone,
     UIDevice5iPhone,
     
     UIDevice1GiPod,
@@ -56,16 +63,28 @@ typedef enum {
     UIDevice1GiPad,
     UIDevice2GiPad,
     UIDevice3GiPad,
+    UIDevice4GiPad,
     
     UIDeviceAppleTV2,
-    UIDeviceUnknownAppleTV,
+    UIDeviceAppleTV3,
+    UIDeviceAppleTV4,
     
     UIDeviceUnknowniPhone,
     UIDeviceUnknowniPod,
     UIDeviceUnknowniPad,
+    UIDeviceUnknownAppleTV,
     UIDeviceIFPGA,
 
 } UIDevicePlatform;
+
+typedef enum {
+    UIDeviceFamilyiPhone,
+    UIDeviceFamilyiPod,
+    UIDeviceFamilyiPad,
+    UIDeviceFamilyAppleTV,
+    UIDeviceFamilyUnknown,
+    
+} UIDeviceFamily;
 
 @interface UIDevice (Hardware)
 - (NSString *) platform;
@@ -75,6 +94,7 @@ typedef enum {
 
 - (NSUInteger) cpuFrequency;
 - (NSUInteger) busFrequency;
+- (NSUInteger) cpuCount;
 - (NSUInteger) totalMemory;
 - (NSUInteger) userMemory;
 
@@ -82,4 +102,7 @@ typedef enum {
 - (NSNumber *) freeDiskSpace;
 
 - (NSString *) macaddress;
+
+- (BOOL) hasRetinaDisplay;
+- (UIDeviceFamily) deviceFamily;
 @end

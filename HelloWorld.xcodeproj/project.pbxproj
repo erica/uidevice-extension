@@ -14,16 +14,14 @@
 		8E03075512382230000616A0 /* GraphicsServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E03075412382230000616A0 /* GraphicsServices.framework */; };
 		8E278438101E6BCE002772F5 /* wwanconnect.c in Sources */ = {isa = PBXBuildFile; fileRef = 8E278431101E6BCE002772F5 /* wwanconnect.c */; };
 		8E3A1F090FAA199F009B0518 /* cover320x416.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E3A1F080FAA199F009B0518 /* cover320x416.png */; };
-		8E3E64BD1028A0EB0009F50A /* UIDevice-IOKitExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3E64B91028A0EB0009F50A /* UIDevice-IOKitExtensions.m */; };
-		8E3E64BE1028A0EB0009F50A /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3E64BA1028A0EB0009F50A /* UIDevice-Hardware.m */; };
-		8E3E79ED1237E44200FAD883 /* UIDevice-Capabilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3E79EC1237E44200FAD883 /* UIDevice-Capabilities.m */; };
 		8E4156E90FA4EE0E0006D27C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4156E70FA4EE0E0006D27C /* Default.png */; };
 		8E4156EA0FA4EE0E0006D27C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E4156E80FA4EE0E0006D27C /* icon.png */; };
-		8E43B864114EA15D0079785E /* UIDevice-Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E43B863114EA15D0079785E /* UIDevice-Orientation.m */; };
 		8E785FCB0FCDB853006EA81F /* TestBedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E785FCA0FCDB853006EA81F /* TestBedViewController.xib */; };
 		8E7EA6631028A1A7004DB9E8 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7EA6621028A1A7004DB9E8 /* IOKit.framework */; };
-		8E9B2341101E2BB0005DB65B /* UIDevice-Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B233E101E2BB0005DB65B /* UIDevice-Reachability.m */; };
 		8E9B2373101E2D3A005DB65B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9B2372101E2D3A005DB65B /* SystemConfiguration.framework */; };
+		8EC1C37815A2387100C782C4 /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC1C37715A2387100C782C4 /* UIDevice-Hardware.m */; };
+		8EC1C37B15A2387C00C782C4 /* UIDevice-Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC1C37A15A2387C00C782C4 /* UIDevice-Orientation.m */; };
+		8EC1C38515A2392400C782C4 /* UIDevice-Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC1C38415A2392400C782C4 /* UIDevice-Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,23 +36,23 @@
 		8E278431101E6BCE002772F5 /* wwanconnect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wwanconnect.c; path = "Apple Sample Code/wwanconnect.c"; sourceTree = "<group>"; };
 		8E278432101E6BCE002772F5 /* wwanconnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wwanconnect.h; path = "Apple Sample Code/wwanconnect.h"; sourceTree = "<group>"; };
 		8E3A1F080FAA199F009B0518 /* cover320x416.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover320x416.png; sourceTree = "<group>"; };
-		8E3E64B71028A0EB0009F50A /* UIDevice-Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Hardware.h"; sourceTree = "<group>"; };
 		8E3E64B91028A0EB0009F50A /* UIDevice-IOKitExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-IOKitExtensions.m"; sourceTree = "<group>"; };
-		8E3E64BA1028A0EB0009F50A /* UIDevice-Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Hardware.m"; sourceTree = "<group>"; };
 		8E3E64BB1028A0EB0009F50A /* UIDevice-IOKitExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-IOKitExtensions.h"; sourceTree = "<group>"; };
 		8E3E79EB1237E44200FAD883 /* UIDevice-Capabilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Capabilities.h"; sourceTree = "<group>"; };
 		8E3E79EC1237E44200FAD883 /* UIDevice-Capabilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Capabilities.m"; sourceTree = "<group>"; };
 		8E4156E70FA4EE0E0006D27C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8E4156E80FA4EE0E0006D27C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		8E43B862114EA15D0079785E /* UIDevice-Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Orientation.h"; sourceTree = "<group>"; };
-		8E43B863114EA15D0079785E /* UIDevice-Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Orientation.m"; sourceTree = "<group>"; };
 		8E785FCA0FCDB853006EA81F /* TestBedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestBedViewController.xib; sourceTree = "<group>"; };
 		8E7D45921128878A00B184C5 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
 		8E7D45931128878A00B184C5 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
 		8E7EA6621028A1A7004DB9E8 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		8E9B233D101E2BB0005DB65B /* UIDevice-Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Reachability.h"; sourceTree = "<group>"; };
-		8E9B233E101E2BB0005DB65B /* UIDevice-Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Reachability.m"; sourceTree = "<group>"; };
 		8E9B2372101E2D3A005DB65B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8EC1C37615A2387100C782C4 /* UIDevice-Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Hardware.h"; sourceTree = "<group>"; };
+		8EC1C37715A2387100C782C4 /* UIDevice-Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Hardware.m"; sourceTree = "<group>"; };
+		8EC1C37915A2387C00C782C4 /* UIDevice-Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Orientation.h"; sourceTree = "<group>"; };
+		8EC1C37A15A2387C00C782C4 /* UIDevice-Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Orientation.m"; sourceTree = "<group>"; };
+		8EC1C38315A2392400C782C4 /* UIDevice-Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Reachability.h"; sourceTree = "<group>"; };
+		8EC1C38415A2392400C782C4 /* UIDevice-Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Reachability.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,16 +84,16 @@
 			isa = PBXGroup;
 			children = (
 				29B97316FDCFA39411CA2CEA /* main.m */,
-				8E3E64B71028A0EB0009F50A /* UIDevice-Hardware.h */,
-				8E3E64BA1028A0EB0009F50A /* UIDevice-Hardware.m */,
+				8EC1C37915A2387C00C782C4 /* UIDevice-Orientation.h */,
+				8EC1C37A15A2387C00C782C4 /* UIDevice-Orientation.m */,
+				8EC1C37615A2387100C782C4 /* UIDevice-Hardware.h */,
+				8EC1C37715A2387100C782C4 /* UIDevice-Hardware.m */,
 				8E3E79EB1237E44200FAD883 /* UIDevice-Capabilities.h */,
 				8E3E79EC1237E44200FAD883 /* UIDevice-Capabilities.m */,
+				8EC1C38315A2392400C782C4 /* UIDevice-Reachability.h */,
+				8EC1C38415A2392400C782C4 /* UIDevice-Reachability.m */,
 				8E3E64BB1028A0EB0009F50A /* UIDevice-IOKitExtensions.h */,
 				8E3E64B91028A0EB0009F50A /* UIDevice-IOKitExtensions.m */,
-				8E9B233D101E2BB0005DB65B /* UIDevice-Reachability.h */,
-				8E9B233E101E2BB0005DB65B /* UIDevice-Reachability.m */,
-				8E43B862114EA15D0079785E /* UIDevice-Orientation.h */,
-				8E43B863114EA15D0079785E /* UIDevice-Orientation.m */,
 				8E27843B101E6BD3002772F5 /* Apple */,
 				8EB688610FA64AD100489E4B /* Support */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -205,12 +203,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				8E9B2341101E2BB0005DB65B /* UIDevice-Reachability.m in Sources */,
 				8E278438101E6BCE002772F5 /* wwanconnect.c in Sources */,
-				8E3E64BD1028A0EB0009F50A /* UIDevice-IOKitExtensions.m in Sources */,
-				8E3E64BE1028A0EB0009F50A /* UIDevice-Hardware.m in Sources */,
-				8E43B864114EA15D0079785E /* UIDevice-Orientation.m in Sources */,
-				8E3E79ED1237E44200FAD883 /* UIDevice-Capabilities.m in Sources */,
+				8EC1C37815A2387100C782C4 /* UIDevice-Hardware.m in Sources */,
+				8EC1C37B15A2387C00C782C4 /* UIDevice-Orientation.m in Sources */,
+				8EC1C38515A2392400C782C4 /* UIDevice-Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +216,7 @@
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Erica Sadun";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -233,9 +230,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HelloWorld_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PREBINDING = NO;
 				PRODUCT_NAME = HelloWorld;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos5.1;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -243,6 +241,7 @@
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -253,9 +252,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HelloWorld_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PREBINDING = NO;
 				PRODUCT_NAME = HelloWorld;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos5.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -266,6 +266,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "Erica Sadun";
 				"CODE_SIGN_IDENTITY[sdk=iphonesimulator*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -274,7 +275,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = "";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos5.1;
 			};
 			name = Debug;
 		};
@@ -282,8 +283,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.0;
+				SDKROOT = iphoneos5.1;
 			};
 			name = Release;
 		};

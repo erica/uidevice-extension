@@ -18,6 +18,12 @@
  Thanks DB42
  */
 
+/*
+ 
+ This category remains for historic reasons. It is no longer being maintained
+ 
+ */
+
 #define UIDevice720pPlaybackCapability	@"720p"
 #define UIDeviceARMV6ExecutionCapability	@"armv6"
 #define UIDeviceARMV7ExecutionCapability	@"armv7"
