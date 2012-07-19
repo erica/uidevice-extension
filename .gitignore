@@ -1,3 +1,11 @@
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
-/build
+# Mac OS X
+._*
+*.DS_Store
+
+# Xcode
+build/
+*.pbxuser
+*.perspectivev3
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
