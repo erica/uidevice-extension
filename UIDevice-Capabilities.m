@@ -23,7 +23,7 @@
 	void *libHandle = dlopen(GRAPHICS_SERVICES_PATH, RTLD_LAZY);
 	int (*GSSystemHasCapability)(NSString *);
 	GSSystemHasCapability = dlsym(libHandle, "GSSystemHasCapability");
-	BOOL result = GSSystemHasCapability(capability);
+	BOOL result = ( BOOL )GSSystemHasCapability(capability);
 	dlclose(libHandle);
 	return result;
 }
