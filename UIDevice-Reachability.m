@@ -74,7 +74,7 @@ SCNetworkReachabilityRef reachability;
     if (addressData != nil)
     {
 		struct sockaddr_in addrIn = *(struct sockaddr_in *)[addressData bytes];
-		port = [NSString stringWithFormat: @"%s", ntohs(addrIn.sin_port)];
+		port = [NSString stringWithFormat: @"%us", ntohs(addrIn.sin_port)];
     }
 	
     return port;
