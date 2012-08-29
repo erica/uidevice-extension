@@ -14,8 +14,8 @@ CGFloat device_angle;
 
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
 {
-	CGFloat xx = acceleration.x;
-	CGFloat yy = -acceleration.y;
+	double xx = acceleration.x;
+	double yy = -acceleration.y;
 	device_angle = M_PI / 2.0f - atan2(yy, xx);
     
     if (device_angle > M_PI)
