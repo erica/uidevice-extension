@@ -185,8 +185,22 @@ SCNetworkReachabilityRef reachability;
 
 - (BOOL) hostAvailable: (NSString *) theHost
 {
-	
-    NSString *addressString = [self getIPAddressForHost:theHost];
+	NSArray *hostComponents = [theHost componentsSeparatedByString:@":"];
+    NSString *hostName;
+    NSString *port;
+    if ( [ hostComponents count ] > 0 )
+    {
+        hostName = [ hostComponents objectAtIndex:0 ];
+        if ( [ hostComponents count ] > 1 )
+        {
+            port = [ hostComponents objectAtIndex:1 ];
+        }
+    } else
+    {
+        hostName = theHost;
+    }
+    
+    NSString *addressString = [self getIPAddressForHost:hostName];
     if (!addressString)
     {
         printf("Error recovering IP address from host name\n");
