@@ -116,7 +116,7 @@ extern MyInfoRef StartWWAN(ConnectClientCallBack clientCB, void *refCon)
 	CFStreamClientContext		ctxt = {0, NULL, NULL, NULL, NULL};
 	Boolean						errorOccurred = FALSE;
 	
-	myInfoPtr = malloc(sizeof(MyStreamInfo));
+	myInfoPtr = ( MyStreamInfoPtr )malloc(sizeof(MyStreamInfo));
 	if (!myInfoPtr)
 	{
 		return NULL;
