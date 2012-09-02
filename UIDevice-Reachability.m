@@ -328,7 +328,12 @@ static void myClientCallback(void *refCon)
 static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkConnectionFlags flags, void* info)
 {
     @autoreleasepool {
-        id watcher = (__bridge id) info;
+        id watcher;
+#if __has_feature(objc_arc)
+        watcher = (__bridge id) info;
+#else
+        watcher = (id) info;
+#endif
         if ([watcher respondsToSelector:@selector(reachabilityChanged)])
             [watcher performSelector:@selector(reachabilityChanged)];
     }
@@ -344,8 +349,12 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkConne
 	
 	[self pingReachabilityInternal];
 
-	SCNetworkReachabilityContext context = {0, (__bridge void *)watcher, NULL, NULL, NULL};
-	if(SCNetworkReachabilitySetCallback(reachability, ReachabilityCallback, &context)) 
+#if __has_feature(objc_arc)
+    SCNetworkReachabilityContext context = {0, (__bridge void *)watcher, NULL, NULL, NULL};
+#else
+    SCNetworkReachabilityContext context = {0, watcher, NULL, NULL, NULL};
+#endif
+	if(SCNetworkReachabilitySetCallback(reachability, ReachabilityCallback, &context))
 	{
 		if(!SCNetworkReachabilityScheduleWithRunLoop(reachability, CFRunLoopGetCurrent(), kCFRunLoopCommonModes)) 
 		{
