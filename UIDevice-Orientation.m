@@ -9,6 +9,12 @@
 #import "UIDevice-Orientation.h"
 
 @implementation UIDevice (Orientation)
+const CGFloat to_angle_upside_down = ( CGFloat )M_PI;
+const CGFloat to_angle_landscape_left = ( CGFloat )-( M_PI/2.0f );
+const CGFloat to_angle_landscape_right = ( CGFloat )( M_PI/2.0f );
+
+const CGFloat from_angle = ( CGFloat )( M_PI * 2.0f );
+
 #pragma mark current angle
 CGFloat device_angle;
 
@@ -16,7 +22,7 @@ CGFloat device_angle;
 {
 	double xx = acceleration.x;
 	double yy = -acceleration.y;
-	device_angle = M_PI / 2.0f - atan2(yy, xx);
+	device_angle = ( CGFloat )( M_PI / 2.0f - atan2(yy, xx) );
     
     if (device_angle > M_PI)
         device_angle -= 2 * M_PI;
@@ -32,11 +38,11 @@ CGFloat device_angle;
 		case UIDeviceOrientationPortrait: 
 			return 0.0f;
 		case UIDeviceOrientationPortraitUpsideDown:
-			return M_PI;
+			return to_angle_upside_down;
 		case UIDeviceOrientationLandscapeLeft: 
-			return -(M_PI/2.0f);
+			return to_angle_landscape_left;
 		case UIDeviceOrientationLandscapeRight: 
-			return (M_PI/2.0f);
+			return to_angle_landscape_right;
 		default:
 			return 0.0f;
 	}
@@ -76,15 +82,15 @@ CGFloat device_angle;
  	CGFloat dOrientation = 0.0f;
 	switch (someOrientation)
 	{
-		case UIDeviceOrientationPortraitUpsideDown: {dOrientation = M_PI; break;}
-		case UIDeviceOrientationLandscapeLeft: {dOrientation = -(M_PI/2.0f); break;}
-		case UIDeviceOrientationLandscapeRight: {dOrientation = (M_PI/2.0f); break;}
+		case UIDeviceOrientationPortraitUpsideDown: {dOrientation = to_angle_upside_down; break;}
+		case UIDeviceOrientationLandscapeLeft: {dOrientation = to_angle_landscape_left; break;}
+		case UIDeviceOrientationLandscapeRight: {dOrientation = to_angle_landscape_right; break;}
 		default: break;
 	}
 	
-	CGFloat adjustedAngle = fmod(self.orientationAngle - dOrientation, 2.0f * M_PI);
+	CGFloat adjustedAngle = fmodf(self.orientationAngle - dOrientation, from_angle );
 	if (adjustedAngle > (M_PI + 0.01f)) 
-        adjustedAngle = (adjustedAngle - 2.0f * M_PI);
+        adjustedAngle = ( adjustedAngle - from_angle );
 	return adjustedAngle;
 }
 
