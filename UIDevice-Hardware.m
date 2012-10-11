@@ -233,9 +233,14 @@
     }
 }
 
-- (BOOL) hasRetinaDisplay
++ (BOOL) hasRetinaDisplay
 {
     return ([UIScreen mainScreen].scale == 2.0f);
+}
+
++ (NSString *) imageSuffixRetinaDisplay
+{
+    return @"@2x";
 }
 
 - (UIDeviceFamily) deviceFamily
