@@ -243,6 +243,16 @@
     return @"@2x";
 }
 
++ (BOOL) has4InchDisplay
+{
+    return ([UIScreen mainScreen].bounds.size.height == 568);
+}
+
++ (NSString *) imageSuffix4InchDisplay
+{
+    return @"-568h";
+}
+
 - (UIDeviceFamily) deviceFamily
 {
     NSString *platform = [self platform];

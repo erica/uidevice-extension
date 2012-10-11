@@ -105,5 +105,8 @@ typedef enum {
 
 + (BOOL) hasRetinaDisplay;
 + (NSString *) imageSuffixRetinaDisplay;
++ (BOOL) has4InchDisplay;
++ (NSString *) imageSuffix4InchDisplay;
+
 - (UIDeviceFamily) deviceFamily;
 @end
