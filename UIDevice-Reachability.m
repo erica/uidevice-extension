@@ -178,7 +178,7 @@ SCNetworkReachabilityRef reachability;
 - (NSString *) whatismyipdotcom
 {
 	NSError *error;
-    NSURL *ipURL = [NSURL URLWithString:@"http://www.whatismyip.com/automation/n09230945.asp"];
+    NSURL *ipURL = [NSURL URLWithString:@"http://automation.whatismyip.com/n09230945.asp"];
     NSString *ip = [NSString stringWithContentsOfURL:ipURL encoding:1 error:&error];
 	return ip ? ip : [error localizedDescription];
 }
