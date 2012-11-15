@@ -46,6 +46,7 @@
  iPad3,1   ->    (iPad 3G, WiFi)
  iPad3,2   ->    (iPad 3G, GSM)
  iPad3,3   ->    (iPad 3G, CDMA)
+ iPad3,4   ->    (iPad 4G, WiFi)
  iPad4,1   ->    (iPad 4G, WiFi)
  iPad4,2   ->    (iPad 4G, GSM)
  iPad4,3   ->    (iPad 4G, CDMA)
