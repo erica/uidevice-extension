@@ -171,7 +171,19 @@
     // iPad
     if ([platform hasPrefix:@"iPad1"])              return UIDevice1GiPad;
     if ([platform hasPrefix:@"iPad2"])              return UIDevice2GiPad;
-    if ([platform hasPrefix:@"iPad3"])              return UIDevice3GiPad;
+    if ([platform hasPrefix:@"iPad3"])
+    {
+        NSString* prefix = @"iPad3";
+        NSString* suffix = [platform substringFromIndex:[prefix length] + 1]; // + 1 for ','
+        NSInteger submodel = [ suffix intValue ];
+        if ( submodel <= 3 )
+        {
+            return UIDevice3GiPad;
+        } else
+        {
+            return UIDevice4GiPad;
+        }
+    }
     if ([platform hasPrefix:@"iPad4"])              return UIDevice4GiPad;
     
     // Apple TV
