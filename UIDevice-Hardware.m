@@ -149,6 +149,18 @@
     return [fattributes objectForKey:NSFileSystemFreeSize];
 }
 
++( NSInteger )getSubmodel:( NSString* )platform
+{
+    NSInteger submodel = -1;
+    
+    NSArray* components = [ platform componentsSeparatedByString:@"," ];
+    if ( [ components count ] >= 2 )
+    {
+        submodel = [ [ components objectAtIndex:1 ] intValue ];
+    }
+    return submodel;
+}
+
 #pragma mark platform type and name utils
 - (NSUInteger) platformType
 {
@@ -175,9 +187,7 @@
     if ([platform hasPrefix:@"iPad1"])              return UIDevice1GiPad;
     if ([platform hasPrefix:@"iPad2"])
     {
-        NSString* prefix = @"iPad2";
-        NSString* suffix = [platform substringFromIndex:[prefix length] + 1]; // + 1 for ','
-        NSInteger submodel = [ suffix intValue ];
+        NSInteger submodel = [ UIDevice getSubmodel:platform ];
         if ( submodel <= 4 )
         {
             return UIDevice2GiPad;
@@ -188,9 +198,7 @@
     }
     if ([platform hasPrefix:@"iPad3"])
     {
-        NSString* prefix = @"iPad3";
-        NSString* suffix = [platform substringFromIndex:[prefix length] + 1]; // + 1 for ','
-        NSInteger submodel = [ suffix intValue ];
+        NSInteger submodel = [ UIDevice getSubmodel:platform ];
         if ( submodel <= 3 )
         {
             return UIDevice3GiPad;
