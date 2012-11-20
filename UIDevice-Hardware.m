@@ -50,6 +50,8 @@
  iPad4,1   ->    (iPad 4G, WiFi)
  iPad4,2   ->    (iPad 4G, GSM)
  iPad4,3   ->    (iPad 4G, CDMA)
+ 
+ iPad2,5   ->    (iPad Mini, Wifi)
 
  AppleTV2,1 ->   AppleTV 2, K66
  AppleTV3,1 ->   AppleTV 3, ??
@@ -171,7 +173,19 @@
 
     // iPad
     if ([platform hasPrefix:@"iPad1"])              return UIDevice1GiPad;
-    if ([platform hasPrefix:@"iPad2"])              return UIDevice2GiPad;
+    if ([platform hasPrefix:@"iPad2"])
+    {
+        NSString* prefix = @"iPad2";
+        NSString* suffix = [platform substringFromIndex:[prefix length] + 1]; // + 1 for ','
+        NSInteger submodel = [ suffix intValue ];
+        if ( submodel <= 4 )
+        {
+            return UIDevice2GiPad;
+        } else
+        {
+            return UIDeviceiPadMini;
+        }
+    }
     if ([platform hasPrefix:@"iPad3"])
     {
         NSString* prefix = @"iPad3";
@@ -229,6 +243,8 @@
         case UIDevice3GiPad : return IPAD_3G_NAMESTRING;
         case UIDevice4GiPad : return IPAD_4G_NAMESTRING;
         case UIDeviceUnknowniPad : return IPAD_UNKNOWN_NAMESTRING;
+            
+        case UIDeviceiPadMini : return IPAD_MINI_NAMESTRING;
             
         case UIDeviceAppleTV2 : return APPLETV_2G_NAMESTRING;
         case UIDeviceAppleTV3 : return APPLETV_3G_NAMESTRING;
