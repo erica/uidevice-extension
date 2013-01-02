@@ -205,10 +205,12 @@
 }
 
 #pragma mark MAC addy
+
+#define ERROR_CODE 9001
 // Return the local MAC addy
 // Courtesy of FreeBSD hackers email list
 // Accidentally munged during previous update. Fixed thanks to mlamb.
-- (NSString *) macaddress
+- (NSString *) macaddressWithError:(NSError **)error;
 {
     int                 mib[6];
     size_t              len;
@@ -222,24 +224,38 @@
     mib[2] = 0;
     mib[3] = AF_LINK;
     mib[4] = NET_RT_IFLIST;
+
+    NSString *errorDomain = @"UIDevice";
     
     if ((mib[5] = if_nametoindex("en0")) == 0) {
-        printf("Error: if_nametoindex error\n");
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Error: if_nametoindex error\n" forKey:NSLocalizedDescriptionKey];
+        if (error != NULL) {
+            *error = [NSError errorWithDomain:errorDomain code:ERROR_CODE userInfo:userInfo];
+        }
         return NULL;
     }
     
     if (sysctl(mib, 6, NULL, &len, NULL, 0) < 0) {
-        printf("Error: sysctl, take 1\n");
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Error: sysctl, take 1\n" forKey:NSLocalizedDescriptionKey];
+        if (error != NULL) {
+            *error = [NSError errorWithDomain:errorDomain code:ERROR_CODE userInfo:userInfo];
+        }
         return NULL;
     }
     
     if ((buf = malloc(len)) == NULL) {
-        printf("Could not allocate memory. error!\n");
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Could not allocate memory. error!\n" forKey:NSLocalizedDescriptionKey];
+        if (error != NULL) {
+            *error = [NSError errorWithDomain:errorDomain code:ERROR_CODE userInfo:userInfo];
+        }
         return NULL;
     }
     
     if (sysctl(mib, 6, buf, &len, NULL, 0) < 0) {
-        printf("Error: sysctl, take 2");
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Error: sysctl, take 2" forKey:NSLocalizedDescriptionKey];
+        if (error != NULL) {
+            *error = [NSError errorWithDomain:errorDomain code:ERROR_CODE userInfo:userInfo];
+        }
         free(buf);
         return NULL;
     }

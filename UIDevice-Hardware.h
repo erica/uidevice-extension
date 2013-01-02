@@ -83,5 +83,5 @@ typedef enum {
 - (NSNumber *) totalDiskSpace;
 - (NSNumber *) freeDiskSpace;
 
-- (NSString *) macaddress;
+- (NSString *) macaddressWithError:(NSError **)error;
 @end
