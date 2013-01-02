@@ -36,6 +36,9 @@
 #define IPHONE_SIMULATOR_IPHONE_NAMESTRING  @"iPhone Simulator"
 #define IPHONE_SIMULATOR_IPAD_NAMESTRING    @"iPad Simulator"
 
+extern NSString *const TDTUIDeviceExtensionErrNoKey;
+extern NSString *const TDTUIDeviceExtensionErrorStringKey;
+
 typedef enum {
     UIDeviceUnknown,
     

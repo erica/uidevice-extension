@@ -13,6 +13,9 @@
 
 #import "UIDevice-Hardware.h"
 
+NSString *const TDTUIDeviceExtensionErrNoKey = @"TDTUIDeviceExtensionErrNoKey";
+NSString *const TDTUIDeviceExtensionErrorStringKey = @"TDTUIDeviceExtensionErrorStringKey";
+
 @implementation UIDevice (Hardware)
 /*
  Platforms
@@ -207,10 +210,24 @@
 #pragma mark MAC addy
 
 #define ERROR_CODE 9001
+#define ERROR_DOMAIN @"uidevice-extension"
+
+- (NSError *)macaddressErrorWithDescription:(NSString *)description errNum:(NSInteger)errNum
+{
+    NSString *errorString = [NSString stringWithCString:strerror(errNum) encoding:NSUTF8StringEncoding];
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    [userInfo setObject:description forKey:NSLocalizedDescriptionKey];
+    if (errorString) {
+      [userInfo setObject:[NSNumber numberWithInt:errNum] forKey:TDTUIDeviceExtensionErrNoKey];
+      [userInfo setObject:errorString forKey:TDTUIDeviceExtensionErrorStringKey];
+    }
+    return [NSError errorWithDomain:ERROR_DOMAIN code:ERROR_CODE userInfo:userInfo];
+}
+
 // Return the local MAC addy
 // Courtesy of FreeBSD hackers email list
 // Accidentally munged during previous update. Fixed thanks to mlamb.
-- (NSString *) macaddressWithError:(NSError **)error;
+- (NSString *) macaddressWithError:(NSError **)error
 {
     int                 mib[6];
     size_t              len;
@@ -225,36 +242,30 @@
     mib[3] = AF_LINK;
     mib[4] = NET_RT_IFLIST;
 
-    NSString *errorDomain = @"UIDevice";
-    
     if ((mib[5] = if_nametoindex("en0")) == 0) {
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Error: if_nametoindex error\n" forKey:NSLocalizedDescriptionKey];
         if (error != NULL) {
-            *error = [NSError errorWithDomain:errorDomain code:ERROR_CODE userInfo:userInfo];
+            *error = [self macaddressErrorWithDescription:@"Error: if_nametoindex error\n" errNum:errno];
         }
         return NULL;
     }
     
     if (sysctl(mib, 6, NULL, &len, NULL, 0) < 0) {
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Error: sysctl, take 1\n" forKey:NSLocalizedDescriptionKey];
         if (error != NULL) {
-            *error = [NSError errorWithDomain:errorDomain code:ERROR_CODE userInfo:userInfo];
+            *error = [self macaddressErrorWithDescription:@"Error: sysctl, take 1\n" errNum:errno];
         }
         return NULL;
     }
-    
+
     if ((buf = malloc(len)) == NULL) {
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Could not allocate memory. error!\n" forKey:NSLocalizedDescriptionKey];
         if (error != NULL) {
-            *error = [NSError errorWithDomain:errorDomain code:ERROR_CODE userInfo:userInfo];
+            *error = [self macaddressErrorWithDescription:@"Could not allocate memory. error!\n" errNum:errno];
         }
         return NULL;
     }
-    
+
     if (sysctl(mib, 6, buf, &len, NULL, 0) < 0) {
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Error: sysctl, take 2" forKey:NSLocalizedDescriptionKey];
         if (error != NULL) {
-            *error = [NSError errorWithDomain:errorDomain code:ERROR_CODE userInfo:userInfo];
+            *error = [self macaddressErrorWithDescription:@"Error: sysctl, take 2" errNum:errno];
         }
         free(buf);
         return NULL;
