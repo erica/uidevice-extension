@@ -36,6 +36,9 @@
 #define IPHONE_SIMULATOR_IPHONE_NAMESTRING  @"iPhone Simulator"
 #define IPHONE_SIMULATOR_IPAD_NAMESTRING    @"iPad Simulator"
 
+#define ERROR_CODE_MACADDRESS 9001
+#define ERROR_DOMAIN @"uidevice-extension"
+
 extern NSString *const TDTUIDeviceExtensionErrNoKey;
 extern NSString *const TDTUIDeviceExtensionErrorStringKey;
 

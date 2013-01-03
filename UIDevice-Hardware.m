@@ -209,9 +209,6 @@ NSString *const TDTUIDeviceExtensionErrorStringKey = @"TDTUIDeviceExtensionError
 
 #pragma mark MAC addy
 
-#define ERROR_CODE 9001
-#define ERROR_DOMAIN @"uidevice-extension"
-
 - (NSError *)macaddressErrorWithDescription:(NSString *)description errNum:(NSInteger)errNum
 {
     NSString *errorString = [NSString stringWithCString:strerror(errNum) encoding:NSUTF8StringEncoding];
@@ -221,7 +218,7 @@ NSString *const TDTUIDeviceExtensionErrorStringKey = @"TDTUIDeviceExtensionError
       [userInfo setObject:[NSNumber numberWithInt:errNum] forKey:TDTUIDeviceExtensionErrNoKey];
       [userInfo setObject:errorString forKey:TDTUIDeviceExtensionErrorStringKey];
     }
-    return [NSError errorWithDomain:ERROR_DOMAIN code:ERROR_CODE userInfo:userInfo];
+    return [NSError errorWithDomain:ERROR_DOMAIN code:ERROR_CODE_MACADDRESS userInfo:userInfo];
 }
 
 // Return the local MAC addy
