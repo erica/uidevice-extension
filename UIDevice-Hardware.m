@@ -13,8 +13,8 @@
 
 #import "UIDevice-Hardware.h"
 
-NSString *const TDTUIDeviceExtensionErrNoKey = @"TDTUIDeviceExtensionErrNoKey";
-NSString *const TDTUIDeviceExtensionErrorStringKey = @"TDTUIDeviceExtensionErrorStringKey";
+NSString *const UIDeviceExtensionErrNoKey = @"UIDeviceExtensionErrNoKey";
+NSString *const UIDeviceExtensionErrorStringKey = @"UIDeviceExtensionErrorStringKey";
 
 @implementation UIDevice (Hardware)
 /*
@@ -215,8 +215,8 @@ NSString *const TDTUIDeviceExtensionErrorStringKey = @"TDTUIDeviceExtensionError
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
     [userInfo setObject:description forKey:NSLocalizedDescriptionKey];
     if (errorString) {
-      [userInfo setObject:[NSNumber numberWithInt:errNum] forKey:TDTUIDeviceExtensionErrNoKey];
-      [userInfo setObject:errorString forKey:TDTUIDeviceExtensionErrorStringKey];
+      [userInfo setObject:[NSNumber numberWithInt:errNum] forKey:UIDeviceExtensionErrNoKey];
+      [userInfo setObject:errorString forKey:UIDeviceExtensionErrorStringKey];
     }
     return [NSError errorWithDomain:ERROR_DOMAIN code:ERROR_CODE_MACADDRESS userInfo:userInfo];
 }

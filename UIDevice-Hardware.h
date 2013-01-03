@@ -39,8 +39,8 @@
 #define ERROR_CODE_MACADDRESS 9001
 #define ERROR_DOMAIN @"uidevice-extension"
 
-extern NSString *const TDTUIDeviceExtensionErrNoKey;
-extern NSString *const TDTUIDeviceExtensionErrorStringKey;
+extern NSString *const UIDeviceExtensionErrNoKey;
+extern NSString *const UIDeviceExtensionErrorStringKey;
 
 typedef enum {
     UIDeviceUnknown,
