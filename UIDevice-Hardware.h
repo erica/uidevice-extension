@@ -3,7 +3,7 @@
  iPhone Developer's Cookbook, 6.x Edition
  BSD License, Use at your own risk
  
- Edited by Eric Horacek for Monospace Ltd. on 2/4/13
+ Modified by Eric Horacek for Monospace Ltd. on 2/4/13
  */
 
 #import <UIKit/UIKit.h>
