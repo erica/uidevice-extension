@@ -25,15 +25,6 @@
     return results;
 }
 
-- (NSUInteger)getSysInfo:(uint)typeSpecifier
-{
-    size_t size = sizeof(int);
-    int results;
-    int mib[2] = {CTL_HW, typeSpecifier};
-    sysctl(mib, 2, &results, &size, NULL, 0);
-    return (NSUInteger) results;
-}
-
 - (NSString *)modelIdentifier
 {
     return [self getSysInfoByName:"hw.machine"];
