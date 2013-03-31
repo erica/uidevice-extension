@@ -270,22 +270,22 @@
     }
 }
 
-+ (BOOL) hasRetinaDisplay
+- (BOOL) hasRetinaDisplay
 {
     return ([UIScreen mainScreen].scale == 2.0f);
 }
 
-+ (NSString *) imageSuffixRetinaDisplay
+- (NSString *) imageSuffixRetinaDisplay
 {
     return @"@2x";
 }
 
-+ (BOOL) has4InchDisplay
+- (BOOL) has4InchDisplay
 {
     return ([UIScreen mainScreen].bounds.size.height == 568);
 }
 
-+ (NSString *) imageSuffix4InchDisplay
+- (NSString *) imageSuffix4InchDisplay
 {
     return @"-568h";
 }
