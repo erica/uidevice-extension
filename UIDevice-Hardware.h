@@ -107,10 +107,10 @@ typedef enum {
 
 - (NSString *) macaddress;
 
-+ (BOOL) hasRetinaDisplay;
-+ (NSString *) imageSuffixRetinaDisplay;
-+ (BOOL) has4InchDisplay;
-+ (NSString *) imageSuffix4InchDisplay;
+- (BOOL) hasRetinaDisplay;
+- (NSString *) imageSuffixRetinaDisplay;
+- (BOOL) has4InchDisplay;
+- (NSString *) imageSuffix4InchDisplay;
 
 - (UIDeviceFamily) deviceFamily;
 @end
