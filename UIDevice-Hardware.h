@@ -113,4 +113,7 @@ typedef enum {
 - (NSString *) imageSuffix4InchDisplay;
 
 - (UIDeviceFamily) deviceFamily;
+
+- (float) cameraFieldOfView;
+
 @end

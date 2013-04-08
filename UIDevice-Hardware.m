@@ -360,4 +360,12 @@ if ([btclass respondsToSelector:@selector(bluetoothStatus)])
     printf("Bluetooth %s enabled\n", bluetooth ? "is" : "isn't");
 }
 */
+
+- (float) cameraFieldOfView
+{
+    // TODO: fill out and test for all iDevice models
+    // http://www.caramba-apps.com/blog/files/field-of-view-angles-ipad-iphone.html
+    return 58.498f;
+}
+
 @end
