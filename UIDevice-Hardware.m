@@ -46,9 +46,12 @@
  iPad3,1   ->    (iPad 3G, WiFi)
  iPad3,2   ->    (iPad 3G, GSM)
  iPad3,3   ->    (iPad 3G, CDMA)
+ iPad3,4   ->    (iPad 4G, WiFi)
  iPad4,1   ->    (iPad 4G, WiFi)
  iPad4,2   ->    (iPad 4G, GSM)
  iPad4,3   ->    (iPad 4G, CDMA)
+ 
+ iPad2,5   ->    (iPad Mini, Wifi)
 
  AppleTV2,1 ->   AppleTV 2, K66
  AppleTV3,1 ->   AppleTV 3, ??
@@ -146,6 +149,18 @@
     return [fattributes objectForKey:NSFileSystemFreeSize];
 }
 
++( NSInteger )getSubmodel:( NSString* )platform
+{
+    NSInteger submodel = -1;
+    
+    NSArray* components = [ platform componentsSeparatedByString:@"," ];
+    if ( [ components count ] >= 2 )
+    {
+        submodel = [ [ components objectAtIndex:1 ] intValue ];
+    }
+    return submodel;
+}
+
 #pragma mark platform type and name utils
 - (NSUInteger) platformType
 {
@@ -170,8 +185,28 @@
 
     // iPad
     if ([platform hasPrefix:@"iPad1"])              return UIDevice1GiPad;
-    if ([platform hasPrefix:@"iPad2"])              return UIDevice2GiPad;
-    if ([platform hasPrefix:@"iPad3"])              return UIDevice3GiPad;
+    if ([platform hasPrefix:@"iPad2"])
+    {
+        NSInteger submodel = [ UIDevice getSubmodel:platform ];
+        if ( submodel <= 4 )
+        {
+            return UIDevice2GiPad;
+        } else
+        {
+            return UIDeviceiPadMini;
+        }
+    }
+    if ([platform hasPrefix:@"iPad3"])
+    {
+        NSInteger submodel = [ UIDevice getSubmodel:platform ];
+        if ( submodel <= 3 )
+        {
+            return UIDevice3GiPad;
+        } else
+        {
+            return UIDevice4GiPad;
+        }
+    }
     if ([platform hasPrefix:@"iPad4"])              return UIDevice4GiPad;
     
     // Apple TV
@@ -217,6 +252,8 @@
         case UIDevice4GiPad : return IPAD_4G_NAMESTRING;
         case UIDeviceUnknowniPad : return IPAD_UNKNOWN_NAMESTRING;
             
+        case UIDeviceiPadMini : return IPAD_MINI_NAMESTRING;
+            
         case UIDeviceAppleTV2 : return APPLETV_2G_NAMESTRING;
         case UIDeviceAppleTV3 : return APPLETV_3G_NAMESTRING;
         case UIDeviceAppleTV4 : return APPLETV_4G_NAMESTRING;
@@ -236,6 +273,21 @@
 - (BOOL) hasRetinaDisplay
 {
     return ([UIScreen mainScreen].scale == 2.0f);
+}
+
+- (NSString *) imageSuffixRetinaDisplay
+{
+    return @"@2x";
+}
+
+- (BOOL) has4InchDisplay
+{
+    return ([UIScreen mainScreen].bounds.size.height == 568);
+}
+
+- (NSString *) imageSuffix4InchDisplay
+{
+    return @"-568h";
 }
 
 - (UIDeviceFamily) deviceFamily
@@ -308,4 +360,12 @@ if ([btclass respondsToSelector:@selector(bluetoothStatus)])
     printf("Bluetooth %s enabled\n", bluetooth ? "is" : "isn't");
 }
 */
+
+- (float) cameraFieldOfView
+{
+    // TODO: fill out and test for all iDevice models
+    // http://www.caramba-apps.com/blog/files/field-of-view-angles-ipad-iphone.html
+    return 58.498f;
+}
+
 @end

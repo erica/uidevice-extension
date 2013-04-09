@@ -74,7 +74,7 @@ SCNetworkReachabilityRef reachability;
     if (addressData != nil)
     {
 		struct sockaddr_in addrIn = *(struct sockaddr_in *)[addressData bytes];
-		port = [NSString stringWithFormat: @"%s", ntohs(addrIn.sin_port)];
+		port = [NSString stringWithFormat: @"%us", ntohs(addrIn.sin_port)];
     }
 	
     return port;
@@ -178,15 +178,29 @@ SCNetworkReachabilityRef reachability;
 - (NSString *) whatismyipdotcom
 {
 	NSError *error;
-    NSURL *ipURL = [NSURL URLWithString:@"http://www.whatismyip.com/automation/n09230945.asp"];
+    NSURL *ipURL = [NSURL URLWithString:@"http://automation.whatismyip.com/n09230945.asp"];
     NSString *ip = [NSString stringWithContentsOfURL:ipURL encoding:1 error:&error];
 	return ip ? ip : [error localizedDescription];
 }
 
 - (BOOL) hostAvailable: (NSString *) theHost
 {
-	
-    NSString *addressString = [self getIPAddressForHost:theHost];
+	NSArray *hostComponents = [theHost componentsSeparatedByString:@":"];
+    NSString *hostName;
+    NSString *port;
+    if ( [ hostComponents count ] > 0 )
+    {
+        hostName = [ hostComponents objectAtIndex:0 ];
+        if ( [ hostComponents count ] > 1 )
+        {
+            port = [ hostComponents objectAtIndex:1 ];
+        }
+    } else
+    {
+        hostName = theHost;
+    }
+    
+    NSString *addressString = [self getIPAddressForHost:hostName];
     if (!addressString)
     {
         printf("Error recovering IP address from host name\n");
@@ -314,7 +328,12 @@ static void myClientCallback(void *refCon)
 static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkConnectionFlags flags, void* info)
 {
     @autoreleasepool {
-        id watcher = (__bridge id) info;
+        id watcher;
+#if __has_feature(objc_arc)
+        watcher = (__bridge id) info;
+#else
+        watcher = (id) info;
+#endif
         if ([watcher respondsToSelector:@selector(reachabilityChanged)])
             [watcher performSelector:@selector(reachabilityChanged)];
     }
@@ -330,8 +349,12 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkConne
 	
 	[self pingReachabilityInternal];
 
-	SCNetworkReachabilityContext context = {0, (__bridge void *)watcher, NULL, NULL, NULL};
-	if(SCNetworkReachabilitySetCallback(reachability, ReachabilityCallback, &context)) 
+#if __has_feature(objc_arc)
+    SCNetworkReachabilityContext context = {0, (__bridge void *)watcher, NULL, NULL, NULL};
+#else
+    SCNetworkReachabilityContext context = {0, watcher, NULL, NULL, NULL};
+#endif
+	if(SCNetworkReachabilitySetCallback(reachability, ReachabilityCallback, &context))
 	{
 		if(!SCNetworkReachabilityScheduleWithRunLoop(reachability, CFRunLoopGetCurrent(), kCFRunLoopCommonModes)) 
 		{
