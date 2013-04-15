@@ -63,12 +63,16 @@
     size_t size;
     sysctlbyname(typeSpecifier, NULL, &size, NULL, 0);
     
-    char *answer = malloc(size);
-    sysctlbyname(typeSpecifier, answer, &size, NULL, 0);
+    NSString *results = nil;
     
-    NSString *results = [NSString stringWithCString:answer encoding: NSUTF8StringEncoding];
-
-    free(answer);
+    char *answer = malloc(size);
+    if(answer != NULL)
+    {
+        sysctlbyname(typeSpecifier, answer, &size, NULL, 0);
+        results = [NSString stringWithCString:answer encoding: NSUTF8StringEncoding];
+        free(answer);
+    }
+    
     return results;
 }
 
