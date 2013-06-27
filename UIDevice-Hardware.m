@@ -46,8 +46,8 @@
  iPad2,3   ->    iPad 2G, CDMA 3G, K95
  iPad2,4   ->    iPad 2G, WiFi, K93
  iPad2,5   ->    iPad mini 1G, WiFi, K93
- iPad2,6   ->    iPad mini 1G, CDMA, K93
- iPad2,7   ->    iPad mini 1G, GSM, K93
+ iPad2,6   ->    iPad mini 1G, GSM, K93
+ iPad2,7   ->    iPad mini 1G, CDMA, K93
  iPad3,1   ->    (iPad 3G, WiFi)
  iPad3,2   ->    (iPad 3G, GSM)
  iPad3,3   ->    (iPad 3G, CDMA)
