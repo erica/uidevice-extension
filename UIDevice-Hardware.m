@@ -51,9 +51,9 @@
  iPad3,1   ->    (iPad 3G, WiFi)
  iPad3,2   ->    (iPad 3G, GSM)
  iPad3,3   ->    (iPad 3G, CDMA)
- iPad4,1   ->    (iPad 4G, WiFi)
- iPad4,2   ->    (iPad 4G, GSM)
- iPad4,3   ->    (iPad 4G, CDMA)
+ iPad3,4   ->    (iPad 4G, WiFi)
+ iPad3,5   ->    (iPad 4G, GSM)
+ iPad3,6   ->    (iPad 4G, CDMA)
 
  AppleTV2,1 ->   AppleTV 2, K66
  AppleTV3,1 ->   AppleTV 3, ??
@@ -182,8 +182,12 @@
     // iPad
     if ([platform hasPrefix:@"iPad1"])              return UIDevice1GiPad;
     if ([platform hasPrefix:@"iPad2"])              return UIDevice2GiPad;
-    if ([platform hasPrefix:@"iPad3"])              return UIDevice3GiPad;
-    if ([platform hasPrefix:@"iPad4"])              return UIDevice4GiPad;
+    if ([platform hasPrefix:@"iPad3,1"])            return UIDevice3GiPad;
+    if ([platform hasPrefix:@"iPad3,2"])            return UIDevice3GiPad;
+    if ([platform hasPrefix:@"iPad3,3"])            return UIDevice3GiPad;
+    if ([platform hasPrefix:@"iPad3,4"])            return UIDevice4GiPad;
+    if ([platform hasPrefix:@"iPad3,5"])            return UIDevice4GiPad;
+    if ([platform hasPrefix:@"iPad3,6"])            return UIDevice4GiPad;
     
     // Apple TV
     if ([platform hasPrefix:@"AppleTV2"])           return UIDeviceAppleTV2;
