@@ -37,12 +37,17 @@
  iPod2,2   ->    Unknown, ??
  iPod3,1   ->    iPod touch 3G, N18
  iPod4,1   ->    iPod touch 4G, N80
+ iPod5,1   ->    iPod touch 5G
  
  // Thanks NSForge
  iPad1,1   ->    iPad 1G, WiFi and 3G, K48
  iPad2,1   ->    iPad 2G, WiFi, K93
  iPad2,2   ->    iPad 2G, GSM 3G, K94
  iPad2,3   ->    iPad 2G, CDMA 3G, K95
+ iPad2,4   ->    iPad 2G, WiFi, K93
+ iPad2,5   ->    iPad mini 1G, WiFi, K93
+ iPad2,6   ->    iPad mini 1G, CDMA, K93
+ iPad2,7   ->    iPad mini 1G, GSM, K93
  iPad3,1   ->    (iPad 3G, WiFi)
  iPad3,2   ->    (iPad 3G, GSM)
  iPad3,3   ->    (iPad 3G, CDMA)
@@ -167,6 +172,12 @@
     if ([platform hasPrefix:@"iPod2"])              return UIDevice2GiPod;
     if ([platform hasPrefix:@"iPod3"])              return UIDevice3GiPod;
     if ([platform hasPrefix:@"iPod4"])              return UIDevice4GiPod;
+    if ([platform hasPrefix:@"iPod5"])              return UIDevice5GiPod;
+
+    // iPad mini
+    if ([platform hasPrefix:@"iPad2,5"])            return UIDevice1GiPadMini;
+    if ([platform hasPrefix:@"iPad2,6"])            return UIDevice1GiPadMini;
+    if ([platform hasPrefix:@"iPad2,7"])            return UIDevice1GiPadMini;
 
     // iPad
     if ([platform hasPrefix:@"iPad1"])              return UIDevice1GiPad;
@@ -215,6 +226,7 @@
         case UIDevice2GiPad : return IPAD_2G_NAMESTRING;
         case UIDevice3GiPad : return IPAD_3G_NAMESTRING;
         case UIDevice4GiPad : return IPAD_4G_NAMESTRING;
+        case UIDevice1GiPadMini : return IPADMINI_1G_NAMESTRING;
         case UIDeviceUnknowniPad : return IPAD_UNKNOWN_NAMESTRING;
             
         case UIDeviceAppleTV2 : return APPLETV_2G_NAMESTRING;

@@ -20,12 +20,14 @@
 #define IPOD_2G_NAMESTRING              @"iPod touch 2G"
 #define IPOD_3G_NAMESTRING              @"iPod touch 3G"
 #define IPOD_4G_NAMESTRING              @"iPod touch 4G"
+#define IPOD_5G_NAMESTRING              @"iPod touch 5G"
 #define IPOD_UNKNOWN_NAMESTRING         @"Unknown iPod"
 
 #define IPAD_1G_NAMESTRING              @"iPad 1G"
 #define IPAD_2G_NAMESTRING              @"iPad 2G"
 #define IPAD_3G_NAMESTRING              @"iPad 3G"
 #define IPAD_4G_NAMESTRING              @"iPad 4G"
+#define IPADMINI_1G_NAMESTRING          @"iPad mini 1G"
 #define IPAD_UNKNOWN_NAMESTRING         @"Unknown iPad"
 
 #define APPLETV_2G_NAMESTRING           @"Apple TV 2G"
@@ -59,11 +61,14 @@ typedef enum {
     UIDevice2GiPod,
     UIDevice3GiPod,
     UIDevice4GiPod,
+    UIDevice5GiPod,
     
     UIDevice1GiPad,
     UIDevice2GiPad,
     UIDevice3GiPad,
     UIDevice4GiPad,
+    
+    UIDevice1GiPadMini,
     
     UIDeviceAppleTV2,
     UIDeviceAppleTV3,
