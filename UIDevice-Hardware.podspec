@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'UIDevice-Hardware'
-  s.version      = '0.0.1'
+  s.version      = '0.1.0'
   s.license      = 'BSD'
   s.summary      = 'Add functionality to UIDevice to distinguish between platforms like iPod touch 1G and 2G and iPhone.'
   s.homepage     = 'https://github.com/monospacecollective/UIDevice-Hardware'
