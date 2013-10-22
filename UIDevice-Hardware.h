@@ -18,8 +18,19 @@ typedef NS_ENUM(NSUInteger, UIDeviceFamily) {
 
 @interface UIDevice (Hardware)
 
+/**
+ Returns a machine-readable model name in the format of "iPhone4,1"
+ */
 - (NSString *)modelIdentifier;
+
+/**
+ Returns a human-readable model name in the format of "iPhone 4S"
+ */
 - (NSString *)modelName;
+
+/**
+ Returns the device family as a `UIDeviceFamily`
+ */
 - (UIDeviceFamily)deviceFamily;
 
 @end
