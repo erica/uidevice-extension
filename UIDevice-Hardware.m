@@ -59,8 +59,6 @@
     if ([modelIdentifier isEqualToString:@"iPhone6,1"])    return @"iPhone 5s (GSM)";
     if ([modelIdentifier isEqualToString:@"iPhone6,2"])    return @"iPhone 5s (Global)";
     
-    if ([modelIdentifier hasPrefix:@"iPhone"])             return @"iPhone (Unknown)";
-    
     // iPad http://theiphonewiki.com/wiki/IPad
     
     if ([modelIdentifier isEqualToString:@"iPad1,1"])      return @"iPad 1G";
@@ -81,8 +79,6 @@
     if ([modelIdentifier isEqualToString:@"iPad2,6"])      return @"iPad mini 1G (GSM)";
     if ([modelIdentifier isEqualToString:@"iPad2,7"])      return @"iPad mini 1G (Global)";
     
-    if ([modelIdentifier hasPrefix:@"iPad"])               return @"iPad (Unknown)";
-    
     // iPod http://theiphonewiki.com/wiki/IPod
     
     if ([modelIdentifier isEqualToString:@"iPod1,1"])      return @"iPod touch 1G";
@@ -91,8 +87,6 @@
     if ([modelIdentifier isEqualToString:@"iPod4,1"])      return @"iPod touch 4G";
     if ([modelIdentifier isEqualToString:@"iPod5,1"])      return @"iPod touch 5G";
     
-    if ([modelIdentifier hasPrefix:@"iPod"])               return @"iPod (Unknown)";
-    
     // Simulator
     if ([modelIdentifier hasSuffix:@"86"] || [modelIdentifier isEqual:@"x86_64"])
     {
@@ -100,7 +94,7 @@
         return (smallerScreen ? @"iPhone Simulator" : @"iPad Simulator");
     }
     
-    return @"Unknown Device";
+    return modelIdentifier;
 }
 
 - (UIDeviceFamily) deviceFamily
