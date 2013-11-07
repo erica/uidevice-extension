@@ -72,6 +72,8 @@
     if ([modelIdentifier isEqualToString:@"iPad3,4"])      return @"iPad 4 (WiFi)";
     if ([modelIdentifier isEqualToString:@"iPad3,4"])      return @"iPad 4 (GSM)";
     if ([modelIdentifier isEqualToString:@"iPad3,4"])      return @"iPad 4 (Global)";
+    if ([modelIdentifier isEqualToString:@"iPad4,1"])      return @"iPad Air (WiFi)";
+    if ([modelIdentifier isEqualToString:@"iPad4,2"])      return @"iPad Air (Cellular)";
     
     // iPad Mini http://theiphonewiki.com/wiki/IPad_mini
     
