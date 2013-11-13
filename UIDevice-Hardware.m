@@ -81,6 +81,8 @@
     if ([modelIdentifier isEqualToString:@"iPad2,5"])      return @"iPad mini 1G (WiFi)";
     if ([modelIdentifier isEqualToString:@"iPad2,6"])      return @"iPad mini 1G (GSM)";
     if ([modelIdentifier isEqualToString:@"iPad2,7"])      return @"iPad mini 1G (Global)";
+    if ([modelIdentifier isEqualToString:@"iPad4,4"])      return @"iPad mini 2G (WiFi)";
+    if ([modelIdentifier isEqualToString:@"iPad4,5"])      return @"iPad mini 2G (Cellular)";
     
     // iPod http://theiphonewiki.com/wiki/IPod
     
