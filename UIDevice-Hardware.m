@@ -70,8 +70,9 @@
     if ([modelIdentifier isEqualToString:@"iPad3,2"])      return @"iPad 3 (GSM)";
     if ([modelIdentifier isEqualToString:@"iPad3,3"])      return @"iPad 3 (Global)";
     if ([modelIdentifier isEqualToString:@"iPad3,4"])      return @"iPad 4 (WiFi)";
-    if ([modelIdentifier isEqualToString:@"iPad3,4"])      return @"iPad 4 (GSM)";
-    if ([modelIdentifier isEqualToString:@"iPad3,4"])      return @"iPad 4 (Global)";
+    if ([modelIdentifier isEqualToString:@"iPad3,5"])      return @"iPad 4 (GSM)";
+    if ([modelIdentifier isEqualToString:@"iPad3,6"])      return @"iPad 4 (Global)";
+    
     if ([modelIdentifier isEqualToString:@"iPad4,1"])      return @"iPad Air (WiFi)";
     if ([modelIdentifier isEqualToString:@"iPad4,2"])      return @"iPad Air (Cellular)";
     
@@ -80,6 +81,8 @@
     if ([modelIdentifier isEqualToString:@"iPad2,5"])      return @"iPad mini 1G (WiFi)";
     if ([modelIdentifier isEqualToString:@"iPad2,6"])      return @"iPad mini 1G (GSM)";
     if ([modelIdentifier isEqualToString:@"iPad2,7"])      return @"iPad mini 1G (Global)";
+    if ([modelIdentifier isEqualToString:@"iPad4,4"])      return @"iPad mini 2G (WiFi)";
+    if ([modelIdentifier isEqualToString:@"iPad4,5"])      return @"iPad mini 2G (Cellular)";
     
     // iPod http://theiphonewiki.com/wiki/IPod
     
