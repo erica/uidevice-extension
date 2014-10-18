@@ -160,19 +160,36 @@
     if ([platform hasPrefix:@"iPhone2"])            return UIDevice3GSiPhone;
     if ([platform hasPrefix:@"iPhone3"])            return UIDevice4iPhone;
     if ([platform hasPrefix:@"iPhone4"])            return UIDevice4SiPhone;
-    if ([platform hasPrefix:@"iPhone5"])            return UIDevice5iPhone;
+	if ([platform hasPrefix:@"iPhone5,1"])          return UIDevice5iPhone;
+	if ([platform hasPrefix:@"iPhone5,2"])          return UIDevice5iPhone;
+    if ([platform hasPrefix:@"iPhone5,3"])          return UIDevice5CiPhone;
+    if ([platform hasPrefix:@"iPhone5,4"])          return UIDevice5CiPhone;
+    if ([platform hasPrefix:@"iPhone6"])            return UIDevice5SiPhone;
+    if ([platform hasPrefix:@"iPhone7,1"])          return UIDevice6PlusiPhone;
+    if ([platform hasPrefix:@"iPhone7,2"])          return UIDevice6iPhone;
     
     // iPod
     if ([platform hasPrefix:@"iPod1"])              return UIDevice1GiPod;
     if ([platform hasPrefix:@"iPod2"])              return UIDevice2GiPod;
     if ([platform hasPrefix:@"iPod3"])              return UIDevice3GiPod;
     if ([platform hasPrefix:@"iPod4"])              return UIDevice4GiPod;
+    if ([platform hasPrefix:@"iPod5"])              return UIDevice5GiPod;
 
     // iPad
     if ([platform hasPrefix:@"iPad1"])              return UIDevice1GiPad;
     if ([platform hasPrefix:@"iPad2"])              return UIDevice2GiPad;
-    if ([platform hasPrefix:@"iPad3"])              return UIDevice3GiPad;
-    if ([platform hasPrefix:@"iPad4"])              return UIDevice4GiPad;
+    if ([platform hasPrefix:@"iPad3,1"])            return UIDevice3GiPad;
+    if ([platform hasPrefix:@"iPad3,2"])            return UIDevice3GiPad;
+    if ([platform hasPrefix:@"iPad3,3"])            return UIDevice3GiPad;
+    if ([platform hasPrefix:@"iPad3,4"])            return UIDevice4GiPad;
+    if ([platform hasPrefix:@"iPad3,5"])            return UIDevice4GiPad;
+    if ([platform hasPrefix:@"iPad3,6"])            return UIDevice4GiPad;
+    if ([platform hasPrefix:@"iPad4,1"])            return UIDeviceiPadAir;
+    if ([platform hasPrefix:@"iPad4,2"])            return UIDeviceiPadAir;
+    if ([platform hasPrefix:@"iPad4,3"])            return UIDeviceiPadAir;
+    if ([platform hasPrefix:@"iPad4,4"])            return UIDeviceiPadMini2;
+    if ([platform hasPrefix:@"iPad4,5"])            return UIDeviceiPadMini2;
+    if ([platform hasPrefix:@"iPad4,6"])            return UIDeviceiPadMini2;
     
     // Apple TV
     if ([platform hasPrefix:@"AppleTV2"])           return UIDeviceAppleTV2;
@@ -203,18 +220,27 @@
         case UIDevice4iPhone: return IPHONE_4_NAMESTRING;
         case UIDevice4SiPhone: return IPHONE_4S_NAMESTRING;
         case UIDevice5iPhone: return IPHONE_5_NAMESTRING;
+        case UIDevice5CiPhone: return IPHONE_5C_NAMESTRING;
+        case UIDevice5SiPhone: return IPHONE_5S_NAMESTRING;
+        case UIDevice6iPhone: return IPHONE_6_NAMESTRING;
+        case UIDevice6PlusiPhone: return IPHONE_6PLUS_NAMESTRING;
         case UIDeviceUnknowniPhone: return IPHONE_UNKNOWN_NAMESTRING;
         
         case UIDevice1GiPod: return IPOD_1G_NAMESTRING;
         case UIDevice2GiPod: return IPOD_2G_NAMESTRING;
         case UIDevice3GiPod: return IPOD_3G_NAMESTRING;
         case UIDevice4GiPod: return IPOD_4G_NAMESTRING;
+        case UIDevice5GiPod: return IPOD_5G_NAMESTRING;
         case UIDeviceUnknowniPod: return IPOD_UNKNOWN_NAMESTRING;
             
         case UIDevice1GiPad : return IPAD_1G_NAMESTRING;
         case UIDevice2GiPad : return IPAD_2G_NAMESTRING;
         case UIDevice3GiPad : return IPAD_3G_NAMESTRING;
-        case UIDevice4GiPad : return IPAD_4G_NAMESTRING;
+        case UIDeviceiPadAir : return IPAD_AIR_NAMESTRING;
+        case UIDeviceiPadAir2 : return IPAD_AIR2_NAMESTRING;
+        case UIDeviceiPadMini : return IPAD_MINI_NAMESTRING;
+        case UIDeviceiPadMini2 : return IPAD_MINI2_NAMESTRING;
+        case UIDeviceiPadMini3 : return IPAD_MINI3_NAMESTRING;
         case UIDeviceUnknowniPad : return IPAD_UNKNOWN_NAMESTRING;
             
         case UIDeviceAppleTV2 : return APPLETV_2G_NAMESTRING;
