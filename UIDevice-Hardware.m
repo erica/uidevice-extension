@@ -160,6 +160,8 @@
     if ([platform hasPrefix:@"iPhone2"])            return UIDevice3GSiPhone;
     if ([platform hasPrefix:@"iPhone3"])            return UIDevice4iPhone;
     if ([platform hasPrefix:@"iPhone4"])            return UIDevice4SiPhone;
+	if ([platform hasPrefix:@"iPhone5,1"])          return UIDevice5iPhone;
+	if ([platform hasPrefix:@"iPhone5,2"])          return UIDevice5iPhone;
     if ([platform hasPrefix:@"iPhone5,3"])          return UIDevice5CiPhone;
     if ([platform hasPrefix:@"iPhone5,4"])          return UIDevice5CiPhone;
     if ([platform hasPrefix:@"iPhone6"])            return UIDevice5SiPhone;
