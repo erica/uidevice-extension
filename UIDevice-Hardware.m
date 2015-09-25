@@ -60,7 +60,9 @@
     if ([modelIdentifier isEqualToString:@"iPhone6,2"])    return @"iPhone 5s (Global)";
     if ([modelIdentifier isEqualToString:@"iPhone7,1"])    return @"iPhone 6 Plus";
     if ([modelIdentifier isEqualToString:@"iPhone7,2"])    return @"iPhone 6";
-    
+    if ([modelIdentifier isEqualToString:@"iPhone8,1"])    return @"iPhone 6s";
+    if ([modelIdentifier isEqualToString:@"iPhone8,2"])    return @"iPhone 6s Plus";
+
     // iPad http://theiphonewiki.com/wiki/IPad
     
     if ([modelIdentifier isEqualToString:@"iPad1,1"])      return @"iPad 1G";
