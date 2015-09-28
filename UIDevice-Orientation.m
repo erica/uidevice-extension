@@ -88,7 +88,7 @@ CGFloat device_angle;
 		default: break;
 	}
 	
-	CGFloat adjustedAngle = fmodf(self.orientationAngle - dOrientation, from_angle );
+	CGFloat adjustedAngle = fmod(self.orientationAngle - dOrientation, from_angle );
 	if (adjustedAngle > (M_PI + 0.01f)) 
         adjustedAngle = ( adjustedAngle - from_angle );
 	return adjustedAngle;

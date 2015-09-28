@@ -33,7 +33,7 @@
 	void *libHandle = dlopen(GRAPHICS_SERVICES_PATH, RTLD_LAZY);
 	int (*GSSystemCopyCapability)(NSString *);
 	GSSystemCopyCapability = dlsym(libHandle, "GSSystemCopyCapability");
-	id capabilityValue = (id) GSSystemCopyCapability(capability);
+	id capabilityValue = (id) [NSNumber numberWithInt:GSSystemCopyCapability(capability)];
 	dlclose(libHandle);
 	return [capabilityValue autorelease];
 }
