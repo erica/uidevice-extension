@@ -28,6 +28,8 @@
 #define IPAD_4G_NAMESTRING              @"iPad 4G"
 #define IPAD_UNKNOWN_NAMESTRING         @"Unknown iPad"
 
+#define IPAD_MINI_NAMESTRING            @"iPad Mini"
+
 #define APPLETV_2G_NAMESTRING           @"Apple TV 2G"
 #define APPLETV_3G_NAMESTRING           @"Apple TV 3G"
 #define APPLETV_4G_NAMESTRING           @"Apple TV 4G"
@@ -64,6 +66,8 @@ typedef enum {
     UIDevice2GiPad,
     UIDevice3GiPad,
     UIDevice4GiPad,
+    
+    UIDeviceiPadMini,
     
     UIDeviceAppleTV2,
     UIDeviceAppleTV3,
@@ -104,5 +108,12 @@ typedef enum {
 - (NSString *) macaddress;
 
 - (BOOL) hasRetinaDisplay;
+- (NSString *) imageSuffixRetinaDisplay;
+- (BOOL) has4InchDisplay;
+- (NSString *) imageSuffix4InchDisplay;
+
 - (UIDeviceFamily) deviceFamily;
+
+- (float) cameraFieldOfView;
+
 @end
