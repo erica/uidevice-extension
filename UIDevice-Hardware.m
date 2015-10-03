@@ -60,7 +60,9 @@
     if ([modelIdentifier isEqualToString:@"iPhone6,2"])    return @"iPhone 5s (Global)";
     if ([modelIdentifier isEqualToString:@"iPhone7,1"])    return @"iPhone 6 Plus";
     if ([modelIdentifier isEqualToString:@"iPhone7,2"])    return @"iPhone 6";
-    
+    if ([modelIdentifier isEqualToString:@"iPhone8,1"])    return @"iPhone 6s";
+    if ([modelIdentifier isEqualToString:@"iPhone8,2"])    return @"iPhone 6s Plus";
+
     // iPad http://theiphonewiki.com/wiki/IPad
     
     if ([modelIdentifier isEqualToString:@"iPad1,1"])      return @"iPad 1G";
@@ -87,6 +89,7 @@
     if ([modelIdentifier isEqualToString:@"iPad2,7"])      return @"iPad mini 1G (Global)";
     if ([modelIdentifier isEqualToString:@"iPad4,4"])      return @"iPad mini 2G (Wi-Fi)";
     if ([modelIdentifier isEqualToString:@"iPad4,5"])      return @"iPad mini 2G (Cellular)";
+    if ([modelIdentifier isEqualToString:@"iPad4,6"])      return @"iPad mini 2G (Cellular)"; // TD-LTE model see https://support.apple.com/en-us/HT201471#iPad-mini2
     if ([modelIdentifier isEqualToString:@"iPad4,7"])      return @"iPad mini 3G (Wi-Fi)";
     if ([modelIdentifier isEqualToString:@"iPad4,8"])      return @"iPad mini 3G (Cellular)";
     if ([modelIdentifier isEqualToString:@"iPad4,9"])      return @"iPad mini 3G (Cellular)";
@@ -98,7 +101,8 @@
     if ([modelIdentifier isEqualToString:@"iPod3,1"])      return @"iPod touch 3G";
     if ([modelIdentifier isEqualToString:@"iPod4,1"])      return @"iPod touch 4G";
     if ([modelIdentifier isEqualToString:@"iPod5,1"])      return @"iPod touch 5G";
-    
+    if ([modelIdentifier isEqualToString:@"iPod7,1"])      return @"iPod touch 6G"; // as 6,1 was never released 7,1 is actually 6th generation
+
     // Simulator
     if ([modelIdentifier hasSuffix:@"86"] || [modelIdentifier isEqual:@"x86_64"])
     {
