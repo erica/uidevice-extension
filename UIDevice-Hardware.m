@@ -103,6 +103,14 @@
     if ([modelIdentifier isEqualToString:@"iPod5,1"])      return @"iPod touch 5G";
     if ([modelIdentifier isEqualToString:@"iPod7,1"])      return @"iPod touch 6G"; // as 6,1 was never released 7,1 is actually 6th generation
 
+    // Apple TV https://www.theiphonewiki.com/wiki/Apple_TV
+
+    if ([modelIdentifier isEqualToString:@"AppleTV1,1"])      return @"Apple TV 1G";
+    if ([modelIdentifier isEqualToString:@"AppleTV2,1"])      return @"Apple TV 2G";
+    if ([modelIdentifier isEqualToString:@"AppleTV3,1"])      return @"Apple TV 3G";
+    if ([modelIdentifier isEqualToString:@"AppleTV3,2"])      return @"Apple TV 3G"; // small, incremental update over 3,1
+    if ([modelIdentifier isEqualToString:@"AppleTV5,3"])      return @"Apple TV 4G"; // as 4,1 was never released, 5,1 is actually 4th generation
+
     // Simulator
     if ([modelIdentifier hasSuffix:@"86"] || [modelIdentifier isEqual:@"x86_64"])
     {
@@ -119,6 +127,7 @@
     if ([modelIdentifier hasPrefix:@"iPhone"]) return UIDeviceFamilyiPhone;
     if ([modelIdentifier hasPrefix:@"iPod"]) return UIDeviceFamilyiPod;
     if ([modelIdentifier hasPrefix:@"iPad"]) return UIDeviceFamilyiPad;
+    if ([modelIdentifier hasPrefix:@"AppleTV"]) return UIDeviceFamilyAppleTV;
     return UIDeviceFamilyUnknown;
 }
 
