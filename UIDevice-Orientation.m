@@ -26,7 +26,7 @@ CGFloat device_angle;
 
 - (CGFloat) orientationAngle
 {
-#if TARGET_IPHONE_SIMULATOR
+#if TARGET_OS_SIMULATOR
 	switch (self.orientation)
 	{
 		case UIDeviceOrientationPortrait: 
