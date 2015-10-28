@@ -92,7 +92,7 @@ SCNetworkReachabilityRef reachability;
 	if (success != 0) return nil;
 	baseHostName[255] = '\0';
 	
-#if TARGET_IPHONE_SIMULATOR
+#if TARGET_OS_SIMULATOR
  	return [NSString stringWithFormat:@"%s", baseHostName];
 #else
 	return [NSString stringWithFormat:@"%s.local", baseHostName];
