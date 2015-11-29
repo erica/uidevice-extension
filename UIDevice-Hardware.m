@@ -94,6 +94,10 @@
     if ([modelIdentifier isEqualToString:@"iPad4,8"])      return @"iPad mini 3G (Cellular)";
     if ([modelIdentifier isEqualToString:@"iPad4,9"])      return @"iPad mini 3G (Cellular)";
 
+    // iPad Pro https://www.theiphonewiki.com/wiki/IPad_Pro
+    if ([modelIdentifier isEqualToString:@"iPad6,7"])      return @"iPad Pro 1G (Wi-Fi)"; // http://pdadb.net/index.php?m=specs&id=8960&c=apple_ipad_pro_wifi_a1584_128gb
+    if ([modelIdentifier isEqualToString:@"iPad6,8"])      return @"iPad Pro 1G (Cellular)"; // http://pdadb.net/index.php?m=specs&id=8965&c=apple_ipad_pro_td-lte_a1652_32gb_apple_ipad_6,8
+
     // iPod http://theiphonewiki.com/wiki/IPod
     
     if ([modelIdentifier isEqualToString:@"iPod1,1"])      return @"iPod touch 1G";
